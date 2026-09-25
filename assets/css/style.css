@@ -535,7 +535,7 @@ body.offcanvas-open {
 
     .trade-navbar .nav-link {
         font-size: var(--fs-16);
-        padding: 4px 1rem;
+        padding: 6px 1rem;
         border-radius: 8px;
         text-decoration: none;
         color: var(--text-color);
