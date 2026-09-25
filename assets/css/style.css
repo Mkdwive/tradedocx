@@ -1977,16 +1977,16 @@ body.offcanvas-open {
 }
 
 .client-author-name {
-    font-size: var(--fs-18);
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 4px;
+    font-size: var(--fs-22);
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 5px;
     line-height: 1.2;
 }
 
 .client-author-title {
-    font-size: var(--fs-14);
-    color: var(--text-muted);
+    font-size: var(--fs-16);
+    color: var(--black);
     line-height: 1.4;
 }
 
