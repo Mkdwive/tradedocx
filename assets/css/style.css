@@ -535,7 +535,7 @@ body.offcanvas-open {
 
     .trade-navbar .nav-link {
         font-size: var(--fs-16);
-        padding: 0.65rem 1rem;
+        padding: 4px 1rem;
         border-radius: 8px;
         text-decoration: none;
         color: var(--text-color);
@@ -2520,7 +2520,7 @@ body.offcanvas-open {
     }
 
     .trade-navbar .navbar-nav {
-        gap: 16px;
+        gap: 14px;
     }
 
     .hero-subtitle,
@@ -2565,5 +2565,8 @@ body.offcanvas-open {
     .g-4,
     .gy-4 {
         --bs-gutter-y: 16px;
+    }
+    .hero-actions .btn{
+        min-height: 42px;
     }
 }
