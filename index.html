@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeDocX - Simplified Trade Documentation & Global Logistics</title>
+    <!-- Preload Critical LCP Background Image -->
+    <link rel="preload" as="image" href="assets/images/hero-bg.jpg" fetchpriority="high">
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Lenis Smooth Scroll CSS -->
+    <link rel="stylesheet" href="assets/css/lenis.css">
+    <!-- Swiper Slider CSS -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+         Site Header & Navbar (screenshots/navbar.png)
+         ========================================================================== -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg trade-navbar" aria-label="Main Navigation">
+            <div class="container-fluid trade-nav-container">
+                <!-- Brand Logo -->
+                <a class="navbar-brand" href="#" aria-label="TradeDocX Home">
+                    <img src="assets/images/logo.png" alt="TradeDocX" class="brand-logo">
+                </a>
+
+                <!-- Mobile Hamburger Toggler Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#tradeNavbarOffcanvas" aria-controls="tradeNavbarOffcanvas"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Responsive Offcanvas Menu -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="tradeNavbarOffcanvas"
+                    data-bs-scroll="false" data-bs-backdrop="true"
+                    aria-labelledby="tradeNavbarOffcanvasLabel">
+                    <div class="offcanvas-header">
+                        <a class="offcanvas-title" id="tradeNavbarOffcanvasLabel" href="#" aria-label="TradeDocX Home">
+                            <img src="assets/images/logo.png" alt="TradeDocX" height="24">
+                        </a>
+                        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <!-- Navigation Links -->
+                        <ul class="navbar-nav ms-auto align-items-lg-center">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#hero">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#services">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#process">Process</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#industries">Industries</a>
+                            </li>
+                        </ul>
+
+                        <!-- CTA Button -->
+                        <div class="nav-action-wrapper">
+                            <a href="#contact" class="btn btn-trade-primary">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- ==========================================================================
+             Section 1: Hero Section (screenshots/hero-section.png)
+             ========================================================================== -->
+        <section class="hero-section" id="hero">
+            <!-- Hero Background Video & Overlay -->
+            <div class="hero-video-wrapper" aria-hidden="true">
+                <video class="hero-video" autoplay muted loop playsinline poster="assets/images/hero-bg.jpg">
+                    <source src="assets/videos/hero-video.mp4" type="video/mp4">
+                </video>
+                <div class="hero-video-overlay"></div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-8 col-xl-7">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                Simplify Global Trade.
+                                <span class="text-blue">Move Forward, Smarter.</span>
+                            </h1>
+                            <p class="hero-subtitle">
+                                A cloud-based platform to automate and manage your export trade documentation,
+                                compliance and logistics - all in one place.
+                            </p>
+
+                            <!-- Feature Badges -->
+                            <div class="hero-features">
+                                <div class="hero-feature-item">
+                                    <div class="feature-icon-badge bg-badge-red" aria-hidden="true">
+                                        <svg width="15" height="20" viewBox="0 0 15 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.5 0H8.75V5C8.75 5.70312 9.29688 6.25 10 6.25H15V17.5C15 18.9062 13.8672 20 12.5 20H2.5C1.09375 20 0 18.9062 0 17.5V2.5C0 1.13281 1.09375 0 2.5 0ZM10 0L15 5H10V0ZM4.375 10C4.02344 10 3.75 10.3125 3.75 10.625C3.75 10.9766 4.02344 11.25 4.375 11.25H10.625C10.9375 11.25 11.25 10.9766 11.25 10.625C11.25 10.3125 10.9375 10 10.625 10H4.375ZM4.375 12.5C4.02344 12.5 3.75 12.8125 3.75 13.125C3.75 13.4766 4.02344 13.75 4.375 13.75H10.625C10.9375 13.75 11.25 13.4766 11.25 13.125C11.25 12.8125 10.9375 12.5 10.625 12.5H4.375ZM4.375 15C4.02344 15 3.75 15.3125 3.75 15.625C3.75 15.9766 4.02344 16.25 4.375 16.25H10.625C10.9375 16.25 11.25 15.9766 11.25 15.625C11.25 15.3125 10.9375 15 10.625 15H4.375Z"
+                                                fill="#C7001F" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="feature-label">Documentation<br>Support</span>
+                                </div>
+
+                                <div class="hero-feature-item">
+                                    <div class="feature-icon-badge bg-badge-blue" aria-hidden="true">
+                                        <svg width="19" height="20" viewBox="0 0 19 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.92188 0.117188L17.2656 3.24219C18.125 3.63281 18.7891 4.45312 18.7891 5.46875C18.75 9.375 17.1484 16.4453 10.4297 19.6875C9.76562 20 9.02344 20 8.35938 19.6875C1.64062 16.4453 0.0390625 9.375 0.0390625 5.46875C0 4.45312 0.664062 3.63281 1.52344 3.24219L8.86719 0.117188C9.02344 0.0390625 9.21875 0 9.41406 0C9.57031 0 9.76562 0.0390625 9.92188 0.117188ZM13.8281 8.16406H13.7891C14.1797 7.8125 14.1797 7.22656 13.7891 6.83594C13.4375 6.48438 12.8516 6.48438 12.5 6.83594L8.16406 11.2109L6.32812 9.375C5.9375 8.98438 5.35156 8.98438 5 9.375C4.60938 9.72656 4.60938 10.3125 5 10.6641L7.5 13.1641C7.85156 13.5547 8.4375 13.5547 8.82812 13.1641L13.8281 8.16406Z"
+                                                fill="#0236A7" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="feature-label">Customs<br>Compliance</span>
+                                </div>
+
+                                <div class="hero-feature-item">
+                                    <div class="feature-icon-badge bg-badge-green" aria-hidden="true">
+                                        <svg width="25" height="20" viewBox="0 0 25 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M1.875 0H14.375C15.3906 0 16.25 0.859375 16.25 1.875V3.75H18.2031C18.8672 3.75 19.5312 4.02344 20 4.49219L23.0078 7.5C23.4766 7.96875 23.75 8.63281 23.75 9.29688V10V11.25V13.75C24.4141 13.75 25 14.3359 25 15C25 15.7031 24.4141 16.25 23.75 16.25H22.5C22.5 18.3203 20.8203 20 18.75 20C16.6797 20 15 18.3203 15 16.25H10C10 18.3203 8.32031 20 6.25 20C4.17969 20 2.5 18.3203 2.5 16.25H1.875C0.820312 16.25 0 15.4297 0 14.375V1.875C0 0.859375 0.820312 0 1.875 0ZM16.25 6.25V10H21.25V9.29688L18.2031 6.25H16.25ZM4.375 16.25C4.375 16.9531 4.72656 17.5391 5.3125 17.8906C5.85938 18.2422 6.60156 18.2422 7.1875 17.8906C7.73438 17.5391 8.125 16.9531 8.125 16.25C8.125 15.5859 7.73438 15 7.1875 14.6484C6.60156 14.2969 5.85938 14.2969 5.3125 14.6484C4.72656 15 4.375 15.5859 4.375 16.25ZM18.75 14.375C18.0469 14.375 17.4609 14.7656 17.1094 15.3125C16.7578 15.8984 16.7578 16.6406 17.1094 17.1875C17.4609 17.7734 18.0469 18.125 18.75 18.125C19.4141 18.125 20 17.7734 20.3516 17.1875C20.7031 16.6406 20.7031 15.8984 20.3516 15.3125C20 14.7656 19.4141 14.375 18.75 14.375Z"
+                                                fill="#05843A" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="feature-label">Shipment<br>Coordination</span>
+                                </div>
+
+                                <div class="hero-feature-item">
+                                    <div class="feature-icon-badge bg-badge-amber" aria-hidden="true">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.75 10C13.75 10.8984 13.6719 11.7188 13.5938 12.5H6.36719C6.28906 11.7188 6.25 10.8984 6.25 10C6.25 9.14062 6.28906 8.32031 6.36719 7.5H13.5938C13.6719 8.32031 13.75 9.14062 13.75 10ZM14.8438 7.5H19.6484C19.8828 8.32031 20 9.14062 20 10C20 10.8984 19.8828 11.7188 19.6484 12.5H14.8438C14.9219 11.7188 15 10.8594 15 10C15 9.14062 14.9219 8.32031 14.8438 7.5ZM19.2578 6.25H14.6875C14.2969 3.78906 13.5156 1.67969 12.5391 0.351562C15.5859 1.17188 18.0859 3.35938 19.2578 6.25ZM13.4375 6.25H6.52344C6.75781 4.84375 7.14844 3.59375 7.57812 2.57812C8.00781 1.64062 8.4375 0.976562 8.90625 0.546875C9.33594 0.15625 9.6875 0 10 0C10.2734 0 10.625 0.15625 11.0547 0.546875C11.5234 0.976562 11.9531 1.64062 12.3828 2.57812C12.8125 3.59375 13.2031 4.84375 13.4375 6.25ZM5.27344 6.25H0.703125C1.875 3.35938 4.375 1.17188 7.42188 0.351562C6.44531 1.67969 5.66406 3.78906 5.27344 6.25ZM0.3125 7.5H5.11719C5.03906 8.32031 5 9.14062 5 10C5 10.8594 5.03906 11.7188 5.11719 12.5H0.3125C0.078125 11.7188 0 10.8984 0 10C0 9.14062 0.078125 8.32031 0.3125 7.5ZM7.57812 17.4609C7.14844 16.4453 6.75781 15.1953 6.52344 13.75H13.4375C13.2031 15.1953 12.8125 16.4453 12.3828 17.4609C11.9531 18.3984 11.5234 19.0625 11.0547 19.4922C10.625 19.8828 10.2734 20 10 20C9.6875 20 9.33594 19.8828 8.90625 19.4922C8.4375 19.0625 8.00781 18.3984 7.57812 17.4609ZM5.27344 13.75C5.66406 16.25 6.44531 18.3594 7.42188 19.6875C4.375 18.8672 1.875 16.6797 0.703125 13.75H5.27344ZM19.2578 13.75C18.0859 16.6797 15.5859 18.8672 12.5391 19.6875C13.5547 18.3594 14.2969 16.25 14.6875 13.75H19.2578Z"
+                                                fill="#DE7600" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="feature-label">Global Market<br>Access</span>
+                                </div>
+                            </div>
+
+                            <!-- Hero Action Buttons -->
+                            <div class="hero-actions">
+                                <a href="#contact" class="btn btn-hero-primary">
+                                    <span>Request a Demo</span>
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M3.33337 8H12.6667M12.6667 8L8.00004 3.33334M12.6667 8L8.00004 12.6667"
+                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <a href="#services" class="btn btn-hero-secondary">
+                                    <span>Explore Features</span>
+                                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M3.33337 8H12.6667M12.6667 8L8.00004 3.33334M12.6667 8L8.00004 12.6667"
+                                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 2: Client Logos Marquee (screenshots/testimonial.png)
+             ========================================================================== -->
+        <section class="clients-section" id="clients" aria-label="Our Trusted Clients">
+            <div class="container-fluid">
+                <div class="marquee-wrapper">
+                    <div class="marquee-track">
+                        <!-- Set 1 -->
+                        <div class="marquee-item"><img src="assets/images/client-1.png" alt="Agracom" loading="eager">
+                        </div>
+                        <div class="marquee-item"><img src="assets/images/client-2.png" alt="Blackmores"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-3.png" alt="DB Schenker"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-4.png" alt="Condor Fresh"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-5.png" alt="DHL" loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-6.png" alt="Omni Cotton"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-7.png" alt="Sell & Parker"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-8.png" alt="Selected Seeds"
+                                loading="eager"></div>
+                        <!-- Set 2 (for seamless loop) -->
+                        <div class="marquee-item"><img src="assets/images/client-1.png" alt="Agracom" loading="eager">
+                        </div>
+                        <div class="marquee-item"><img src="assets/images/client-2.png" alt="Blackmores"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-3.png" alt="DB Schenker"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-4.png" alt="Condor Fresh"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-5.png" alt="DHL" loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-6.png" alt="Omni Cotton"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-7.png" alt="Sell & Parker"
+                                loading="eager"></div>
+                        <div class="marquee-item"><img src="assets/images/client-8.png" alt="Selected Seeds"
+                                loading="eager"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 3: About Section (screenshots/about-track.png)
+             ========================================================================== -->
+        <section class="about-section pt-4" id="about">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <!-- Left Content -->
+                    <div class="col-12 col-lg-6">
+                        <div class="section-tag">
+                            <span>ABOUT TRADEDOCX</span>
+                            <span class="tag-line"></span>
+                        </div>
+                        <h2 class="about-title">
+                            One Platform for<br>
+                            <span class="text-blue">Smarter Global Trade</span>
+                        </h2>
+                        <p class="about-description">
+                            TradeDocx is a cloud-based platform that connects export documentation, compliance and
+                            logistics in one place. Automate complex trade processes, reduce manual effort and gain
+                            complete visibility across your global operations.
+                        </p>
+
+                        <!-- Feature Checkpoints -->
+                        <div class="about-features">
+                            <div class="about-feature-item">
+                                <div class="feature-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="feature-text">
+                                    <h3 class="feature-heading">Cloud-Based</h3>
+                                    <p class="feature-sub">Access your trade operations securely from anywhere</p>
+                                </div>
+                            </div>
+
+                            <div class="about-feature-item">
+                                <div class="feature-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="feature-text">
+                                    <h3 class="feature-heading">Connected</h3>
+                                    <p class="feature-sub">Connect documentation, compliance, and logistics in one
+                                        place.</p>
+                                </div>
+                            </div>
+
+                            <div class="about-feature-item">
+                                <div class="feature-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="feature-text">
+                                    <h3 class="feature-heading">Scalable</h3>
+                                    <p class="feature-sub">Built to grow with your global trade operations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Illustration & Card -->
+                    <div class="col-12 col-lg-6">
+                        <div class="about-visual-wrapper">
+                            <img src="assets/images/gradient-circle.svg" alt="" class="about-gradient-circle"
+                                aria-hidden="true">
+                            <img src="assets/images/about-illustration.png"
+                                alt="TradeDocx Interactive Dashboard Preview" class="about-illustration-img"
+                                loading="eager">
+
+                            <!-- Floating Active Deals Card -->
+                            <div class="floating-deals-card">
+                                <img src="./assets/images/active-deal.png" alt="active-deal" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 4: Solutions Section ("Why Choose Us") (screenshots/solution-section.png)
+             ========================================================================== -->
+        <section class="solutions-section" id="services">
+            <div class="solutions-bg-overlay" aria-hidden="true"></div>
+            <div class="container">
+                <div class="solutions-header text-center">
+                    <span class="solutions-tag">WHY CHOOSE US</span>
+                    <h2 class="solutions-title">Solutions for Every Step</h2>
+                    <p class="solutions-subtitle">
+                        TradeDocx brings documentation, compliance, collaboration, and shipment management together in
+                        one streamlined platform
+                    </p>
+                </div>
+
+                <div class="solutions-grid">
+                    <div class="row g-4 align-items-center">
+                        <!-- Left 3 Cards -->
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="d-flex flex-column gap-4">
+                                <div class="solution-card solution-card-left">
+                                    <div class="solution-icon-badge">
+                                        <!-- Brain / Trade Control SVG -->
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.625 0C10.0312 0 11.25 1.21875 11.25 2.625V21.375C11.25 22.8281 10.0312 24 8.625 24C7.26562 24 6.14062 23.0156 6 21.6562C5.76562 21.75 5.48438 21.75 5.25 21.75C3.5625 21.75 2.25 20.4375 2.25 18.75C2.25 18.4219 2.29688 18.0938 2.39062 17.7656C0.984375 17.25 0 15.8906 0 14.25C0 12.7969 0.84375 11.4844 2.10938 10.875C1.73438 10.3594 1.5 9.70312 1.5 9C1.5 7.59375 2.48438 6.375 3.84375 6.09375C3.75 5.8125 3.75 5.53125 3.75 5.25C3.75 3.89062 4.6875 2.67188 6 2.34375C6.14062 1.03125 7.26562 0 8.625 0ZM15.375 0C16.6875 0 17.8125 1.03125 17.9531 2.34375C19.2656 2.67188 20.25 3.84375 20.25 5.25C20.25 5.53125 20.2031 5.8125 20.1094 6.09375C21.4688 6.375 22.5 7.59375 22.5 9C22.5 9.70312 22.2188 10.3594 21.8438 10.875C23.1094 11.4844 24 12.7969 24 14.25C24 15.8906 22.9688 17.25 21.5625 17.7656C21.6562 18.0938 21.75 18.4219 21.75 18.75C21.75 20.4375 20.3906 21.75 18.75 21.75C18.4688 21.75 18.1875 21.75 17.9531 21.6562C17.8125 23.0156 16.6875 24 15.375 24C13.9219 24 12.75 22.8281 12.75 21.375V2.625C12.75 1.21875 13.9219 0 15.375 0Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="solution-card-body">
+                                        <h3 class="solution-card-title">Intelligent Trade Control</h3>
+                                        <p class="solution-card-text">Manage documents, shipments, and workflows from
+                                            one platform.</p>
+                                    </div>
+                                </div>
+
+                                <div class="solution-card solution-card-left">
+                                    <div class="solution-icon-badge">
+                                        <!-- Document Check SVG -->
+                                        <svg width="27" height="25" viewBox="0 0 27 25" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0 3C0 1.35938 1.3125 0 3 0H10.5V6C10.5 6.84375 11.1562 7.5 12 7.5H18V9.32812C14.5312 10.3125 12 13.5 12 17.25C12 20.0625 13.3594 22.5 15.4219 24C15.2812 24 15.1406 24 15 24H3C1.3125 24 0 22.6875 0 21V3ZM18 6H12V0L18 6ZM13.5 17.25C13.5 14.8594 14.7656 12.6562 16.875 11.4375C18.9375 10.2188 21.5156 10.2188 23.625 11.4375C25.6875 12.6562 27 14.8594 27 17.25C27 19.6875 25.6875 21.8906 23.625 23.1094C21.5156 24.3281 18.9375 24.3281 16.875 23.1094C14.7656 21.8906 13.5 19.6875 13.5 17.25ZM23.3906 15.2344C23.1094 14.9531 22.5938 14.9531 22.3125 15.2344L19.5 18.0938L18.1406 16.7344C17.8594 16.4531 17.3438 16.4531 17.0625 16.7344C16.7812 17.0156 16.7812 17.5312 17.0625 17.8125L18.9375 19.6875C19.2188 19.9688 19.7344 19.9688 20.0156 19.6875L23.3906 16.3125C23.6719 16.0312 23.6719 15.5156 23.3906 15.2344Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="solution-card-body">
+                                        <h3 class="solution-card-title">Faster Documentation</h3>
+                                        <p class="solution-card-text">Automate documentation tasks and reduce manual
+                                            effort.</p>
+                                    </div>
+                                </div>
+
+                                <div class="solution-card solution-card-left">
+                                    <div class="solution-icon-badge">
+                                        <!-- Shield Compliance SVG -->
+                                        <svg width="23" height="24" viewBox="0 0 23 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M11.2969 0C11.4844 0 11.7188 0.046875 11.9062 0.140625L20.7188 3.89062C21.75 4.35938 22.5469 5.34375 22.5469 6.5625C22.5 11.25 20.5781 19.7344 12.5156 23.625C11.7188 24 10.8281 24 10.0312 23.625C1.96875 19.7344 0.046875 11.25 0.046875 6.5625C0 5.34375 0.796875 4.35938 1.82812 3.89062L10.6406 0.140625C10.8281 0.046875 11.0625 0 11.2969 0ZM11.2969 3.14062V20.8594C17.7656 17.7188 19.5 10.8281 19.5469 6.65625L11.2969 3.14062Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="solution-card-body">
+                                        <h3 class="solution-card-title">Simplified Compliance</h3>
+                                        <p class="solution-card-text">Align with trade regulations using workflows.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Center Empty Column (Letting ship show in background) -->
+                        <div class="col-sm-6 col-lg-4 d-none d-lg-block" style="min-height: 280px;" aria-hidden="true">
+                        </div>
+
+                        <!-- Right 3 Cards -->
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="d-flex flex-column gap-4">
+                                <div class="solution-card solution-card-right">
+                                    <div class="solution-icon-badge">
+                                        <!-- Eye Visibility SVG -->
+                                        <svg width="28" height="21" viewBox="0 0 28 21" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.5469 0C17.2969 0 20.3438 1.73438 22.5469 3.79688C24.75 5.8125 26.2031 8.25 26.9062 9.9375C27.0469 10.3125 27.0469 10.7344 26.9062 11.1094C26.2031 12.75 24.75 15.1875 22.5469 17.25C20.3438 19.3125 17.2969 21 13.5469 21C9.75 21 6.70312 19.3125 4.5 17.25C2.29688 15.1875 0.84375 12.75 0.140625 11.1094C0 10.7344 0 10.3125 0.140625 9.9375C0.84375 8.25 2.29688 5.8125 4.5 3.79688C6.70312 1.73438 9.75 0 13.5469 0ZM6.79688 10.5C6.79688 12.9375 8.0625 15.1406 10.1719 16.3594C12.2344 17.5781 14.8125 17.5781 16.9219 16.3594C18.9844 15.1406 20.2969 12.9375 20.2969 10.5C20.2969 8.10938 18.9844 5.90625 16.9219 4.6875C14.8125 3.46875 12.2344 3.46875 10.1719 4.6875C8.0625 5.90625 6.79688 8.10938 6.79688 10.5ZM13.5469 7.5C13.5469 7.17188 13.4531 6.89062 13.3594 6.5625C13.2656 6.32812 13.4531 6 13.7344 6C15.6094 6.09375 17.3438 7.40625 17.8594 9.375C18.5156 11.7656 17.1094 14.2031 14.6719 14.8594C12.2812 15.5156 9.79688 14.0625 9.1875 11.6719C9.09375 11.3438 9.04688 11.0156 9.04688 10.7344C9 10.4531 9.32812 10.2656 9.5625 10.3594C9.89062 10.4531 10.1719 10.5 10.5469 10.5C12.1875 10.5 13.5469 9.1875 13.5469 7.5Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="solution-card-body">
+                                        <h3 class="solution-card-title">Real-Time Visibility</h3>
+                                        <p class="solution-card-text">Track shipments and updates for better visibility.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="solution-card solution-card-right">
+                                    <div class="solution-icon-badge">
+                                        <!-- Connected Users SVG -->
+                                        <svg width="30" height="24" viewBox="0 0 30 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.75 0C8.0625 0 9.28125 0.75 9.98438 1.875C10.6406 3.04688 10.6406 4.5 9.98438 5.625C9.28125 6.79688 8.0625 7.5 6.75 7.5C5.39062 7.5 4.17188 6.79688 3.46875 5.625C2.8125 4.5 2.8125 3.04688 3.46875 1.875C4.17188 0.75 5.39062 0 6.75 0ZM24 0C25.3125 0 26.5312 0.75 27.2344 1.875C27.8906 3.04688 27.8906 4.5 27.2344 5.625C26.5312 6.79688 25.3125 7.5 24 7.5C22.6406 7.5 21.4219 6.79688 20.7188 5.625C20.0625 4.5 20.0625 3.04688 20.7188 1.875C21.4219 0.75 22.6406 0 24 0ZM0 14.0156C0 11.25 2.20312 9 4.96875 9H6.98438C7.73438 9 8.4375 9.1875 9.09375 9.46875C9 9.79688 9 10.1719 9 10.5C9 12.3281 9.75 13.9219 11.0156 15C11.0156 15 11.0156 15 10.9688 15H0.984375C0.421875 15 0 14.5781 0 14.0156ZM18.9844 15H18.9375C20.2031 13.9219 20.9531 12.3281 20.9531 10.5C20.9531 10.1719 20.9531 9.79688 20.9062 9.46875C21.5156 9.1875 22.2188 9 22.9688 9H24.9844C27.75 9 30 11.25 30 14.0156C30 14.5781 29.5312 15 28.9688 15H18.9844ZM10.5 10.5C10.5 8.90625 11.3438 7.45312 12.75 6.60938C14.1094 5.8125 15.8438 5.8125 17.25 6.60938C18.6094 7.45312 19.5 8.90625 19.5 10.5C19.5 12.1406 18.6094 13.5938 17.25 14.4375C15.8438 15.2344 14.1094 15.2344 12.75 14.4375C11.3438 13.5938 10.5 12.1406 10.5 10.5ZM6 22.7812C6 19.3125 8.76562 16.5 12.2344 16.5H17.7188C21.1875 16.5 24 19.3125 24 22.7812C24 23.4375 23.4375 24 22.7344 24H7.21875C6.51562 24 5.95312 23.4844 5.95312 22.7812H6Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="solution-card-body">
+                                        <h3 class="solution-card-title">Connected Collaboration</h3>
+                                        <p class="solution-card-text">Unite exporters, importers, logistics, and teams
+                                            in one space.</p>
+                                    </div>
+                                </div>
+
+                                <div class="solution-card solution-card-right">
+                                    <div class="solution-icon-badge">
+                                        <!-- Built to Scale Chart SVG -->
+                                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3 1.5V17.25C3 17.6719 3.32812 18 3.75 18H22.5C23.2969 18 24 18.7031 24 19.5C24 20.3438 23.2969 21 22.5 21H3.75C1.64062 21 0 19.3594 0 17.25V1.5C0 0.703125 0.65625 0 1.5 0C2.29688 0 3 0.703125 3 1.5ZM22.0312 5.57812L16.0312 11.5781C15.4688 12.1875 14.4844 12.1875 13.9219 11.5781L11.25 8.90625L7.03125 13.0781C6.46875 13.6875 5.48438 13.6875 4.92188 13.0781C4.3125 12.5156 4.3125 11.5312 4.92188 10.9688L10.1719 5.71875C10.7344 5.10938 11.7188 5.10938 12.2812 5.71875L15 8.39062L19.9219 3.46875C20.4844 2.85938 21.4688 2.85938 22.0312 3.46875C22.6406 4.03125 22.6406 5.01562 22.0312 5.57812Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="solution-card-body">
+                                        <h3 class="solution-card-title">Built to Scale</h3>
+                                        <p class="solution-card-text">Adapt workflows as trade volumes and business
+                                            needs grow.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 5: How It Works Section (screenshots/how-it-work-section.png)
+             ========================================================================== -->
+        <section class="how-it-works-section" id="process">
+            <img src="assets/images/map-bg.png" alt="" class="how-it-works-bg-map" aria-hidden="true">
+            <div class="container">
+                <div class="how-it-works-header">
+                    <div class="row align-items-end g-4">
+                        <div class="col-12 col-lg-6">
+                            <div class="section-tag">
+                                <span>HOW IT WORKS</span>
+                                <span class="tag-line"></span>
+                            </div>
+                            <h2 class="how-it-works-title">
+                                From Documentation<br>to Delivery
+                            </h2>
+                        </div>
+                        <div class="col-12 col-lg-6 d-flex justify-content-lg-end">
+                            <p class="how-it-works-desc">
+                                A simple, connected workflow that helps you manage documentation, compliance,
+                                coordination, and shipment tracking with greater efficiency.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Step Process Timeline -->
+                <div class="process-timeline">
+                    <div class="process-timeline-line" aria-hidden="true">
+                        <img src="assets/images/line.svg" alt="" class="process-timeline-line-img">
+                    </div>
+                    <div class="row g-4 justify-content-between">
+                        <!-- Step 1 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="process-step-item">
+                                <div class="process-step-badge badge-blue">
+                                    <div class="inner-badge inner-circle">
+                                        <svg width="30" height="40" viewBox="0 0 36 48" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0 6C0 2.71875 2.625 0 6 0H21V12C21 13.6875 22.3125 15 24 15H36V42C36 45.375 33.2812 48 30 48H6C2.625 48 0 45.375 0 42V6ZM36 12H24V0L36 12Z"
+                                                fill="#113DBE" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="process-step-title">Upload &amp; Input</h3>
+                                <p class="process-step-desc">Add shipment details and required documents.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="process-step-item">
+                                <div class="process-step-badge badge-red">
+                                    <div class="inner-badge inner-circle">
+                                        <svg width="38" height="40" viewBox="0 0 46 48" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M45.2812 15.6562C45.6562 16.5 45.375 17.3438 44.7188 18L40.6875 21.6562C40.7812 22.4062 40.7812 23.25 40.7812 24C40.7812 24.8438 40.7812 25.6875 40.6875 26.4375L44.7188 30.0938C45.375 30.6562 45.6562 31.5938 45.2812 32.4375C44.9062 33.5625 44.4375 34.5938 43.875 35.625L43.4062 36.375C42.75 37.4062 42.0938 38.4375 41.3438 39.2812C40.7812 40.0312 39.8438 40.2188 39 39.9375L33.8438 38.3438C32.5312 39.2812 31.125 40.0312 29.7188 40.6875L28.5 46.0312C28.3125 46.875 27.6562 47.5312 26.8125 47.7188C25.5 47.9062 24.1875 48 22.7812 48C21.4688 48 20.1562 47.9062 18.8438 47.7188C18 47.5312 17.3438 46.875 17.1562 46.0312L15.9375 40.6875C14.4375 40.0312 13.125 39.2812 11.8125 38.3438L6.65625 39.9375C5.8125 40.2188 4.875 40.0312 4.3125 39.375C3.5625 38.4375 2.90625 37.4062 2.25 36.375L1.78125 35.625C1.21875 34.5938 0.75 33.5625 0.375 32.4375C0 31.5938 0.28125 30.75 0.9375 30.0938L4.96875 26.4375C4.875 25.6875 4.875 24.8438 4.875 24C4.875 23.25 4.875 22.4062 4.96875 21.6562L0.9375 18C0.28125 17.3438 0 16.5 0.375 15.6562C0.75 14.5312 1.21875 13.5 1.78125 12.4688L2.25 11.7188C2.90625 10.6875 3.5625 9.65625 4.3125 8.71875C4.875 8.0625 5.8125 7.875 6.65625 8.15625L11.8125 9.75C13.125 8.8125 14.5312 7.96875 15.9375 7.40625L17.1562 2.0625C17.3438 1.21875 18 0.5625 18.8438 0.375C20.1562 0.1875 21.4688 0 22.875 0C24.1875 0 25.5 0.1875 26.8125 0.375C27.6562 0.46875 28.3125 1.21875 28.5 2.0625L29.7188 7.40625C31.2188 7.96875 32.5312 8.8125 33.8438 9.75L39 8.15625C39.8438 7.875 40.7812 8.0625 41.3438 8.71875C42.0938 9.65625 42.75 10.6875 43.4062 11.7188L43.875 12.4688C44.4375 13.5 44.9062 14.5312 45.375 15.6562H45.2812ZM22.875 31.5C25.5 31.5 27.9375 30.0938 29.3438 27.75C30.6562 25.5 30.6562 22.5938 29.3438 20.25C27.9375 18 25.5 16.5 22.875 16.5C20.1562 16.5 17.7188 18 16.3125 20.25C15 22.5938 15 25.5 16.3125 27.75C17.7188 30.0938 20.1562 31.5 22.875 31.5Z"
+                                                fill="#C20E0E" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="process-step-title">Automate &amp; Validate</h3>
+                                <p class="process-step-desc">System checks compliance and auto-generates documents.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="process-step-item">
+                                <div class="process-step-badge badge-green">
+                                    <div class="inner-badge inner-circle">
+                                        <svg width="50" height="40" viewBox="0 0 60 48" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.5 0C16.125 0 18.5625 1.5 19.9688 3.75C21.2812 6.09375 21.2812 9 19.9688 11.25C18.5625 13.5938 16.125 15 13.5 15C10.7812 15 8.34375 13.5938 6.9375 11.25C5.625 9 5.625 6.09375 6.9375 3.75C8.34375 1.5 10.7812 0 13.5 0ZM48 0C50.625 0 53.0625 1.5 54.4688 3.75C55.7812 6.09375 55.7812 9 54.4688 11.25C53.0625 13.5938 50.625 15 48 15C45.2812 15 42.8438 13.5938 41.4375 11.25C40.125 9 40.125 6.09375 41.4375 3.75C42.8438 1.5 45.2812 0 48 0ZM0 28.0312C0 22.5 4.40625 18 9.9375 18H13.9688C15.4688 18 16.875 18.375 18.1875 18.9375C18 19.5938 18 20.3438 18 21C18 24.6562 19.5 27.8438 22.0312 30C22.0312 30 22.0312 30 21.9375 30H1.96875C0.84375 30 0 29.1562 0 28.0312ZM37.9688 30H37.875C40.4062 27.8438 41.9062 24.6562 41.9062 21C41.9062 20.3438 41.9062 19.5938 41.8125 18.9375C43.0312 18.375 44.4375 18 45.9375 18H49.9688C55.5 18 60 22.5 60 28.0312C60 29.1562 59.0625 30 57.9375 30H37.9688ZM21 21C21 17.8125 22.6875 14.9062 25.5 13.2188C28.2188 11.625 31.6875 11.625 34.5 13.2188C37.2188 14.9062 39 17.8125 39 21C39 24.2812 37.2188 27.1875 34.5 28.875C31.6875 30.4688 28.2188 30.4688 25.5 28.875C22.6875 27.1875 21 24.2812 21 21ZM12 45.5625C12 38.625 17.5312 33 24.4688 33H35.4375C42.375 33 48 38.625 48 45.5625C48 46.875 46.875 48 45.4688 48H14.4375C13.0312 48 11.9062 46.9688 11.9062 45.5625H12Z"
+                                                fill="#007404" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="process-step-title">Collaborate &amp; Process</h3>
+                                <p class="process-step-desc">Work with internal teams and logistics partners.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="process-step-item">
+                                <div class="process-step-badge badge-amber">
+                                    <div class="inner-badge inner-circle">
+                                        <svg width="38" height="40" viewBox="0 0 46 48" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M23.8125 0.28125L41.4375 7.78125C43.5 8.71875 45.0938 10.6875 45.0938 13.125C45 22.5 41.1562 39.4688 25.0312 47.25C23.4375 48 21.6562 48 20.0625 47.25C3.9375 39.4688 0.09375 22.5 0.09375 13.125C0 10.6875 1.59375 8.71875 3.65625 7.78125L21.2812 0.28125C21.6562 0.09375 22.125 0 22.5938 0C22.9688 0 23.4375 0.09375 23.8125 0.28125ZM33.1875 19.5938H33.0938C34.0312 18.75 34.0312 17.3438 33.0938 16.4062C32.25 15.5625 30.8438 15.5625 30 16.4062L19.5938 26.9062L15.1875 22.5C14.25 21.5625 12.8438 21.5625 12 22.5C11.0625 23.3438 11.0625 24.75 12 25.5938L18 31.5938C18.8438 32.5312 20.25 32.5312 21.1875 31.5938L33.1875 19.5938Z"
+                                                fill="#DD8E10" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="process-step-title">Track &amp; Deliver</h3>
+                                <p class="process-step-desc">Get real-time updates until your shipment reaches.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 6: What We Manage Section (screenshots/what-we-manage-sec.png)
+             ========================================================================== -->
+        <section class="what-we-manage-section" id="manage">
+            <div class="container">
+                <div class="manage-header">
+                    <div class="row align-items-end g-4">
+                        <div class="col-12 col-lg-6">
+                            <span class="manage-tag">WHAT WE MANAGE</span>
+                            <h2 class="manage-title">
+                                End-to-end export<br>services, under one roof.
+                            </h2>
+                        </div>
+                        <div class="col-12 col-lg-6 text-lg-end">
+                            <p class="manage-desc ms-lg-auto">
+                                Your export documentation workflow includes instruction, document prep, compliance
+                                checks, coordination, dispatch, and bank presentation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 Service Cards Grid -->
+                <div class="row g-4">
+                    <!-- Card 1 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="manage-card">
+                            <div class="manage-card-icon">
+                                <svg width="18" height="24" viewBox="0 0 18 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3 0H10.5V6C10.5 6.84375 11.1562 7.5 12 7.5H18V21C18 22.6875 16.6406 24 15 24H3C1.3125 24 0 22.6875 0 21V3C0 1.35938 1.3125 0 3 0ZM12 0L18 6H12V0ZM5.25 12C4.82812 12 4.5 12.375 4.5 12.75C4.5 13.1719 4.82812 13.5 5.25 13.5H12.75C13.125 13.5 13.5 13.1719 13.5 12.75C13.5 12.375 13.125 12 12.75 12H5.25ZM5.25 15C4.82812 15 4.5 15.375 4.5 15.75C4.5 16.1719 4.82812 16.5 5.25 16.5H12.75C13.125 16.5 13.5 16.1719 13.5 15.75C13.5 15.375 13.125 15 12.75 15H5.25ZM5.25 18C4.82812 18 4.5 18.375 4.5 18.75C4.5 19.1719 4.82812 19.5 5.25 19.5H12.75C13.125 19.5 13.5 19.1719 13.5 18.75C13.5 18.375 13.125 18 12.75 18H5.25Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="manage-card-title">Export Documentation</h3>
+                            <p class="manage-card-desc">Complete document sets for Letters of Credit, DAP, DA, and open
+                                account terms — prepared, checked, and dispatched without error.</p>
+                            <ul class="manage-card-checklist">
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Bills of Lading</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Commercial Invoices</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Packing Lists</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Certificates of Origin</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Insurance Certificates</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="manage-card">
+                            <div class="manage-card-icon">
+                                <svg width="23" height="24" viewBox="0 0 23 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.9062 0.140625L20.7188 3.89062C21.75 4.35938 22.5469 5.34375 22.5469 6.5625C22.5 11.25 20.5781 19.7344 12.5156 23.625C11.7188 24 10.8281 24 10.0312 23.625C1.96875 19.7344 0.046875 11.25 0.046875 6.5625C0 5.34375 0.796875 4.35938 1.82812 3.89062L10.6406 0.140625C10.8281 0.046875 11.0625 0 11.2969 0C11.4844 0 11.7188 0.046875 11.9062 0.140625ZM16.5938 9.79688H16.5469C17.0156 9.375 17.0156 8.67188 16.5469 8.20312C16.125 7.78125 15.4219 7.78125 15 8.20312L9.79688 13.4531L7.59375 11.25C7.125 10.7812 6.42188 10.7812 6 11.25C5.53125 11.6719 5.53125 12.375 6 12.7969L9 15.7969C9.42188 16.2656 10.125 16.2656 10.5938 15.7969L16.5938 9.79688Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="manage-card-title">Regulatory Compliance</h3>
+                            <p class="manage-card-desc">Full coverage of Australian and destination-country regulatory
+                                requirements, with every certificate type across all commodity classes.</p>
+                            <ul class="manage-card-checklist">
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Health &amp; Phytosanitary Certs</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>CHAFTA / KAFTA / AANZFTA</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>JAEPA / TAFTA FTA Certs</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Export Declaration Numbers</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Pre-Receival Advice (PRA)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="manage-card">
+                            <div class="manage-card-icon">
+                                <svg width="30" height="24" viewBox="0 0 30 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.75 0C8.0625 0 9.28125 0.75 9.98438 1.875C10.6406 3.04688 10.6406 4.5 9.98438 5.625C9.28125 6.79688 8.0625 7.5 6.75 7.5C5.39062 7.5 4.17188 6.79688 3.46875 5.625C2.8125 4.5 2.8125 3.04688 3.46875 1.875C4.17188 0.75 5.39062 0 6.75 0ZM24 0C25.3125 0 26.5312 0.75 27.2344 1.875C27.8906 3.04688 27.8906 4.5 27.2344 5.625C26.5312 6.79688 25.3125 7.5 24 7.5C22.6406 7.5 21.4219 6.79688 20.7188 5.625C20.0625 4.5 20.0625 3.04688 20.7188 1.875C21.4219 0.75 22.6406 0 24 0ZM0 14.0156C0 11.25 2.20312 9 4.96875 9H6.98438C7.73438 9 8.4375 9.1875 9.09375 9.46875C9 9.79688 9 10.1719 9 10.5C9 12.3281 9.75 13.9219 11.0156 15C11.0156 15 11.0156 15 10.9688 15H0.984375C0.421875 15 0 14.5781 0 14.0156ZM18.9844 15H18.9375C20.2031 13.9219 20.9531 12.3281 20.9531 10.5C20.9531 10.1719 20.9531 9.79688 20.9062 9.46875C21.5156 9.1875 22.2188 9 22.9688 9H24.9844C27.75 9 30 11.25 30 14.0156C30 14.5781 29.5312 15 28.9688 15H18.9844ZM10.5 10.5C10.5 8.90625 11.3438 7.45312 12.75 6.60938C14.1094 5.8125 15.8438 5.8125 17.25 6.60938C18.6094 7.45312 19.5 8.90625 19.5 10.5C19.5 12.1406 18.6094 13.5938 17.25 14.4375C15.8438 15.2344 14.1094 15.2344 12.75 14.4375C11.3438 13.5938 10.5 12.1406 10.5 10.5ZM6 22.7812C6 19.3125 8.76562 16.5 12.2344 16.5H17.7188C21.1875 16.5 24 19.3125 24 22.7812C24 23.4375 23.4375 24 22.7344 24H7.21875C6.51562 24 5.95312 23.4844 5.95312 22.7812H6Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="manage-card-title">Stakeholder Coordination</h3>
+                            <p class="manage-card-desc">We manage every touchpoint in your export chain so your team
+                                stays focused on sales, sourcing, and strategy.</p>
+                            <ul class="manage-card-checklist">
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Freight Forwarders</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Shipping Lines</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Banks &amp; L/C Issuers</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Government Agencies</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Packers &amp; Warehouses</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="manage-card">
+                            <div class="manage-card-icon">
+                                <svg width="18" height="24" viewBox="0 0 18 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3 0H10.5V6C10.5 6.84375 11.1562 7.5 12 7.5H18V21C18 22.6875 16.6406 24 15 24H3C1.3125 24 0 22.6875 0 21V3C0 1.35938 1.3125 0 3 0ZM12 0L18 6H12V0ZM10.125 19.125V14.3438L11.5781 15.7969C12 16.2656 12.7031 16.2656 13.1719 15.7969C13.5938 15.375 13.5938 14.6719 13.1719 14.2031L9.79688 10.8281C9.32812 10.4062 8.625 10.4062 8.20312 10.8281L4.82812 14.2031C4.35938 14.6719 4.35938 15.375 4.82812 15.7969C5.25 16.2656 5.95312 16.2656 6.42188 15.7969L7.875 14.3438V19.125C7.875 19.7812 8.34375 20.25 9 20.25C9.60938 20.25 10.125 19.7812 10.125 19.125Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="manage-card-title">Legalization &amp; Dispatch</h3>
+                            <p class="manage-card-desc">Document authentication, apostille coordination, consular
+                                legalization, and courier dispatch to buyers and banks worldwide.</p>
+                            <ul class="manage-card-checklist">
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>DFAT Authentication</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Consular Legalization</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Courier Management</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Bank Document Submission</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Buyer Document Sets</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="manage-card">
+                            <div class="manage-card-icon">
+                                <svg width="30" height="21" viewBox="0 0 30 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 14.25C0 11.3438 1.875 8.8125 4.5 7.92188C4.5 7.78125 4.5 7.64062 4.5 7.5C4.5 3.375 7.82812 0 12 0C14.7656 0 17.2031 1.54688 18.4688 3.79688C19.1719 3.28125 20.0625 3 21 3C23.4844 3 25.5 5.01562 25.5 7.5C25.5 8.10938 25.3594 8.625 25.1719 9.14062C27.9375 9.70312 30 12.1406 30 15C30 18.3281 27.2812 21 24 21H6.75C3 21 0 18 0 14.25Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="manage-card-title">Cloud Dashboard</h3>
+                            <p class="manage-card-desc">Real-time visibility into every active shipment — document
+                                status, dispatch confirmations, and management reporting in one place.</p>
+                            <ul class="manage-card-checklist">
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Live Shipment Tracking</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Document Status Board</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Management Reports</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Audit Trail</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Team Collaboration</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="manage-card">
+                            <div class="manage-card-icon">
+                                <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.5 2.25C7.5 1.03125 8.48438 0 9.75 0H11.25C12.4688 0 13.5 1.03125 13.5 2.25V18.75C13.5 20.0156 12.4688 21 11.25 21H9.75C8.48438 21 7.5 20.0156 7.5 18.75V2.25ZM0 11.25C0 10.0312 0.984375 9 2.25 9H3.75C4.96875 9 6 10.0312 6 11.25V18.75C6 20.0156 4.96875 21 3.75 21H2.25C0.984375 21 0 20.0156 0 18.75V11.25ZM17.25 3H18.75C19.9688 3 21 4.03125 21 5.25V18.75C21 20.0156 19.9688 21 18.75 21H17.25C15.9844 21 15 20.0156 15 18.75V5.25C15 4.03125 15.9844 3 17.25 3Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="manage-card-title">Overflow &amp; Peak Cover</h3>
+                            <p class="manage-card-desc">Flex support for in-house teams during seasonal peaks, staff
+                                absences, or rapid volume growth — without recruitment overhead.</p>
+                            <ul class="manage-card-checklist">
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Seasonal Scale-Up</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Absence Cover</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Training &amp; Handover</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>Process Audits</span>
+                                </li>
+                                <li class="manage-check-item">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span>SLA Reporting</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 7: Industries We Serve Section (screenshots/industry-serve-sec.png)
+             ========================================================================== -->
+        <section class="industries-section" id="industries">
+            <div class="industries-bg-wave" aria-hidden="true"></div>
+            <div class="container position-relative">
+                <div class="industries-header text-center">
+                    <div class="section-tag tag-center">
+                        <span>INDUSTRIES WE SERVE</span>
+                    </div>
+                    <h2 class="industries-title">
+                        Global Trade Across Diverse <span class="text-blue">Industries</span>
+                    </h2>
+                </div>
+
+                <!-- 6 Industry Image Cards Grid -->
+                <div class="row g-4">
+                    <!-- Industry 1 -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a href="#contact" class="industry-card">
+                            <img src="assets/images/manufacturing.jpg" alt="Manufacturing industry export logistics"
+                                class="industry-card-img" loading="eager">
+                            <div class="industry-card-overlay">
+                                <h3 class="industry-card-label">Manufacturing</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Industry 2 -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a href="#contact" class="industry-card">
+                            <img src="assets/images/textiles-and-apparel.jpg"
+                                alt="Textiles and Apparel trade documentation" class="industry-card-img"
+                                loading="eager">
+                            <div class="industry-card-overlay">
+                                <h3 class="industry-card-label">Textiles &amp; Apparel</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Industry 3 -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a href="#contact" class="industry-card">
+                            <img src="assets/images/agriculture-food.jpg"
+                                alt="Agriculture and Food supply chain tracking" class="industry-card-img"
+                                loading="eager">
+                            <div class="industry-card-overlay">
+                                <h3 class="industry-card-label">Agriculture &amp; Food</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Industry 4 -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a href="#contact" class="industry-card">
+                            <img src="assets/images/chemicals.jpg"
+                                alt="Chemicals regulatory compliance and export documents" class="industry-card-img"
+                                loading="eager">
+                            <div class="industry-card-overlay">
+                                <h3 class="industry-card-label">Chemicals</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Industry 5 -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a href="#contact" class="industry-card">
+                            <img src="assets/images/automotive.jpg" alt="Automotive manufacturing and part logistics"
+                                class="industry-card-img" loading="eager">
+                            <div class="industry-card-overlay">
+                                <h3 class="industry-card-label">Automotive</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Industry 6 -->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a href="#contact" class="industry-card">
+                            <img src="assets/images/engineering-goods.jpg" alt="Engineering goods export documentation"
+                                class="industry-card-img" loading="eager">
+                            <div class="industry-card-overlay">
+                                <h3 class="industry-card-label">Engineering Goods</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 8: Client Speak Section (screenshots/client-speak-section.png)
+             ========================================================================== -->
+        <section class="client-speak-section" id="testimonials">
+            <div class="container">
+                <div class="client-speak-container">
+                    <div class="section-tag tag-center">
+                        <span>CLIENT SPEAK</span>
+                    </div>
+
+                    <div class="quote-icon" aria-hidden="true">
+                        <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.5 0C5.6 0 0 5.6 0 12.5C0 19.4 5.6 25 12.5 25C13.5 25 14.5 24.8 15.4 24.5C14.1 29.5 9.6 33.3 4 34.5L5.5 36C14.5 34.5 21.5 26.5 21.5 16.5C21.5 7.4 17.5 0 12.5 0ZM39 0C32.1 0 26.5 5.6 26.5 12.5C26.5 19.4 32.1 25 39 25C40 25 41 24.8 41.9 24.5C40.6 29.5 36.1 33.3 30.5 34.5L32 36C41 34.5 48 26.5 48 16.5C48 7.4 44 0 39 0Z"
+                                fill="#EE0000" />
+                        </svg>
+                    </div>
+
+                    <!-- Swiper Carousel for Testimonials -->
+                    <div class="swiper client-speak-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide">
+                                <div class="client-testimonial-slide">
+                                    <blockquote class="client-quote-text">
+                                        "TradeDocs has transformed the way we manage our export documentation. It's
+                                        intuitive, reliable, and has saved us significant time and effort across our
+                                        entire
+                                        global trade operation."
+                                    </blockquote>
+                                    <div class="client-author-info">
+                                        <div class="client-author-name">Rajesh Mehta</div>
+                                        <div class="client-author-title">Export Head, Global Manufacturing Co.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide">
+                                <div class="client-testimonial-slide">
+                                    <blockquote class="client-quote-text">
+                                        "The automated compliance checks and seamless bank documentation features have
+                                        eliminated our shipment delays completely. Outstanding platform."
+                                    </blockquote>
+                                    <div class="client-author-info">
+                                        <div class="client-author-name">Sarah Jenkins</div>
+                                        <div class="client-author-title">Operations Director, Pacific Agro Imports</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide">
+                                <div class="client-testimonial-slide">
+                                    <blockquote class="client-quote-text">
+                                        "TradeDocx replaced dozens of fragmented spreadsheets and emails with a single
+                                        collaborative dashboard. We scaled export volume by 40% effortlessly."
+                                    </blockquote>
+                                    <div class="client-author-info">
+                                        <div class="client-author-name">Michael Chen</div>
+                                        <div class="client-author-title">Supply Chain Lead, Vertex Engineering</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="swiper-slide">
+                                <div class="client-testimonial-slide">
+                                    <blockquote class="client-quote-text">
+                                        "From initial documentation to live multi-carrier tracking, the platform
+                                        delivers accuracy and peace of mind across all our international supply chains."
+                                    </blockquote>
+                                    <div class="client-author-info">
+                                        <div class="client-author-name">Elena Rostova</div>
+                                        <div class="client-author-title">Head of Global Trade, EuroLogix Logistics</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Swiper Pagination Bullets -->
+                        <div class="swiper-pagination client-speak-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             Section 9: Contact Us Section (screenshots/contact-us-sec.png)
+             ========================================================================== -->
+        <section class="contact-section" id="contact">
+            <!-- <img src="assets/images/contact-svg-wave.svg" alt="" class="contact-bg-wave" aria-hidden="true"> -->
+            <div class="contact-bg-wave">
+                <svg width="1419" height="628" viewBox="0 0 1419 628" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.2" clip-path="url(#clip0_29_13301)">
+                        <g opacity="0.31">
+                            <path opacity="0.02"
+                                d="M1271.16 356.982C1226.29 348.947 1151.75 314.936 1082.97 372.637C974.874 463.317 927.979 547.453 863.061 542.594C765.287 535.275 747.787 253.797 660.369 248.365C575.137 243.071 523.966 506.437 435.345 501.24C370.077 497.413 349.065 373.227 247.82 287.001C132.1 188.449 -37.1146 194.174 -189.597 238.22"
+                                stroke="white" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.07"
+                                d="M1270.15 364.397C1221.92 352.637 1145.96 319.402 1077.11 373.515C967.567 459.603 925.165 540.877 859.383 537.084C760.746 531.281 742.803 259.717 656.136 251.418C570.369 243.204 518.117 501.613 428.266 497.671C361.456 494.885 341.741 370.225 239.885 286.568C125.081 192.277 -40.6679 195.726 -195.308 241.228"
+                                stroke="#F5F4F4" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.11"
+                                d="M1269.15 371.814C1217.56 356.327 1140.12 323.856 1071.24 374.396C960.184 455.891 922.352 534.3 855.706 531.576C756.204 527.289 737.803 265.591 651.907 254.473C565.581 243.302 512.272 496.789 421.193 494.104C352.842 492.36 334.455 367.218 231.954 286.14C118.11 196.087 -44.2197 197.281 -201.015 244.24"
+                                stroke="#EAEAEA" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.16"
+                                d="M1268.14 379.229C1213.2 360.015 1134.22 328.286 1065.38 375.273C952.718 452.17 919.536 527.721 852.027 526.065C751.66 523.293 732.783 271.407 647.673 257.526C560.768 243.353 506.426 491.71 414.113 490.533C344.222 489.642 327.194 364.193 224.019 285.707C111.175 199.865 -47.7736 198.832 -206.726 247.247"
+                                stroke="#E0DFDF" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.21"
+                                d="M1267.14 386.646C1208.84 363.707 1128.27 332.695 1059.52 376.156C945.174 448.437 916.723 521.149 848.348 520.559C747.118 519.303 727.756 277.175 643.441 260.585C555.943 243.367 500.575 486.832 407.038 486.968C335.602 487.073 319.974 361.161 216.088 285.28C104.29 203.619 -51.3257 200.39 -212.433 250.262"
+                                stroke="#D5D4D5" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.25"
+                                d="M1266.13 394.061C1204.48 367.395 1122.27 337.068 1053.65 377.033C937.543 444.67 913.908 514.72 844.67 515.048C742.575 515.533 722.722 282.887 639.208 263.637C551.109 243.33 494.722 481.959 399.959 483.398C326.978 484.507 312.782 358.104 208.154 284.847C97.4441 207.333 -54.8787 201.941 -218.144 253.269"
+                                stroke="#CBCACA" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.3"
+                                d="M1265.13 401.479C1200.11 371.087 1116.21 341.404 1047.79 377.914C929.829 440.863 911.097 508.161 840.993 509.542C738.038 511.568 717.69 288.556 634.976 266.695C546.273 243.249 488.87 477.102 392.883 479.833C318.357 481.953 305.631 355.031 200.22 284.421C90.6422 211.02 -58.4335 203.498 -223.854 256.285"
+                                stroke="#C0BFBF" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.35"
+                                d="M1264.12 408.896C1195.75 374.777 1110.1 345.698 1041.93 378.794C922.035 437.002 908.284 501.6 837.314 504.034C733.498 507.593 712.657 294.172 630.745 269.75C541.437 243.123 483.017 472.253 385.806 476.266C309.732 479.407 298.512 351.927 192.287 283.99C83.8841 214.66 -61.985 205.052 -229.563 259.295"
+                                stroke="#B6B4B5" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.39"
+                                d="M1263.12 416.311C1191.39 378.465 1103.94 349.94 1036.06 379.672C914.164 433.07 905.473 495.03 833.637 498.523C728.96 503.612 707.633 299.744 626.512 272.803C536.606 242.944 477.162 467.41 378.729 472.696C301.109 476.864 291.43 348.789 184.355 283.56C77.1648 218.26 -65.5386 206.607 -235.272 262.305"
+                                stroke="#ABAAAA" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.44"
+                                d="M1262.11 423.728C1187.03 382.157 1097.75 354.127 1030.2 380.552C906.223 429.057 902.663 488.46 829.96 493.015C724.423 499.626 702.621 305.273 622.283 275.857C531.789 242.726 471.311 462.581 371.654 469.129C292.489 474.331 284.384 345.616 176.424 283.129C70.4903 221.816 -69.0902 208.16 -240.978 265.315"
+                                stroke="#A19F9F" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.49"
+                                d="M1261.11 431.143C1182.66 385.844 1091.52 358.254 1024.34 381.43C898.218 424.945 899.85 481.884 826.279 487.504C719.884 495.632 697.616 310.76 618.047 278.91C526.982 242.461 465.455 457.755 364.575 465.559C283.864 471.8 277.368 342.4 168.487 282.698C63.8443 225.321 -72.6462 209.713 -246.692 268.324"
+                                stroke="#969495" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.53"
+                                d="M1260.11 438.561C1178.3 389.537 1085.25 362.32 1018.48 382.312C890.165 420.726 897.04 475.308 822.602 481.998C715.344 491.638 692.634 316.215 613.815 281.969C522.196 242.16 459.603 452.946 357.497 461.993C275.241 469.283 270.389 339.138 160.554 282.269C57.2379 228.777 -76.2004 211.269 -252.403 271.336"
+                                stroke="#7577E4" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.58"
+                                d="M1259.1 445.976C1173.94 393.224 1078.97 366.319 1012.61 383.19C882.068 416.378 894.226 468.724 818.924 476.487C710.804 487.634 687.667 321.635 609.584 285.022C517.433 241.811 453.754 448.136 350.42 458.424C266.619 466.766 263.443 335.817 152.621 281.838C50.6632 232.178 -79.7518 212.822 -258.112 274.346"
+                                stroke="#4663D7" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.63"
+                                d="M1258.1 453.393C1169.58 396.915 1072.68 370.254 1006.75 384.07C873.949 411.899 891.414 462.139 815.248 470.979C706.266 483.627 682.721 327.028 605.353 288.077C512.693 241.429 447.903 443.336 343.345 454.857C258.001 464.261 256.528 332.436 144.691 281.408C44.1183 235.52 -83.3032 214.376 -263.819 277.356"
+                                stroke="#4B5ED8" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.67"
+                                d="M1257.09 460.808C1165.22 400.605 1066.38 374.123 1000.89 384.948C865.82 407.277 888.6 455.55 811.569 465.469C701.723 479.615 677.795 332.39 601.12 291.13C507.98 241.009 442.054 438.542 336.266 451.287C249.379 461.754 249.638 328.986 136.753 280.977C37.5899 238.803 -86.8593 215.929 -269.532 280.365"
+                                stroke="#2528C8" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.72"
+                                d="M1256.09 468.225C1160.85 404.295 1060.09 377.927 995.023 385.828C857.695 402.504 885.762 448.804 807.89 459.96C697.15 475.38 672.89 337.733 596.888 294.185C503.297 240.558 436.208 433.753 329.19 447.719C240.765 459.258 242.775 325.46 128.822 280.547C31.0871 242.026 -90.411 217.482 -275.239 283.375"
+                                stroke="#1F35C0" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.77"
+                                d="M1255.08 475.64C1156.49 407.985 1053.81 381.67 989.162 386.706C849.6 397.578 882.95 442.225 804.214 454.452C692.609 471.388 668.013 343.058 592.657 297.239C498.644 240.078 430.364 428.972 322.113 444.152C232.147 456.767 235.931 321.85 120.89 280.118C24.5951 245.187 -93.9627 219.038 -280.949 286.389"
+                                stroke="#1130AC" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.81"
+                                d="M1254.08 483.057C1152.13 411.675 1047.56 385.359 983.298 387.586C841.544 392.502 880.134 435.65 800.533 448.943C688.062 467.395 663.153 348.366 588.423 300.294C494.021 239.569 424.519 424.196 315.036 440.584C223.532 454.279 229.101 318.148 112.957 279.687C18.112 248.28 -97.5166 220.591 -286.658 289.399"
+                                stroke="#183194" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.86"
+                                d="M1253.07 490.473C1147.77 415.363 1041.34 388.992 977.436 388.466C833.553 387.281 877.319 429.073 796.856 443.435C683.523 463.402 658.321 353.66 584.191 303.351C489.434 239.042 418.707 419.613 307.958 437.016C214.942 451.952 222.281 314.346 105.021 279.258C11.6246 251.311 -101.071 222.146 -292.369 292.411"
+                                stroke="#2B419C" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.91"
+                                d="M1252.07 497.89C1143.41 419.055 1035.16 392.584 971.572 389.346C825.631 381.918 874.505 422.496 793.178 437.926C678.979 459.412 653.511 358.942 579.958 306.406C484.877 238.488 412.86 414.788 300.881 433.449C206.325 449.429 215.464 310.438 97.0889 278.828C5.13376 254.271 -104.624 223.699 -298.078 295.42"
+                                stroke="#060E9E" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.95"
+                                d="M1251.06 505.305C1139.04 422.743 1029.02 396.131 965.71 390.224C817.802 376.423 871.691 415.92 789.501 432.416C674.437 455.417 648.725 364.217 575.729 309.459C480.357 237.915 407.014 409.964 293.806 429.879C197.708 446.901 208.645 306.417 89.1579 278.397C-1.37077 257.167 -108.174 225.255 -303.785 298.43"
+                                stroke="#010358" stroke-width="2" stroke-miterlimit="10" />
+                            <path
+                                d="M1250.06 512.722C1134.68 426.435 1022.93 399.651 959.847 391.104C810.071 370.813 868.877 409.343 785.823 426.907C669.895 451.425 643.96 369.485 571.496 312.514C475.863 237.328 401.165 405.14 286.727 426.312C189.087 444.376 201.804 302.277 81.2232 277.966C-7.90091 259.998 -111.73 226.808 -309.496 301.44"
+                                stroke="#050E71" stroke-width="2" stroke-miterlimit="10" />
+                        </g>
+                        <g opacity="0.31">
+                            <path opacity="0.02"
+                                d="M-144.732 43.3482C-99.3394 47.5417 -18.4444 34.5879 32.507 108.51C112.579 224.682 135.397 318.263 199.268 330.852C295.465 349.811 387.227 83.1351 472.94 101.159C556.508 118.732 535.76 386.221 622.57 404.79C686.503 418.466 739.8 304.348 860.338 248.168C998.108 183.957 1159.7 234.5 1294.97 317.529"
+                                stroke="white" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.07"
+                                d="M-145.736 50.7634C-96.1172 52.2594 -14.0508 40.4335 37.9259 110.917C120.611 223.046 139.861 312.672 204.28 326.519C300.905 347.171 390.455 90.1696 476.206 105.23C561.067 120.132 542.68 383.128 630.341 403.235C695.484 418.325 747.657 303.404 868.099 249.864C1003.85 189.517 1162.71 236.942 1299.67 321.949"
+                                stroke="#F5F4F4" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.11"
+                                d="M-146.741 58.1803C-92.893 56.9768 -9.60305 46.2816 43.3423 113.325C128.716 221.432 144.322 307.081 209.29 322.187C306.346 344.529 393.509 98.7105 479.472 109.298C565.865 119.939 549.601 380.031 638.111 401.676C704.463 418.181 755.483 302.443 875.861 251.559C1009.56 195.042 1165.72 239.385 1304.37 326.369"
+                                stroke="#EAEAEA" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.16"
+                                d="M-147.746 65.5954C-89.6705 61.6921 -5.09716 52.1204 48.7612 115.731C136.902 219.832 148.786 301.488 214.302 317.854C311.789 341.887 397.004 104.102 482.74 113.367C570.283 122.827 556.587 376.69 645.885 400.118C713.495 417.855 763.286 301.459 883.625 253.252C1015.24 200.529 1168.74 241.825 1309.08 330.787"
+                                stroke="#E0DFDF" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.21"
+                                d="M-148.751 73.0127C-86.447 66.4122 -0.534202 57.9541 54.1769 118.141C145.167 218.24 153.246 295.901 219.313 313.525C317.229 339.249 400.315 111 486.006 117.442C574.93 124.125 563.524 373.546 653.653 398.564C722.487 417.672 771.052 300.457 891.383 254.952C1020.88 205.98 1171.74 244.272 1313.78 335.212"
+                                stroke="#D5D4D5" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.25"
+                                d="M-149.755 80.4277C-83.2245 71.1274 4.09097 63.7675 59.5958 120.548C153.526 216.639 157.671 290.453 224.325 309.191C322.612 336.823 403.649 117.846 489.274 121.51C579.601 125.376 570.464 370.406 661.427 397.006C731.484 417.493 778.799 299.424 899.147 256.646C1026.49 211.382 1174.76 246.712 1318.48 339.63"
+                                stroke="#CBCACA" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.3"
+                                d="M-150.76 87.8451C-80.0006 75.8475 8.778 69.559 65.0121 122.956C161.974 215.023 162.125 284.879 229.335 304.862C328.04 334.208 406.99 124.649 492.54 125.583C584.284 126.584 577.397 367.28 669.196 395.452C740.472 417.325 786.51 298.364 906.908 258.346C1032.07 216.745 1177.77 249.159 1323.18 344.057"
+                                stroke="#C0BFBF" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.35"
+                                d="M-151.765 95.2621C-76.7786 80.5648 13.5233 75.3232 70.4305 125.364C170.514 213.374 166.582 279.302 234.346 300.531C333.474 331.584 410.347 131.402 495.806 129.654C588.979 127.748 584.331 364.163 676.968 393.896C749.464 417.165 794.197 297.266 914.669 260.041C1037.61 222.053 1180.78 251.602 1327.88 348.477"
+                                stroke="#B6B4B5" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.39"
+                                d="M-152.769 102.678C-73.5538 85.2808 18.3287 81.0501 75.8496 127.771C179.149 211.678 171.041 273.718 239.359 296.198C338.909 328.955 413.709 138.11 499.075 133.723C593.684 128.862 591.262 361.053 684.74 392.339C758.453 417.008 801.86 296.126 922.431 261.737C1043.13 227.311 1183.79 254.047 1332.59 352.898"
+                                stroke="#ABAAAA" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.44"
+                                d="M-153.774 110.095C-70.3319 90.0002 23.1875 86.7358 81.2661 130.179C187.872 209.923 175.497 268.132 244.368 291.866C344.342 326.32 417.069 144.773 502.338 137.793C598.386 129.933 598.187 357.955 692.509 390.782C767.437 416.861 809.496 294.942 930.191 263.432C1048.62 232.514 1186.8 256.489 1337.29 357.318"
+                                stroke="#A19F9F" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.49"
+                                d="M-154.779 117.51C-67.1076 94.7161 28.0964 92.3718 86.6847 132.586C196.681 208.089 179.958 262.541 249.382 287.534C349.78 323.677 420.433 151.394 505.609 141.863C603.089 130.957 605.116 354.862 700.285 389.225C776.426 416.717 817.117 293.708 937.958 265.128C1054.1 237.662 1189.82 258.933 1342 361.739"
+                                stroke="#969495" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.53"
+                                d="M-155.784 124.927C-63.8857 99.4353 33.0518 97.9569 92.1008 134.996C205.567 206.164 184.418 256.95 254.392 283.204C355.219 321.034 423.785 157.978 508.874 145.937C607.783 131.94 612.036 351.782 708.054 387.671C785.406 416.584 824.71 292.421 945.718 266.825C1059.54 242.75 1192.83 261.377 1346.7 366.161"
+                                stroke="#7577E4" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.58"
+                                d="M-156.788 132.342C-60.6611 104.151 38.0436 103.484 97.5197 137.402C214.529 204.128 188.882 251.353 259.404 278.871C360.66 318.384 427.131 164.524 512.141 150.006C612.467 132.871 618.954 348.703 715.826 386.113C794.387 416.451 832.29 291.068 953.479 268.521C1064.97 247.778 1195.84 263.82 1351.4 370.582"
+                                stroke="#4663D7" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.63"
+                                d="M-157.793 139.759C-57.4393 108.869 43.0627 108.951 102.936 139.81C223.546 201.97 193.344 245.753 264.413 274.54C366.1 315.728 430.463 171.038 515.406 154.077C617.137 133.764 625.871 345.631 723.595 384.557C803.361 416.329 839.855 289.648 961.238 270.216C1070.39 252.741 1198.85 266.262 1356.1 375.001"
+                                stroke="#4B5ED8" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.67"
+                                d="M-158.798 147.174C-54.2169 113.586 48.104 114.356 108.355 142.217C232.613 199.677 197.81 240.149 269.425 270.206C371.548 313.069 433.786 177.518 518.675 158.146C621.793 134.613 632.785 342.566 731.369 382.999C812.339 416.207 847.415 288.155 969.004 271.912C1075.81 257.643 1201.86 268.705 1360.81 379.422"
+                                stroke="#2528C8" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.72"
+                                d="M-159.802 154.591C-50.9927 118.304 53.1579 119.697 113.773 144.625C241.715 197.238 202.34 234.401 274.437 265.875C377.082 310.204 437.091 183.973 521.941 162.216C626.427 135.424 639.694 339.505 739.139 381.442C821.307 416.092 854.968 286.583 976.763 273.607C1081.22 262.48 1204.87 271.147 1365.51 383.842"
+                                stroke="#1F35C0" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.77"
+                                d="M-160.807 162.007C-47.7706 123.021 58.2118 124.975 119.19 147.031C250.829 194.644 206.802 228.808 279.447 261.544C382.523 307.564 440.376 190.404 525.207 166.287C631.04 136.2 646.6 336.453 746.91 379.887C830.276 415.985 862.526 284.924 984.525 275.305C1086.64 267.254 1207.88 273.592 1370.21 388.267"
+                                stroke="#1130AC" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.81"
+                                d="M-161.812 169.424C-44.5467 127.739 63.2557 130.195 124.608 149.439C259.944 191.895 211.265 223.219 284.46 257.213C387.967 304.924 443.649 196.814 528.475 170.358C635.631 136.939 653.505 333.404 754.681 378.331C839.243 415.879 870.094 283.172 992.286 277C1092.07 271.96 1210.9 276.034 1374.91 392.687"
+                                stroke="#183194" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.86"
+                                d="M-162.817 176.839C-41.3241 132.454 68.2867 135.352 130.025 151.848C269.037 188.988 215.728 217.629 289.47 252.881C393.405 302.284 446.898 203.203 531.741 174.431C640.193 137.651 660.327 330.532 762.453 376.775C848.142 415.921 877.681 281.322 1000.05 278.698C1097.52 276.608 1213.91 278.479 1379.62 397.11"
+                                stroke="#2B419C" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.91"
+                                d="M-163.822 184.256C-38.1004 137.175 73.2892 140.459 135.443 154.256C278.101 185.926 220.192 212.038 294.481 248.55C398.847 299.646 450.129 209.575 535.009 178.502C644.734 138.33 667.247 327.437 770.224 375.219C857.12 415.782 885.292 279.37 1007.81 280.394C1102.98 281.189 1216.92 280.922 1384.32 401.53"
+                                stroke="#060E9E" stroke-width="2" stroke-miterlimit="10" />
+                            <path opacity="0.95"
+                                d="M-164.826 191.671C-34.8778 141.89 78.2622 145.512 140.86 156.662C287.109 182.712 224.653 206.447 299.492 244.216C404.288 297.004 453.339 215.932 538.273 182.57C649.243 138.98 674.165 324.342 777.994 373.66C866.099 415.638 892.935 277.307 1015.57 282.089C1108.48 285.711 1219.93 283.366 1389.02 405.95"
+                                stroke="#010358" stroke-width="2" stroke-miterlimit="10" />
+                            <path
+                                d="M-165.831 199.088C-31.6539 146.609 83.1946 150.524 146.278 159.071C296.054 179.362 229.117 200.856 304.503 239.885C409.729 294.364 456.531 222.278 541.541 186.641C653.732 139.61 681.087 321.248 785.768 372.105C875.081 415.497 900.63 275.136 1023.33 283.785C1114.03 290.177 1222.94 285.809 1393.72 410.371"
+                                stroke="#050E71" stroke-width="2" stroke-miterlimit="10" />
+                        </g>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_29_13301">
+                            <rect width="1702.94" height="402.846" fill="white"
+                                transform="translate(-268.918) rotate(7.71523)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="container position-relative">
+                <div class="row g-5 align-items-center">
+                    <!-- Left Contact Info -->
+                    <div class="col-12 col-lg-6">
+                        <div class="section-tag">
+                            <span>CONTACT US</span>
+                            <span class="tag-line"></span>
+                        </div>
+                        <h2 class="contact-title">
+                            Let’s <span class="text-blue">Simplify</span> Your<br>Global Trade
+                        </h2>
+                        <p class="contact-desc">
+                            Whether you have a question about our products, need help with an order, or are looking for
+                            bulk or corporate gifting solutions - our team is here to help.
+                        </p>
+
+                        <div class="contact-info-list">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon" aria-hidden="true">
+                                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M21.9727 16.3477L28.5352 19.1602C29.5898 19.5703 30.1758 20.6836 29.9414 21.7969L28.5352 28.3594C28.3008 29.4141 27.3633 30.2344 26.25 30.2344C25.8398 30.2344 25.4883 30.1758 25.1367 30.1758C24.9023 30.1758 24.6094 30.1758 24.375 30.1172C10.7227 29.1797 0 17.8125 0 3.92578C0 2.87109 0.761719 1.875 1.81641 1.64062L8.37891 0.234375C9.49219 0 10.6055 0.585938 11.0156 1.64062L13.8281 8.20312C14.2383 9.14062 14.0039 10.2539 13.1836 10.8984L10.7812 12.8906C12.3633 15.5859 14.5898 17.8125 17.2852 19.3945L19.2773 16.9922C19.9219 16.1719 21.0352 15.9375 21.9727 16.3477ZM26.1914 28.3008C26.4258 28.3008 26.6016 28.1836 26.6602 27.9492L28.0664 21.3867C28.125 21.1523 28.0078 20.9766 27.832 20.8594L21.2695 18.0469C21.0352 17.9883 20.8594 18.0469 20.6836 18.1641L18.75 20.5664C18.1641 21.2695 17.168 21.4453 16.3477 20.9766C13.3594 19.2773 10.8984 16.8164 9.19922 13.8281C8.73047 13.0078 8.90625 12.0117 9.60938 11.4258L12.0117 9.49219C12.1289 9.31641 12.1875 9.14062 12.1289 8.90625L9.31641 2.34375C9.19922 2.16797 9.02344 2.05078 8.78906 2.10938L2.22656 3.51562C1.99219 3.51562 1.875 3.75 1.875 3.92578C1.875 17.4023 12.7734 28.3008 26.1914 28.3008Z"
+                                            fill="#EE0000" />
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">Phone</div>
+                                    <div class="contact-info-val">+91 XXXXX XXXXX</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon" aria-hidden="true">
+                                    <svg width="23" height="31" viewBox="0 0 23 31" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20.625 11.25C20.625 6.09375 16.4062 1.875 11.25 1.875C6.03516 1.875 1.875 6.09375 1.875 11.25C1.875 12.1875 2.16797 13.418 2.8125 15C3.45703 16.5234 4.33594 18.1641 5.39062 19.8047C7.38281 23.0273 9.72656 26.1328 11.25 28.0078C12.7148 26.1328 15.0586 23.0273 17.1094 19.8047C18.1055 18.1641 18.9844 16.5234 19.6289 15C20.2734 13.418 20.625 12.1875 20.625 11.25ZM22.5 11.25C22.5 16.4062 15.6445 25.4883 12.5977 29.2969C11.8945 30.1758 10.5469 30.1758 9.84375 29.2969C6.85547 25.4883 0 16.4062 0 11.25C0 5.03906 5.03906 0 11.25 0C17.4609 0 22.5 5.03906 22.5 11.25ZM8.4375 11.25C8.4375 12.3047 8.96484 13.1836 9.84375 13.7109C10.6641 14.2383 11.7773 14.2383 12.6562 13.7109C13.4766 13.1836 14.0625 12.3047 14.0625 11.25C14.0625 10.2539 13.4766 9.375 12.6562 8.84766C11.7773 8.32031 10.6641 8.32031 9.84375 8.84766C8.96484 9.375 8.4375 10.2539 8.4375 11.25ZM11.25 15.9375C9.55078 15.9375 8.02734 15.0586 7.14844 13.5938C6.32812 12.1875 6.32812 10.3711 7.14844 8.90625C8.02734 7.5 9.55078 6.5625 11.25 6.5625C12.8906 6.5625 14.4141 7.5 15.293 8.90625C16.1133 10.3711 16.1133 12.1875 15.293 13.5938C14.4141 15.0586 12.8906 15.9375 11.25 15.9375Z"
+                                            fill="#EE0000" />
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">Address</div>
+                                    <div class="contact-info-val">602, A-10, Block A, Sector 68, Noida, UP, 201301,
+                                        India</div>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon" aria-hidden="true">
+                                    <svg width="30" height="23" viewBox="0 0 30 23" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.75 1.875C2.69531 1.875 1.875 2.75391 1.875 3.75V6.09375L13.3008 14.5312C14.2969 15.2344 15.6445 15.2344 16.6406 14.5312L28.125 6.09375V3.75C28.125 2.75391 27.2461 1.875 26.25 1.875H3.75ZM1.875 8.4375V18.75C1.875 19.8047 2.69531 20.625 3.75 20.625H26.25C27.2461 20.625 28.125 19.8047 28.125 18.75V8.4375L17.7539 16.0547C16.1133 17.2266 13.8281 17.2266 12.1875 16.0547L1.875 8.4375ZM0 3.75C0 1.69922 1.64062 0 3.75 0H26.25C28.3008 0 30 1.69922 30 3.75V18.75C30 20.8594 28.3008 22.5 26.25 22.5H3.75C1.64062 22.5 0 20.8594 0 18.75V3.75Z"
+                                            fill="#EE0000" />
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">Email</div>
+                                    <div class="contact-info-val"><a href="mailto:info@tradedocx.com"
+                                            class="text-decoration-none text-reset">info@tradedocx.com</a></div>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon" aria-hidden="true">
+                                    <svg width="30" height="32" viewBox="0 0 30 32" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M28.125 15.6445C28.125 10.957 25.6055 6.67969 21.5625 4.33594C17.4609 1.93359 12.4805 1.93359 8.4375 4.33594C4.33594 6.67969 1.875 10.957 1.875 15.6445C1.875 20.3906 4.33594 24.668 8.4375 27.0117C12.4805 29.4141 17.4609 29.4141 21.5625 27.0117C25.6055 24.668 28.125 20.3906 28.125 15.6445ZM0 15.6445C0 10.3125 2.8125 5.39062 7.5 2.69531C12.1289 0 17.8125 0 22.5 2.69531C27.1289 5.39062 30 10.3125 30 15.6445C30 21.0352 27.1289 25.957 22.5 28.6523C17.8125 31.3477 12.1289 31.3477 7.5 28.6523C2.8125 25.957 0 21.0352 0 15.6445ZM14.0625 7.20703C14.0625 6.73828 14.4727 6.26953 15 6.26953C15.4688 6.26953 15.9375 6.73828 15.9375 7.20703V15.1758L21.0938 18.6328C21.5625 18.9258 21.6797 19.5117 21.3867 19.9219C21.0938 20.3906 20.5078 20.5078 20.0977 20.2148L14.4727 16.4648C14.1797 16.2891 14.0625 15.9961 14.0625 15.6445V7.20703Z"
+                                            fill="#EE0000" />
+                                    </svg>
+
+                                </div>
+                                <div>
+                                    <div class="contact-info-label">Business Hours</div>
+                                    <div class="contact-info-val">Monday – Saturday: 10:00 AM – 7:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Contact Form Card -->
+                    <div class="col-12 col-lg-6">
+                        <div class="contact-card-wrapper position-relative">
+                            <img src="assets/images/gradient-circle.svg" alt="" class="contact-gradient-circle"
+                                aria-hidden="true">
+                            <div class="contact-card">
+                                <h3 class="contact-card-title">Get in Touch</h3>
+                                <form id="contactForm" class="d-flex flex-column gap-3"
+                                    onsubmit="event.preventDefault(); alert('Thank you! Your request has been received.'); this.reset();">
+                                    <div class="trade-form-group">
+                                        <label for="fullName" class="trade-form-label">Full Name</label>
+                                        <input type="text" class="form-control trade-form-control w-100" id="fullName"
+                                            name="fullName" required>
+                                    </div>
+                                    <div class="trade-form-group">
+                                        <label for="businessEmail" class="trade-form-label">Business Email</label>
+                                        <input type="email" class="form-control trade-form-control w-100"
+                                            id="businessEmail" name="businessEmail" required>
+                                    </div>
+                                    <div class="trade-form-group">
+                                        <label for="phoneNumber" class="trade-form-label">Phone Number</label>
+                                        <input type="tel" class="form-control trade-form-control w-100" id="phoneNumber"
+                                            name="phoneNumber">
+                                    </div>
+                                    <div class="trade-form-group">
+                                        <label for="companyName" class="trade-form-label">Company Name</label>
+                                        <input type="text" class="form-control trade-form-control w-100"
+                                            id="companyName" name="companyName">
+                                    </div>
+                                    <div class="trade-form-group">
+                                        <label for="messageText" class="trade-form-label">Message</label>
+                                        <textarea class="form-control trade-form-control w-100" id="messageText"
+                                            name="messageText" rows="4"></textarea>
+                                    </div>
+                                    <div class="pt-2">
+                                        <button type="submit" class="btn btn-trade-primary w-auto px-4">Get in
+                                            Touch</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         Site Footer (screenshots/footer-sec.png)
+         ========================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-4 justify-content-between">
+                <!-- Col 1: Brand & Bio -->
+                <div class="col-12 col-md-5 col-lg-5">
+                    <a href="#" aria-label="TradeDocX Home">
+                        <img src="assets/images/footer-logo.png" alt="TradeDocX" class="footer-logo">
+                    </a>
+                    <p class="footer-brand-desc">
+                        Connecting enthusiasts to collaborate on activities, fostering creativity and shared passions
+                        across all ages.
+                    </p>
+                </div>
+
+                <!-- Col 2: Contact Info -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li class="footer-contact-item">
+                            <svg width="20" height="15" viewBox="0 0 20 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.875 0H18.125C19.1406 0 20 0.859375 20 1.875C20 2.5 19.6875 3.04688 19.2188 3.39844L10.7422 9.76562C10.2734 10.1172 9.6875 10.1172 9.21875 9.76562L0.742188 3.39844C0.273438 3.04688 0 2.5 0 1.875C0 0.859375 0.820312 0 1.875 0ZM0 4.375L8.47656 10.7812C9.375 11.4453 10.5859 11.4453 11.4844 10.7812L20 4.375V12.5C20 13.9062 18.8672 15 17.5 15H2.5C1.09375 15 0 13.9062 0 12.5V4.375Z"
+                                    fill="white" />
+                            </svg>
+
+                            <a href="mailto:info@tradedocx.com">info@tradedocx.com</a>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.40625 1.09375L7.96875 4.84375C8.24219 5.46875 8.08594 6.21094 7.53906 6.64062L5.625 8.24219C6.91406 10.9766 9.14062 13.2031 11.875 14.4922L13.4766 12.5781C13.9062 12.0312 14.6484 11.875 15.2734 12.1484L19.0234 13.7109C19.7656 13.9844 20.1172 14.8047 19.9219 15.5469L18.9844 18.9844C18.7891 19.6484 18.2031 20.1172 17.5 20.1172C7.8125 20.1172 0 12.3047 0 2.61719C0 1.91406 0.46875 1.32812 1.13281 1.13281L4.57031 0.195312C5.3125 0 6.13281 0.351562 6.40625 1.09375Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span>+91 XXXXX XXXXX</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.4688 0C14.0234 0 17.3047 1.91406 19.1016 5C20.8984 8.125 20.8984 11.9141 19.1016 15C17.3047 18.125 14.0234 20 10.4688 20C6.875 20 3.59375 18.125 1.79688 15C0 11.9141 0 8.125 1.79688 5C3.59375 1.91406 6.875 0 10.4688 0ZM9.53125 4.6875V10C9.53125 10.3125 9.6875 10.625 9.92188 10.7812L13.6719 13.2812C14.1016 13.5938 14.6875 13.4766 15 13.0469C15.2734 12.6172 15.1562 12.0312 14.7266 11.7188L11.4062 9.53125V4.6875C11.4062 4.17969 10.9766 3.75 10.4688 3.75C9.92188 3.75 9.53125 4.17969 9.53125 4.6875Z"
+                                    fill="white" />
+                            </svg>
+
+                            <span>10 AM TO 7 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Social Media -->
+                <div class="col-12 col-md-3 col-lg-3">
+                    <h4 class="footer-heading">Social</h4>
+                    <div class="footer-social-links">
+                        <!-- Facebook -->
+                        <a href="#" class="social-btn" aria-label="Facebook">
+                            <svg width="11" height="18" viewBox="0 0 11 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.32031 10.5469H0V7.10156H2.32031V5.625C2.32031 1.79297 4.04297 0 7.80469 0C8.50781 0 9.73828 0.140625 10.2305 0.28125V3.41016C9.98438 3.375 9.52734 3.375 8.92969 3.375C7.10156 3.375 6.39844 4.07812 6.39844 5.87109V7.10156H10.0547L9.42188 10.5469H6.39844V18H2.32031V10.5469Z"
+                                    fill="white" />
+                            </svg>
+
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="#" class="social-btn" aria-label="LinkedIn">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.51562 15.8203H0.246094V5.30859H3.51562V15.8203ZM1.86328 3.90234C0.84375 3.90234 0 3.02344 0 1.96875C0 1.30078 0.351562 0.667969 0.914062 0.351562C1.51172 0 2.25 0 2.8125 0.351562C3.41016 0.667969 3.76172 1.30078 3.76172 1.96875C3.76172 3.02344 2.91797 3.90234 1.86328 3.90234ZM15.7148 15.8203H12.4805V10.7227C12.4805 9.49219 12.4453 7.94531 10.7578 7.94531C9.07031 7.94531 8.82422 9.24609 8.82422 10.6172V15.8203H5.55469V5.30859H8.68359V6.75H8.71875C9.17578 5.94141 10.2305 5.0625 11.8125 5.0625C15.1172 5.0625 15.75 7.24219 15.75 10.0547V15.8203H15.7148Z"
+                                    fill="white" />
+                            </svg>
+
+                        </a>
+                        <!-- X / Twitter -->
+                        <a href="#" class="social-btn" aria-label="X (Twitter)">
+                            <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.7617 0H15.2227L9.80859 6.22266L16.207 14.625H11.2148L7.27734 9.52734L2.8125 14.625H0.316406L6.11719 8.01562L0 0H5.13281L8.64844 4.67578L12.7617 0ZM11.8828 13.1484H13.2539L4.39453 1.40625H2.91797L11.8828 13.1484Z"
+                                    fill="white" />
+                            </svg>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="#" class="social-btn" aria-label="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.91016 3.83203C10.125 3.83203 11.9531 5.66016 11.9531 7.875C11.9531 10.125 10.125 11.918 7.91016 11.918C5.66016 11.918 3.86719 10.125 3.86719 7.875C3.86719 5.66016 5.66016 3.83203 7.91016 3.83203ZM7.91016 10.5117C9.35156 10.5117 10.5117 9.35156 10.5117 7.875C10.5117 6.43359 9.35156 5.27344 7.91016 5.27344C6.43359 5.27344 5.27344 6.43359 5.27344 7.875C5.27344 9.35156 6.46875 10.5117 7.91016 10.5117ZM13.043 3.69141C13.043 3.16406 12.6211 2.74219 12.0938 2.74219C11.5664 2.74219 11.1445 3.16406 11.1445 3.69141C11.1445 4.21875 11.5664 4.64062 12.0938 4.64062C12.6211 4.64062 13.043 4.21875 13.043 3.69141ZM15.7148 4.64062C15.7852 5.94141 15.7852 9.84375 15.7148 11.1445C15.6445 12.4102 15.3633 13.5 14.4492 14.4492C13.5352 15.3633 12.4102 15.6445 11.1445 15.7148C9.84375 15.7852 5.94141 15.7852 4.64062 15.7148C3.375 15.6445 2.28516 15.3633 1.33594 14.4492C0.421875 13.5 0.140625 12.4102 0.0703125 11.1445C0 9.84375 0 5.94141 0.0703125 4.64062C0.140625 3.375 0.421875 2.25 1.33594 1.33594C2.28516 0.421875 3.375 0.140625 4.64062 0.0703125C5.94141 0 9.84375 0 11.1445 0.0703125C12.4102 0.140625 13.5352 0.421875 14.4492 1.33594C15.3633 2.25 15.6445 3.375 15.7148 4.64062ZM14.0273 12.5156C14.4492 11.4961 14.3438 9.03516 14.3438 7.875C14.3438 6.75 14.4492 4.28906 14.0273 3.23438C13.7461 2.56641 13.2188 2.00391 12.5508 1.75781C11.4961 1.33594 9.03516 1.44141 7.91016 1.44141C6.75 1.44141 4.28906 1.33594 3.26953 1.75781C2.56641 2.03906 2.03906 2.56641 1.75781 3.23438C1.33594 4.28906 1.44141 6.75 1.44141 7.875C1.44141 9.03516 1.33594 11.4961 1.75781 12.5156C2.03906 13.2188 2.56641 13.7461 3.26953 14.0273C4.28906 14.4492 6.75 14.3438 7.91016 14.3438C9.03516 14.3438 11.4961 14.4492 12.5508 14.0273C13.2188 13.7461 13.7812 13.2188 14.0273 12.5156Z"
+                                    fill="white" />
+                            </svg>
+
+
+                        </a>
+                        <!-- YouTube -->
+                        <a href="#" class="social-btn" aria-label="YouTube">
+                            <svg width="20" height="14" viewBox="0 0 20 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.8086 2.14453C19.2305 3.62109 19.2305 6.78516 19.2305 6.78516C19.2305 6.78516 19.2305 9.91406 18.8086 11.4258C18.5977 12.2695 17.9297 12.9023 17.1211 13.1133C15.6094 13.5 9.63281 13.5 9.63281 13.5C9.63281 13.5 3.62109 13.5 2.10938 13.1133C1.30078 12.9023 0.632812 12.2695 0.421875 11.4258C0 9.91406 0 6.78516 0 6.78516C0 6.78516 0 3.62109 0.421875 2.14453C0.632812 1.30078 1.30078 0.632812 2.10938 0.421875C3.62109 0 9.63281 0 9.63281 0C9.63281 0 15.6094 0 17.1211 0.421875C17.9297 0.632812 18.5977 1.30078 18.8086 2.14453ZM7.66406 9.63281L12.6562 6.78516L7.66406 3.9375V9.63281Z"
+                                    fill="white" />
+                            </svg>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Line -->
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 All Rights Reserved - TradeDocx</div>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button type="button" class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12L12 5L19 12" />
+        </svg>
+    </button>
+
+    <!-- Bootstrap 5.3 Bundle JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- Lenis Smooth Scroll Library -->
+    <script src="assets/js/lenis.min.js"></script>
+    <!-- Swiper Slider Library -->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Lenis Smooth Scrolling
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 1.5,
+            infinite: false
+        });
+        window.lenis = lenis;
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Sticky Header & Back-to-Top Logic
+        const siteHeader = document.querySelector('.site-header');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        // ======================================================================
+        // Header Navigation: Auto-update Active Link on Scroll (Scrollspy)
+        // ======================================================================
+        const navLinks = Array.from(document.querySelectorAll('.trade-navbar .nav-link[href^="#"]'));
+        const navSections = navLinks
+            .map(link => {
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const el = document.querySelector(targetId);
+                    if (el) return { link, el, id: targetId };
+                }
+                return null;
+            })
+            .filter(Boolean);
+
+        function setActiveLink(activeLink) {
+            if (!activeLink) return;
+            if (activeLink.classList.contains('active')) return;
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+            });
+
+            activeLink.classList.add('active');
+            activeLink.setAttribute('aria-current', 'page');
+        }
+
+        function updateActiveNavLink() {
+            if (navSections.length === 0) return;
+
+            const scrollY = window.scrollY || window.pageYOffset || 0;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const headerHeight = siteHeader ? siteHeader.offsetHeight : 80;
+            const triggerOffset = headerHeight + 50;
+
+            // When user reaches near the bottom of the page
+            if (windowHeight + scrollY >= docHeight - 50) {
+                setActiveLink(navSections[navSections.length - 1].link);
+                return;
+            }
+
+            // When user is near the very top of the page
+            if (scrollY <= 60) {
+                setActiveLink(navSections[0].link);
+                return;
+            }
+
+            // Find the last section whose top is at or above the trigger line
+            let activeItem = null;
+            for (let i = 0; i < navSections.length; i++) {
+                const item = navSections[i];
+                const rect = item.el.getBoundingClientRect();
+                if (rect.top <= triggerOffset) {
+                    activeItem = item;
+                }
+            }
+
+            if (activeItem) {
+                setActiveLink(activeItem.link);
+            } else {
+                setActiveLink(navSections[0].link);
+            }
+        }
+
+        function onScrollState(scrollY) {
+            if (scrollY > 30) {
+                siteHeader?.classList.add('scrolled', 'is-sticky');
+            } else {
+                siteHeader?.classList.remove('scrolled', 'is-sticky');
+            }
+
+            if (scrollY > 350) {
+                backToTopBtn?.classList.add('show');
+            } else {
+                backToTopBtn?.classList.remove('show');
+            }
+
+            updateActiveNavLink();
+        }
+
+        lenis.on('scroll', (e) => {
+            onScrollState(e.scroll);
+        });
+
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY || window.pageYOffset || 0;
+            onScrollState(y);
+        }, { passive: true });
+
+        // Back to Top Action
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                lenis.scrollTo(0, { duration: 1.2 });
+            });
+        }
+
+        // Smooth Scrolling for In-Page Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const hash = this.getAttribute('href');
+                if (hash && hash !== '#') {
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        e.preventDefault();
+                        // Close Bootstrap offcanvas on mobile if open
+                        const offcanvasEl = document.getElementById('tradeNavbarOffcanvas');
+                        if (offcanvasEl) {
+                            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+                            if (bsOffcanvas) {
+                                bsOffcanvas.hide();
+                            }
+                        }
+                        if (this.classList.contains('nav-link')) {
+                            setActiveLink(this);
+                        }
+                        if (hash === '#hero') {
+                            lenis.scrollTo(0, { duration: 1.1 });
+                        } else {
+                            lenis.scrollTo(target, { offset: -90, duration: 1.1 });
+                        }
+                    }
+                }
+            });
+        });
+
+        // Manage Offcanvas state with Lenis & Body Scroll Locking
+        const tradeNavbarOffcanvas = document.getElementById('tradeNavbarOffcanvas');
+        if (tradeNavbarOffcanvas) {
+            tradeNavbarOffcanvas.addEventListener('show.bs.offcanvas', () => {
+                lenis?.stop();
+                document.body.classList.add('offcanvas-open');
+                siteHeader?.classList.add('offcanvas-active');
+            });
+            tradeNavbarOffcanvas.addEventListener('hidden.bs.offcanvas', () => {
+                lenis?.start();
+                document.body.classList.remove('offcanvas-open');
+                siteHeader?.classList.remove('offcanvas-active');
+            });
+        }
+
+        // ======================================================================
+        // Section 8: Swiper for Client Speak (Testimonials)
+        // Prevents layout shifting when slide text lengths vary, active bullets
+        // ======================================================================
+        function equalizeClientSpeakHeights(swiperInstance) {
+            if (!swiperInstance || !swiperInstance.slides || swiperInstance.slides.length === 0) return;
+            let maxHeight = 0;
+
+            // Reset inline min-heights to accurately calculate natural content heights
+            swiperInstance.slides.forEach(slide => {
+                const inner = slide.querySelector('.client-testimonial-slide');
+                if (inner) {
+                    inner.style.minHeight = '0px';
+                    const h = inner.scrollHeight || inner.offsetHeight;
+                    if (h > maxHeight) maxHeight = h;
+                }
+            });
+
+            // Lock all slides to the maximum content height so transitioning slides never shifts the layout
+            if (maxHeight > 0) {
+                swiperInstance.slides.forEach(slide => {
+                    const inner = slide.querySelector('.client-testimonial-slide');
+                    if (inner) {
+                        inner.style.minHeight = maxHeight + 'px';
+                    }
+                });
+            }
+        }
+
+        const clientSpeakSwiper = new Swiper('.client-speak-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 600,
+            autoHeight: false, // Ensures wrapper height is stable and avoids layout jumping
+            grabCursor: true,
+            autoplay: {
+                delay: 4500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true
+            },
+            pagination: {
+                el: '.client-speak-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<button type="button" class="' + className + '" aria-label="Go to testimonial slide ' + (index + 1) + '"></button>';
+                }
+            },
+            on: {
+                init: function () {
+                    equalizeClientSpeakHeights(this);
+                },
+                resize: function () {
+                    equalizeClientSpeakHeights(this);
+                }
+            }
+        });
+
+        // Recalculate heights once custom web fonts are fully loaded
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+                equalizeClientSpeakHeights(clientSpeakSwiper);
+            });
+        }
+        window.addEventListener('load', () => {
+            equalizeClientSpeakHeights(clientSpeakSwiper);
+            alignProcessTimelineLine();
+            updateActiveNavLink();
+            onScrollState(window.scrollY || window.pageYOffset || 0);
+        });
+
+        // ======================================================================
+        // Section 5: Align Process Timeline Dotted Line directly through center
+        // ======================================================================
+        function alignProcessTimelineLine() {
+            if (window.innerWidth < 992) return;
+            const timeline = document.querySelector('.process-timeline');
+            const badge = document.querySelector('.process-step-badge');
+            const line = document.querySelector('.process-timeline-line');
+            if (!timeline || !badge || !line) return;
+            const timelineRect = timeline.getBoundingClientRect();
+            const badgeRect = badge.getBoundingClientRect();
+            const centerY = (badgeRect.top + badgeRect.height / 2) - timelineRect.top;
+            line.style.top = Math.round(centerY) + 'px';
+            line.style.transform = 'translateY(-50%)';
+        }
+
+        window.addEventListener('resize', () => {
+            alignProcessTimelineLine();
+            updateActiveNavLink();
+        });
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+                alignProcessTimelineLine();
+                updateActiveNavLink();
+            });
+        }
+        alignProcessTimelineLine();
+        updateActiveNavLink();
+        onScrollState(window.scrollY || window.pageYOffset || 0);
+    </script>
+</body>
+
+</html>
