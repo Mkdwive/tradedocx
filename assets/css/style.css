@@ -1736,13 +1736,7 @@ body.offcanvas-open {
     inset: -1.5px;
     border-radius: 12px;
     padding: 1.5px;
-    background: conic-gradient(from var(--card-border-angle, 0deg),
-            transparent 0%,
-            transparent 65%,
-            rgba(238, 0, 0, 0.35) 80%,
-            var(--primary-color) 92%,
-            #FF6B6B 97%,
-            transparent 100%);
+    background: conic-gradient(from var(--card-border-angle, 0deg), transparent 0%, transparent 65%, rgba(248, 154, 154, 0.35) 80%, #fff7f7 92%, #FF6B6B 97%, transparent 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -1754,9 +1748,9 @@ body.offcanvas-open {
 
 .manage-card:hover {
     background: var(--bg-dark-card-hover);
-    border-color: rgba(238, 0, 0, 0.25);
+    border-color: rgb(201 152 152);
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgb(166 46 63), 0 0 24px rgba(238, 0, 0, 0.18);
+    box-shadow: 0 16px 36px rgb(155 52 67), 0 0 24px rgba(238, 0, 0, 0.18);
 }
 
 .manage-card:hover::before {
@@ -1792,7 +1786,7 @@ body.offcanvas-open {
 }
 
 .manage-card-desc {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 300;
     color: var(--text-white);
     line-height: 1.6;
@@ -1805,14 +1799,14 @@ body.offcanvas-open {
     margin: auto 0 0 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 11px;
 }
 
 .manage-check-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     color: var(--text-white);
 }
