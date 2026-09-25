@@ -1772,7 +1772,7 @@ body.offcanvas-open {
 }
 
 .manage-card:hover .manage-card-icon {
-    background-color: rgba(238, 0, 0, 0.15);
+    background-color: #fae5e526;
     color: var(--primary-color);
     transform: scale(1.05);
 }
