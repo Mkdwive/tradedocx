@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-lg trade-navbar" aria-label="Main Navigation">
             <div class="container-fluid trade-nav-container">
                 <!-- Brand Logo -->
-                <a class="navbar-brand" href="#" aria-label="TradeDocX Home">
+                <a class="navbar-brand" href="#hero" aria-label="TradeDocX Home">
                     <img src="assets/images/logo.png" alt="TradeDocX" class="brand-logo">
                 </a>
 
@@ -43,7 +43,7 @@
                     data-bs-scroll="false" data-bs-backdrop="true"
                     aria-labelledby="tradeNavbarOffcanvasLabel">
                     <div class="offcanvas-header">
-                        <a class="offcanvas-title" id="tradeNavbarOffcanvasLabel" href="#" aria-label="TradeDocX Home">
+                        <a class="offcanvas-title" id="tradeNavbarOffcanvasLabel" href="#hero" aria-label="TradeDocX Home">
                             <img src="assets/images/logo.png" alt="TradeDocX" height="24">
                         </a>
                         <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas"
@@ -1349,36 +1349,63 @@
                                 aria-hidden="true">
                             <div class="contact-card">
                                 <h3 class="contact-card-title">Get in Touch</h3>
-                                <form id="contactForm" class="d-flex flex-column gap-3"
-                                    onsubmit="event.preventDefault(); alert('Thank you! Your request has been received.'); this.reset();">
+
+                                <!-- Success Feedback Alert (Hidden by default) -->
+                                <div id="contactSuccessAlert" class="contact-success-alert d-none" role="status" aria-live="polite">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <circle cx="12" cy="12" r="10" fill="#10B981" fill-opacity="0.18" stroke="#10B981" stroke-width="2"/>
+                                            <path d="M8 12.5L10.5 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <div class="flex-grow-1">
+                                            <strong class="d-block text-dark mb-1">Message Received!</strong>
+                                            <span id="contactSuccessMessage" class="text-muted fs-14">Thank you. Your request has been received. Our trade documentation team will contact you shortly.</span>
+                                        </div>
+                                        <button type="button" class="btn-close ms-2" id="dismissSuccessAlert" aria-label="Dismiss message"></button>
+                                    </div>
+                                </div>
+
+                                <form id="contactForm" class="d-flex flex-column gap-3" novalidate>
                                     <div class="trade-form-group">
-                                        <label for="fullName" class="trade-form-label">Full Name</label>
+                                        <label for="fullName" class="trade-form-label">Full Name <span class="text-danger" aria-hidden="true">*</span></label>
                                         <input type="text" class="form-control trade-form-control w-100" id="fullName"
-                                            name="fullName" required>
+                                            name="fullName" required autocomplete="name"
+                                            aria-describedby="fullNameError" aria-required="true">
+                                        <div id="fullNameError" class="invalid-feedback">Please enter your full name.</div>
                                     </div>
                                     <div class="trade-form-group">
-                                        <label for="businessEmail" class="trade-form-label">Business Email</label>
+                                        <label for="businessEmail" class="trade-form-label">Business Email <span class="text-danger" aria-hidden="true">*</span></label>
                                         <input type="email" class="form-control trade-form-control w-100"
-                                            id="businessEmail" name="businessEmail" required>
+                                            id="businessEmail" name="businessEmail"
+                                            required autocomplete="email" aria-describedby="businessEmailError" aria-required="true">
+                                        <div id="businessEmailError" class="invalid-feedback">Please enter a valid business email address.</div>
                                     </div>
                                     <div class="trade-form-group">
                                         <label for="phoneNumber" class="trade-form-label">Phone Number</label>
                                         <input type="tel" class="form-control trade-form-control w-100" id="phoneNumber"
-                                            name="phoneNumber">
+                                            name="phoneNumber" autocomplete="tel"
+                                            aria-describedby="phoneNumberError">
+                                        <div id="phoneNumberError" class="invalid-feedback">Please enter a valid phone number (at least 7 digits).</div>
                                     </div>
                                     <div class="trade-form-group">
                                         <label for="companyName" class="trade-form-label">Company Name</label>
                                         <input type="text" class="form-control trade-form-control w-100"
-                                            id="companyName" name="companyName">
+                                            id="companyName" name="companyName"
+                                            autocomplete="organization" aria-describedby="companyNameError">
+                                        <div id="companyNameError" class="invalid-feedback">Please enter a valid company name.</div>
                                     </div>
                                     <div class="trade-form-group">
-                                        <label for="messageText" class="trade-form-label">Message</label>
+                                        <label for="messageText" class="trade-form-label">Message <span class="text-danger" aria-hidden="true">*</span></label>
                                         <textarea class="form-control trade-form-control w-100" id="messageText"
-                                            name="messageText" rows="4"></textarea>
+                                            name="messageText" rows="4"
+                                            required aria-describedby="messageTextError" aria-required="true"></textarea>
+                                        <div id="messageTextError" class="invalid-feedback">Please enter your message (at least 10 characters).</div>
                                     </div>
                                     <div class="pt-2">
-                                        <button type="submit" class="btn btn-trade-primary w-auto px-4">Get in
-                                            Touch</button>
+                                        <button type="submit" id="contactSubmitBtn" class="btn btn-trade-primary w-auto px-4">
+                                            <span class="btn-text">Get in Touch</span>
+                                            <span class="spinner-border spinner-border-sm d-none ms-2" role="status" aria-hidden="true"></span>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -1525,284 +1552,14 @@
     <!-- Bootstrap 5.3 Bundle JS with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" defer></script>
 
     <!-- Lenis Smooth Scroll Library -->
-    <script src="assets/js/lenis.min.js"></script>
+    <script src="assets/js/lenis.min.js" defer></script>
     <!-- Swiper Slider Library -->
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script>
-        // Initialize Lenis Smooth Scrolling
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 1.5,
-            infinite: false
-        });
-        window.lenis = lenis;
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // Sticky Header & Back-to-Top Logic
-        const siteHeader = document.querySelector('.site-header');
-        const backToTopBtn = document.getElementById('backToTopBtn');
-
-        // ======================================================================
-        // Header Navigation: Auto-update Active Link on Scroll (Scrollspy)
-        // ======================================================================
-        const navLinks = Array.from(document.querySelectorAll('.trade-navbar .nav-link[href^="#"]'));
-        const navSections = navLinks
-            .map(link => {
-                const targetId = link.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    const el = document.querySelector(targetId);
-                    if (el) return { link, el, id: targetId };
-                }
-                return null;
-            })
-            .filter(Boolean);
-
-        function setActiveLink(activeLink) {
-            if (!activeLink) return;
-            if (activeLink.classList.contains('active')) return;
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                link.removeAttribute('aria-current');
-            });
-
-            activeLink.classList.add('active');
-            activeLink.setAttribute('aria-current', 'page');
-        }
-
-        function updateActiveNavLink() {
-            if (navSections.length === 0) return;
-
-            const scrollY = window.scrollY || window.pageYOffset || 0;
-            const windowHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
-            const headerHeight = siteHeader ? siteHeader.offsetHeight : 80;
-            const triggerOffset = headerHeight + 50;
-
-            // When user reaches near the bottom of the page
-            if (windowHeight + scrollY >= docHeight - 50) {
-                setActiveLink(navSections[navSections.length - 1].link);
-                return;
-            }
-
-            // When user is near the very top of the page
-            if (scrollY <= 60) {
-                setActiveLink(navSections[0].link);
-                return;
-            }
-
-            // Find the last section whose top is at or above the trigger line
-            let activeItem = null;
-            for (let i = 0; i < navSections.length; i++) {
-                const item = navSections[i];
-                const rect = item.el.getBoundingClientRect();
-                if (rect.top <= triggerOffset) {
-                    activeItem = item;
-                }
-            }
-
-            if (activeItem) {
-                setActiveLink(activeItem.link);
-            } else {
-                setActiveLink(navSections[0].link);
-            }
-        }
-
-        function onScrollState(scrollY) {
-            if (scrollY > 30) {
-                siteHeader?.classList.add('scrolled', 'is-sticky');
-            } else {
-                siteHeader?.classList.remove('scrolled', 'is-sticky');
-            }
-
-            if (scrollY > 350) {
-                backToTopBtn?.classList.add('show');
-            } else {
-                backToTopBtn?.classList.remove('show');
-            }
-
-            updateActiveNavLink();
-        }
-
-        lenis.on('scroll', (e) => {
-            onScrollState(e.scroll);
-        });
-
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY || window.pageYOffset || 0;
-            onScrollState(y);
-        }, { passive: true });
-
-        // Back to Top Action
-        if (backToTopBtn) {
-            backToTopBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                lenis.scrollTo(0, { duration: 1.2 });
-            });
-        }
-
-        // Smooth Scrolling for In-Page Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const hash = this.getAttribute('href');
-                if (hash && hash !== '#') {
-                    const target = document.querySelector(hash);
-                    if (target) {
-                        e.preventDefault();
-                        // Close Bootstrap offcanvas on mobile if open
-                        const offcanvasEl = document.getElementById('tradeNavbarOffcanvas');
-                        if (offcanvasEl) {
-                            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
-                            if (bsOffcanvas) {
-                                bsOffcanvas.hide();
-                            }
-                        }
-                        if (this.classList.contains('nav-link')) {
-                            setActiveLink(this);
-                        }
-                        if (hash === '#hero') {
-                            lenis.scrollTo(0, { duration: 1.1 });
-                        } else {
-                            lenis.scrollTo(target, { offset: -90, duration: 1.1 });
-                        }
-                    }
-                }
-            });
-        });
-
-        // Manage Offcanvas state with Lenis & Body Scroll Locking
-        const tradeNavbarOffcanvas = document.getElementById('tradeNavbarOffcanvas');
-        if (tradeNavbarOffcanvas) {
-            tradeNavbarOffcanvas.addEventListener('show.bs.offcanvas', () => {
-                lenis?.stop();
-                document.body.classList.add('offcanvas-open');
-                siteHeader?.classList.add('offcanvas-active');
-            });
-            tradeNavbarOffcanvas.addEventListener('hidden.bs.offcanvas', () => {
-                lenis?.start();
-                document.body.classList.remove('offcanvas-open');
-                siteHeader?.classList.remove('offcanvas-active');
-            });
-        }
-
-        // ======================================================================
-        // Section 8: Swiper for Client Speak (Testimonials)
-        // Prevents layout shifting when slide text lengths vary, active bullets
-        // ======================================================================
-        function equalizeClientSpeakHeights(swiperInstance) {
-            if (!swiperInstance || !swiperInstance.slides || swiperInstance.slides.length === 0) return;
-            let maxHeight = 0;
-
-            // Reset inline min-heights to accurately calculate natural content heights
-            swiperInstance.slides.forEach(slide => {
-                const inner = slide.querySelector('.client-testimonial-slide');
-                if (inner) {
-                    inner.style.minHeight = '0px';
-                    const h = inner.scrollHeight || inner.offsetHeight;
-                    if (h > maxHeight) maxHeight = h;
-                }
-            });
-
-            // Lock all slides to the maximum content height so transitioning slides never shifts the layout
-            if (maxHeight > 0) {
-                swiperInstance.slides.forEach(slide => {
-                    const inner = slide.querySelector('.client-testimonial-slide');
-                    if (inner) {
-                        inner.style.minHeight = maxHeight + 'px';
-                    }
-                });
-            }
-        }
-
-        const clientSpeakSwiper = new Swiper('.client-speak-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            speed: 600,
-            autoHeight: false, // Ensures wrapper height is stable and avoids layout jumping
-            grabCursor: true,
-            autoplay: {
-                delay: 4500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-            },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true
-            },
-            pagination: {
-                el: '.client-speak-pagination',
-                clickable: true,
-                renderBullet: function (index, className) {
-                    return '<button type="button" class="' + className + '" aria-label="Go to testimonial slide ' + (index + 1) + '"></button>';
-                }
-            },
-            on: {
-                init: function () {
-                    equalizeClientSpeakHeights(this);
-                },
-                resize: function () {
-                    equalizeClientSpeakHeights(this);
-                }
-            }
-        });
-
-        // Recalculate heights once custom web fonts are fully loaded
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(() => {
-                equalizeClientSpeakHeights(clientSpeakSwiper);
-            });
-        }
-        window.addEventListener('load', () => {
-            equalizeClientSpeakHeights(clientSpeakSwiper);
-            alignProcessTimelineLine();
-            updateActiveNavLink();
-            onScrollState(window.scrollY || window.pageYOffset || 0);
-        });
-
-        // ======================================================================
-        // Section 5: Align Process Timeline Dotted Line directly through center
-        // ======================================================================
-        function alignProcessTimelineLine() {
-            if (window.innerWidth < 992) return;
-            const timeline = document.querySelector('.process-timeline');
-            const badge = document.querySelector('.process-step-badge');
-            const line = document.querySelector('.process-timeline-line');
-            if (!timeline || !badge || !line) return;
-            const timelineRect = timeline.getBoundingClientRect();
-            const badgeRect = badge.getBoundingClientRect();
-            const centerY = (badgeRect.top + badgeRect.height / 2) - timelineRect.top;
-            line.style.top = Math.round(centerY) + 'px';
-            line.style.transform = 'translateY(-50%)';
-        }
-
-        window.addEventListener('resize', () => {
-            alignProcessTimelineLine();
-            updateActiveNavLink();
-        });
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(() => {
-                alignProcessTimelineLine();
-                updateActiveNavLink();
-            });
-        }
-        alignProcessTimelineLine();
-        updateActiveNavLink();
-        onScrollState(window.scrollY || window.pageYOffset || 0);
-    </script>
+    <script src="assets/js/swiper-bundle.min.js" defer></script>
+    <!-- Main Custom Application Script -->
+    <script src="assets/js/main.js" defer></script>
 </body>
 
 </html>

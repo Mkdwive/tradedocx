@@ -151,17 +151,7 @@ body {
     overflow-x: hidden;
 }
 
-/* User Specified Container Rules:
-   - .container: fixed max-width 1320px
-   - .container-fluid: max-width 1706px */
-.container {
-    max-width: var(--container-max-width) !important;
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: var(--bs-gutter-x, 0.75rem);
-    padding-left: var(--bs-gutter-x, 0.75rem);
-}
+/* Container Fluid Constraints */
 
 .container-fluid {
     max-width: var(--container-fluid-max-width) !important;
@@ -361,6 +351,16 @@ body.offcanvas-open {
     touch-action: none;
 }
 
+/* Anchor Scroll Margins (prevents fixed/sticky header clipping on in-page navigation) */
+#hero,
+#about,
+#services,
+#process,
+#industries,
+#contact {
+    scroll-margin-top: clamp(66px, 7vw, 90px);
+}
+
 .trade-navbar {
     min-height: clamp(80px, 7.5vw, 117px);
     background-color: transparent;
@@ -458,7 +458,6 @@ body.offcanvas-open {
         font-weight: 400;
     }
 
-    .trade-navbar .nav-link:hover::after,
     .trade-navbar .nav-link.active::after {
         transform: scaleX(1);
         opacity: 1;
@@ -471,7 +470,7 @@ body.offcanvas-open {
     }
 
     .trade-navbar .btn-trade-primary {
-        height: 50px;
+        height: clamp(40px, 3.2vw,50px);
         font-size: var(--fs-20);
         border-radius: 8px;
         font-weight: 600;
@@ -981,17 +980,17 @@ body.offcanvas-open {
 
 .about-gradient-circle {
     position: absolute;
-    top: 26%;
-    right: 5%;
-    width: clamp(340px, 42vw, 540px);
+    top: 36%;
+    right: 8%;
+    transform: translate(50%, -50%);
+    width: clamp(320px, 30vw, 560px);
     height: auto;
     aspect-ratio: 1 / 1;
     max-width: none;
     z-index: 0;
     pointer-events: none;
     user-select: none;
-    transform: translate(50%, -50%);
-    max-width: 80%;
+    opacity: 0.9;
 }
 
 .ambient-glow {
@@ -1724,6 +1723,7 @@ body.offcanvas-open {
     display: flex;
     flex-direction: column;
     color: var(--text-white);
+    box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.12);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
         box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
         border-color 0.3s ease,
@@ -1750,7 +1750,8 @@ body.offcanvas-open {
     background: var(--bg-dark-card-hover);
     border-color: rgb(201 152 152);
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgb(155 52 67), 0 0 24px rgba(238, 0, 0, 0.18);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35),
+        0 8px 18px -4px rgba(0, 0, 0, 0.20);
 }
 
 .manage-card:hover::before {
@@ -2174,6 +2175,11 @@ body.offcanvas-open {
 .trade-form-group {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.trade-form-group .text-danger {
+    color: var(--primary-color) !important;
 }
 
 .trade-form-label {
@@ -2192,7 +2198,7 @@ body.offcanvas-open {
     padding: 11px 16px;
     font-size: var(--fs-14);
     color: var(--text-color);
-    transition: all 0.2s ease-in-out;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .trade-form-control:focus {
@@ -2203,6 +2209,81 @@ body.offcanvas-open {
 
 .trade-form-control::placeholder {
     color: var(--text-light);
+}
+
+/* Validation Feedback States */
+.trade-form-control.is-invalid {
+    border-color: var(--primary-color) !important;
+    background-color: #FFF5F5 !important;
+}
+
+.trade-form-control.is-invalid:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(238, 0, 0, 0.18) !important;
+}
+
+.trade-form-control.is-valid {
+    border-color: #16A34A !important;
+    background-color: #F0FDF4 !important;
+}
+
+.trade-form-control.is-valid:focus {
+    border-color: #16A34A !important;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18) !important;
+}
+
+.trade-form-group .invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary-color);
+    line-height: 1.35;
+}
+
+.trade-form-control.is-invalid~.invalid-feedback {
+    display: block;
+}
+
+/* Contact Card Success Alert */
+.contact-success-alert {
+    background-color: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    animation: alertFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-success-alert .btn-close {
+    font-size: 12px;
+    opacity: 0.6;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+}
+
+.contact-success-alert .btn-close:hover {
+    opacity: 1;
+}
+
+@keyframes alertFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#contactSubmitBtn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* ==========================================================================
@@ -2328,6 +2409,16 @@ body.offcanvas-open {
 /* ==========================================================================
    Responsive Micro-Adjustments & Best Practices
    ========================================================================== */
+@media(max-width:1600px) {
+    .client-speak-section {
+        background-size: contain;
+    }
+    .about-gradient-circle{
+        top: 28%;
+        right: 10%;
+    }
+}
+
 @media (max-width: 767.98px) {
     .floating-deals-card {
         position: absolute;
@@ -2338,10 +2429,10 @@ body.offcanvas-open {
     }
 
     .about-gradient-circle {
-        width: clamp(260px, 68vw, 360px);
-        top: -10%;
-        right: -4%;
-        opacity: .5;
+        top: 20%;
+        right: 0;
+        width: clamp(220px, 60vw, 320px);
+        opacity: 0.7;
     }
 
     .how-it-works-bg-map {
@@ -2483,6 +2574,13 @@ body.offcanvas-open {
         max-width: 620px;
         margin-inline: auto;
         margin-top: 2rem;
+    }
+
+    .about-gradient-circle {
+        top: 25%;
+        right: 4%;
+        width: clamp(260px, 45vw, 380px);
+        opacity: 0.8;
     }
 
     .floating-deals-card {
