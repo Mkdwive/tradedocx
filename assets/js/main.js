@@ -9,7 +9,8 @@
     // 1. Lenis Smooth Scrolling Initialization
     // ------------------------------------------------------------------
     let lenis = null;
-    if (typeof Lenis !== 'undefined') {
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.innerWidth < 992;
+    if (typeof Lenis !== 'undefined' && !isTouchDevice) {
         lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -21,7 +22,6 @@
             infinite: false
         });
         window.lenis = lenis;
-
     }
 
     // ------------------------------------------------------------------
@@ -30,6 +30,7 @@
     if (typeof gsap !== 'undefined') {
         if (typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.config({ ignoreMobileResize: true });
         }
         if (lenis) {
             lenis.on('scroll', ScrollTrigger.update);
@@ -38,6 +39,11 @@
             });
             gsap.ticker.lagSmoothing(0);
         }
+        window.addEventListener('scroll', () => {
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.update();
+            }
+        }, { passive: true });
     } else if (lenis) {
         function raf(time) {
             lenis.raf(time);
@@ -544,10 +550,637 @@
     }
 
     // ------------------------------------------------------------------
+    // 7e. Solutions Cards GSAP Animation (Smooth, Professional Stagger & Hover)
+    // ------------------------------------------------------------------
+    let solutionsGSAPInitialized = false;
+
+    function initSolutionsGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (solutionsGSAPInitialized) return;
+
+        const solutionsSection = document.getElementById('services');
+        if (!solutionsSection) return;
+
+        solutionsGSAPInitialized = true;
+
+        const cards = Array.from(solutionsSection.querySelectorAll('.solution-card'));
+        const leftCards = Array.from(solutionsSection.querySelectorAll('.solution-card-left'));
+        const rightCards = Array.from(solutionsSection.querySelectorAll('.solution-card-right'));
+        const badges = Array.from(solutionsSection.querySelectorAll('.solution-icon-badge'));
+        const header = solutionsSection.querySelector('.solutions-header');
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            cards.forEach(card => {
+                gsap.set(card, { opacity: 1, x: 0, y: 0, scale: 1 });
+            });
+            return;
+        }
+
+        // Header Reveal
+        if (header) {
+            gsap.fromTo(header,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: header,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        }
+
+        const mm = gsap.matchMedia();
+
+        // Desktop & Tablet (min-width: 768px): Dual-wing Staggered Entry
+        mm.add('(min-width: 768px)', () => {
+            gsap.set(leftCards, { opacity: 0, x: -45, scale: 0.96 });
+            gsap.set(rightCards, { opacity: 0, x: 45, scale: 0.96 });
+            gsap.set(badges, { scale: 0.75, opacity: 0 });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.solutions-grid',
+                    start: 'top 78%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            tl.to(leftCards, {
+                x: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.85,
+                ease: 'power3.out',
+                stagger: 0.16
+            }, 0)
+            .to(rightCards, {
+                x: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.85,
+                ease: 'power3.out',
+                stagger: 0.16
+            }, 0.08)
+            .to(badges, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.6,
+                ease: 'back.out(1.8)',
+                stagger: 0.1
+            }, 0.25);
+
+            return () => {
+                tl.kill();
+                gsap.set([...cards, ...badges], { clearProps: 'all' });
+            };
+        });
+
+        // Mobile (< 768px): Gentle Waterfall Stagger
+        mm.add('(max-width: 767.98px)', () => {
+            gsap.set(cards, { opacity: 0, y: 30, scale: 0.97 });
+            gsap.set(badges, { scale: 0.8, opacity: 0.5 });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.solutions-grid',
+                    start: 'top 82%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            tl.to(cards, {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.75,
+                ease: 'power2.out',
+                stagger: 0.14
+            })
+            .to(badges, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                ease: 'back.out(1.5)',
+                stagger: 0.1
+            }, '-=0.5');
+
+            return () => {
+                tl.kill();
+                gsap.set([...cards, ...badges], { clearProps: 'all' });
+            };
+        });
+
+        // Micro-Interaction: GSAP Smooth Hover on Desktop
+        cards.forEach(card => {
+            const iconBadge = card.querySelector('.solution-icon-badge');
+            card.addEventListener('mouseenter', () => {
+                if (window.innerWidth >= 992) {
+                    gsap.to(card, { y: -5, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+                    if (iconBadge) gsap.to(iconBadge, { scale: 1.08, rotate: 2, duration: 0.3, ease: 'back.out(2)', overwrite: 'auto' });
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                if (window.innerWidth >= 992) {
+                    gsap.to(card, { y: 0, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+                    if (iconBadge) gsap.to(iconBadge, { scale: 1, rotate: 0, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+                }
+            });
+        });
+    }
+
+    // ------------------------------------------------------------------
+    // 7f. Hero Section Initial Load Animation (Ultra-Smooth, Zero-Jerk & Premium)
+    // ------------------------------------------------------------------
+    let heroGSAPInitialized = false;
+
+    function initHeroGSAP() {
+        if (typeof gsap === 'undefined') return;
+        if (heroGSAPInitialized) return;
+
+        const heroSection = document.getElementById('hero');
+        if (!heroSection) return;
+
+        heroGSAPInitialized = true;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const heroTitle = heroSection.querySelector('.hero-title');
+        const heroSubtitle = heroSection.querySelector('.hero-subtitle');
+        const heroFeatures = Array.from(heroSection.querySelectorAll('.hero-feature-item'));
+        const featureBadges = heroFeatures.map(item => item.querySelector('.feature-icon-badge')).filter(Boolean);
+        const featureLabels = heroFeatures.map(item => item.querySelector('.feature-label')).filter(Boolean);
+        const heroActions = heroSection.querySelector('.hero-actions');
+
+        const allHeroElements = [heroTitle, heroSubtitle, ...featureBadges, ...featureLabels, heroActions].filter(Boolean);
+
+        if (prefersReducedMotion) {
+            gsap.set(allHeroElements, { opacity: 1, y: 0, scale: 1, clearProps: 'all' });
+            return;
+        }
+
+        // Set clean initial values synchronously to avoid any late visual jumping or FOUC
+        if (heroTitle) gsap.set(heroTitle, { opacity: 0, y: 26 });
+        if (heroSubtitle) gsap.set(heroSubtitle, { opacity: 0, y: 18 });
+        if (featureBadges.length) gsap.set(featureBadges, { opacity: 0, y: 16, scale: 0.86 });
+        if (featureLabels.length) gsap.set(featureLabels, { opacity: 0, y: 10 });
+        if (heroActions) gsap.set(heroActions, { opacity: 0, y: 16 });
+
+        const tl = gsap.timeline({
+            defaults: { ease: 'power3.out' },
+            onComplete: () => {
+                // Clear transforms so standard document flow remains clean
+                gsap.set([heroTitle, heroSubtitle, heroActions, ...featureBadges, ...featureLabels].filter(Boolean), { clearProps: 'transform' });
+            }
+        });
+
+        // 1. Headline entrance
+        if (heroTitle) {
+            tl.to(heroTitle, { opacity: 1, y: 0, duration: 0.85 }, 0.08);
+        }
+
+        // 2. Subtitle entrance
+        if (heroSubtitle) {
+            tl.to(heroSubtitle, { opacity: 1, y: 0, duration: 0.75 }, 0.22);
+        }
+
+        // 3. Staggered feature badges: gentle elastic pop without layout displacement
+        if (featureBadges.length) {
+            tl.to(featureBadges, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: 'back.out(1.5)'
+            }, 0.38);
+        }
+
+        // 4. Feature labels glide in smoothly right beneath badges
+        if (featureLabels.length) {
+            tl.to(featureLabels, {
+                opacity: 1,
+                y: 0,
+                duration: 0.55,
+                stagger: 0.08,
+                ease: 'power2.out'
+            }, 0.46);
+        }
+
+        // 5. Hero CTA buttons
+        if (heroActions) {
+            tl.to(heroActions, { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out' }, 0.6);
+        }
+
+        // Micro-Interaction: GSAP Smooth Hover on Hero Feature Items (Zero Jitter)
+        heroFeatures.forEach(item => {
+            const badge = item.querySelector('.feature-icon-badge');
+            const label = item.querySelector('.feature-label');
+            const svgIcon = badge ? badge.querySelector('svg') : null;
+
+            // Brand-matching subtle glow
+            let glowShadow = '0 10px 24px rgba(0, 0, 0, 0.18)';
+            if (badge?.classList.contains('bg-badge-red')) glowShadow = '0 10px 24px rgba(199, 0, 31, 0.28)';
+            else if (badge?.classList.contains('bg-badge-blue')) glowShadow = '0 10px 24px rgba(2, 54, 167, 0.28)';
+            else if (badge?.classList.contains('bg-badge-green')) glowShadow = '0 10px 24px rgba(5, 132, 58, 0.28)';
+            else if (badge?.classList.contains('bg-badge-amber')) glowShadow = '0 10px 24px rgba(222, 118, 0, 0.28)';
+
+            item.addEventListener('mouseenter', () => {
+                if (window.innerWidth >= 992) {
+                    if (badge) {
+                        gsap.to(badge, {
+                            y: -6,
+                            scale: 1.08,
+                            boxShadow: glowShadow,
+                            duration: 0.28,
+                            ease: 'power2.out',
+                            overwrite: 'auto'
+                        });
+                    }
+                    if (svgIcon) {
+                        gsap.to(svgIcon, {
+                            rotate: 4,
+                            scale: 1.05,
+                            duration: 0.28,
+                            ease: 'back.out(2)',
+                            overwrite: 'auto'
+                        });
+                    }
+                    if (label) {
+                        gsap.to(label, {
+                            y: -2,
+                            duration: 0.28,
+                            ease: 'power2.out',
+                            overwrite: 'auto'
+                        });
+                    }
+                }
+            });
+
+            item.addEventListener('mouseleave', () => {
+                if (window.innerWidth >= 992) {
+                    if (badge) {
+                        gsap.to(badge, {
+                            y: 0,
+                            scale: 1,
+                            boxShadow: 'none',
+                            duration: 0.32,
+                            ease: 'power2.out',
+                            overwrite: 'auto'
+                        });
+                    }
+                    if (svgIcon) {
+                        gsap.to(svgIcon, {
+                            rotate: 0,
+                            scale: 1,
+                            duration: 0.32,
+                            ease: 'power2.out',
+                            overwrite: 'auto'
+                        });
+                    }
+                    if (label) {
+                        gsap.to(label, {
+                            y: 0,
+                            duration: 0.32,
+                            ease: 'power2.out',
+                            overwrite: 'auto'
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+    // ------------------------------------------------------------------
+    // 7g. Professional On-Scroll Reveal Fade-Up Animations
+    // ------------------------------------------------------------------
+    let scrollRevealsGSAPInitialized = false;
+
+    function initScrollRevealsGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (scrollRevealsGSAPInitialized) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        scrollRevealsGSAPInitialized = true;
+
+        const isMobile = window.innerWidth < 768;
+        const defaultY = isMobile ? 20 : 30;
+
+        // Reusable fade-up helper for restrained, modern scroll reveals
+        function createFadeUpTrigger(triggerEl, targetEls, options = {}) {
+            if (!triggerEl || !targetEls) return;
+            const targets = Array.isArray(targetEls) || targetEls instanceof NodeList
+                ? Array.from(targetEls).filter(Boolean)
+                : [targetEls].filter(Boolean);
+            if (!targets.length) return;
+
+            const yDist = options.y !== undefined ? options.y : defaultY;
+            const dur = options.duration || 0.8;
+            const stag = options.stagger !== undefined ? options.stagger : 0.09;
+            const ease = options.ease || 'power3.out';
+            const startPos = options.start || (isMobile ? 'top 88%' : 'top 84%');
+
+            gsap.fromTo(targets,
+                { opacity: 0, y: yDist },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: dur,
+                    ease: ease,
+                    stagger: stag,
+                    scrollTrigger: {
+                        trigger: triggerEl,
+                        start: startPos,
+                        toggleActions: 'play none none none'
+                    },
+                    onComplete: () => {
+                        gsap.set(targets, { clearProps: 'transform' });
+                        if (typeof options.onComplete === 'function') options.onComplete();
+                    }
+                }
+            );
+        }
+
+        // 1. Clients Section Marquee Reveal
+        const clientsSec = document.getElementById('clients');
+        if (clientsSec) {
+            createFadeUpTrigger(clientsSec, clientsSec.querySelector('.marquee-wrapper'), {
+                y: 20,
+                duration: 0.75,
+                stagger: 0
+            });
+        }
+
+        // 2. About Section Reveal
+        const aboutSec = document.getElementById('about');
+        if (aboutSec) {
+            // Header text elements
+            const aboutHeaderEls = aboutSec.querySelectorAll('.section-tag, .about-title, .about-description');
+            createFadeUpTrigger(aboutSec, aboutHeaderEls, {
+                y: defaultY,
+                duration: 0.8,
+                stagger: 0.1
+            });
+
+            // Feature check items
+            const aboutFeaturesWrap = aboutSec.querySelector('.about-features');
+            const aboutFeatures = aboutSec.querySelectorAll('.about-feature-item');
+            createFadeUpTrigger(aboutFeaturesWrap || aboutSec, aboutFeatures, {
+                y: 18,
+                duration: 0.65,
+                stagger: 0.08,
+                ease: 'power2.out'
+            });
+
+            // Right illustration
+            const visualImg = aboutSec.querySelector('.about-illustration-img');
+            if (visualImg) {
+                createFadeUpTrigger(visualImg, visualImg, {
+                    y: defaultY + 5,
+                    duration: 0.85,
+                    stagger: 0
+                });
+            }
+
+            // Floating Active Deals Card (Glide + organic float loop)
+            const dealsCard = aboutSec.querySelector('.floating-deals-card');
+            if (dealsCard) {
+                gsap.fromTo(dealsCard,
+                    { opacity: 0, y: 25, scale: 0.92 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.75,
+                        delay: 0.2,
+                        ease: 'back.out(1.4)',
+                        scrollTrigger: {
+                            trigger: visualImg || dealsCard,
+                            start: 'top 82%',
+                            toggleActions: 'play none none none'
+                        },
+                        onComplete: () => {
+                            if (!isMobile) {
+                                gsap.to(dealsCard, {
+                                    y: '-=6',
+                                    duration: 3.2,
+                                    repeat: -1,
+                                    yoyo: true,
+                                    ease: 'sine.inOut'
+                                });
+                            }
+                        }
+                    }
+                );
+            }
+        }
+
+        // 3. What We Manage Section
+        const manageSec = document.getElementById('manage');
+        if (manageSec) {
+            const manageHeader = manageSec.querySelector('.manage-header');
+            const manageHeaderEls = manageSec.querySelectorAll('.manage-tag, .manage-title, .manage-desc');
+            createFadeUpTrigger(manageHeader || manageSec, manageHeaderEls, {
+                y: defaultY,
+                duration: 0.8,
+                stagger: 0.1
+            });
+
+            const manageCards = manageSec.querySelectorAll('.manage-card');
+            const manageGrid = manageSec.querySelector('.row.g-4');
+            createFadeUpTrigger(manageGrid || manageSec, manageCards, {
+                y: defaultY + 4,
+                duration: 0.75,
+                stagger: 0.09
+            });
+        }
+
+        // 4. Industries Section
+        const industriesSec = document.getElementById('industries');
+        if (industriesSec) {
+            const indHeader = industriesSec.querySelector('.industries-header');
+            const indHeaderEls = industriesSec.querySelectorAll('.section-tag, .industries-title');
+            createFadeUpTrigger(indHeader || industriesSec, indHeaderEls, {
+                y: defaultY,
+                duration: 0.8,
+                stagger: 0.1
+            });
+
+            const industryCards = industriesSec.querySelectorAll('.industry-card');
+            const indGrid = industriesSec.querySelector('.row.g-4');
+            createFadeUpTrigger(indGrid || industriesSec, industryCards, {
+                y: defaultY + 2,
+                duration: 0.7,
+                stagger: 0.08
+            });
+        }
+
+        // 5. Testimonials Section Content Reveal
+        const testSec = document.getElementById('testimonials');
+        if (testSec) {
+            const quoteWrap = testSec.querySelector('.td-testimonial-quote-wrap');
+            if (quoteWrap) {
+                gsap.fromTo(quoteWrap,
+                    { opacity: 0, scale: 0.85 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.75,
+                        ease: 'back.out(1.4)',
+                        scrollTrigger: {
+                            trigger: testSec,
+                            start: 'top 82%',
+                            toggleActions: 'play none none none'
+                        },
+                        onComplete: () => gsap.set(quoteWrap, { clearProps: 'transform' })
+                    }
+                );
+            }
+
+            const mainSlider = testSec.querySelector('.testimonial-main-swiper');
+            createFadeUpTrigger(mainSlider || testSec, mainSlider, {
+                y: defaultY,
+                duration: 0.8,
+                stagger: 0
+            });
+
+            const thumbSlides = testSec.querySelectorAll('.testimonial-thumb-slide');
+            const thumbsWrap = testSec.querySelector('.testimonial-thumbs-swiper');
+            createFadeUpTrigger(thumbsWrap || testSec, thumbSlides, {
+                y: 18,
+                duration: 0.6,
+                stagger: 0.05,
+                ease: 'power2.out'
+            });
+        }
+
+        // 6. Quality Policy Section
+        const qualitySec = document.getElementById('quality-policy');
+        if (qualitySec) {
+            const qualityContent = qualitySec.querySelectorAll('.quality-policy-title, .quality-policy-text');
+            createFadeUpTrigger(qualitySec, qualityContent, {
+                y: defaultY,
+                duration: 0.8,
+                stagger: 0.1
+            });
+
+            const policyItems = qualitySec.querySelectorAll('.quality-policy-list li');
+            const policyList = qualitySec.querySelector('.quality-policy-list');
+            if (policyItems.length) {
+                gsap.fromTo(policyItems,
+                    { opacity: 0, x: -16 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.08,
+                        scrollTrigger: {
+                            trigger: policyList || qualitySec,
+                            start: isMobile ? 'top 88%' : 'top 84%',
+                            toggleActions: 'play none none none'
+                        },
+                        onComplete: () => gsap.set(policyItems, { clearProps: 'transform' })
+                    }
+                );
+            }
+        }
+
+        // 7. FAQ Section
+        const faqSec = document.getElementById('faq');
+        if (faqSec) {
+            const faqHeaderEls = faqSec.querySelectorAll('.faq-tag, .faq-title');
+            const faqHeader = faqSec.querySelector('.text-center');
+            createFadeUpTrigger(faqHeader || faqSec, faqHeaderEls, {
+                y: defaultY,
+                duration: 0.8,
+                stagger: 0.1
+            });
+
+            const faqItems = faqSec.querySelectorAll('.faq-accordion .accordion-item');
+            const faqAccordion = faqSec.querySelector('.faq-accordion');
+            createFadeUpTrigger(faqAccordion || faqSec, faqItems, {
+                y: 22,
+                duration: 0.65,
+                stagger: 0.07,
+                ease: 'power2.out'
+            });
+
+            // Refresh ScrollTrigger when FAQs open or close to update positions
+            if (faqAccordion && !faqAccordion.dataset.scrollTriggerBound) {
+                faqAccordion.dataset.scrollTriggerBound = 'true';
+                faqAccordion.addEventListener('shown.bs.collapse', () => {
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                });
+                faqAccordion.addEventListener('hidden.bs.collapse', () => {
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                });
+            }
+        }
+
+        // 8. Contact Us Section
+        const contactSec = document.getElementById('contact');
+        if (contactSec) {
+            const contactLeft = contactSec.querySelector('.contact-left-content');
+            if (contactLeft) {
+                const contactLeftEls = contactLeft.querySelectorAll('.contact-tag-red, .contact-tag-line, .contact-heading, .contact-desc');
+                createFadeUpTrigger(contactSec, contactLeftEls, {
+                    y: defaultY,
+                    duration: 0.8,
+                    stagger: 0.08
+                });
+
+                const supportImg = contactLeft.querySelector('.contact-support-img-box');
+                if (supportImg) {
+                    createFadeUpTrigger(supportImg, supportImg, {
+                        y: defaultY,
+                        duration: 0.8,
+                        stagger: 0
+                    });
+                }
+            }
+
+            const contactCardWrap = contactSec.querySelector('.contact-card-wrapper');
+            const contactCard = contactSec.querySelector('.contact-card');
+            if (contactCard) {
+                createFadeUpTrigger(contactCardWrap || contactSec, contactCard, {
+                    y: defaultY + 5,
+                    duration: 0.85,
+                    stagger: 0
+                });
+            }
+        }
+
+        // 9. Site Footer
+        const footerSec = document.querySelector('.site-footer');
+        if (footerSec) {
+            const footerCols = footerSec.querySelectorAll('.row > div');
+            createFadeUpTrigger(footerSec, footerCols, {
+                y: 22,
+                duration: 0.7,
+                stagger: 0.08,
+                ease: 'power2.out',
+                start: 'top 90%'
+            });
+        }
+    }
+
+    // ------------------------------------------------------------------
     // 8. Process Timeline Center Alignment
     // ------------------------------------------------------------------
     function alignProcessTimelineLine() {
-        if (window.innerWidth < 992 || !processTimelineEl || !processBadgeEl || !processLineEl) return;
+        if (!processTimelineEl || !processBadgeEl || !processLineEl) return;
+        if (window.innerWidth < 768) {
+            processLineEl.style.top = '';
+            processLineEl.style.transform = '';
+            return;
+        }
         const timelineRect = processTimelineEl.getBoundingClientRect();
         const badgeRect = processBadgeEl.getBoundingClientRect();
         const centerY = Math.round((badgeRect.top + badgeRect.height / 2) - timelineRect.top);
@@ -867,9 +1500,9 @@
             if (seg1Fill) gsap.set(seg1Fill, { width: '0%', height: '100%' });
             if (seg2Fill) gsap.set(seg2Fill, { width: '0%', height: '100%' });
             if (seg3Fill) gsap.set(seg3Fill, { width: '0%', height: '100%' });
-            gsap.set(stepItems, { opacity: 0.55 });
+            gsap.set(stepItems, { opacity: 1 });
             gsap.set(badges, { scale: 0.95 });
-            if (travelerDot) gsap.set(travelerDot, { opacity: 0, scale: 0.8, left: '0%' });
+            if (travelerDot) gsap.set(travelerDot, { opacity: 0, scale: 0.8, left: '0%', top: '50%' });
 
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -882,8 +1515,7 @@
             });
 
             // Step 1: Immediate activation at the beginning of the timeline
-            tl.to(stepItems[0], { opacity: 1, duration: 0.2, ease: 'power2.out' }, 0)
-              .to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
+            tl.to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
               .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
 
               // Line draws from Step 1 to Step 2 in #DBEAFE
@@ -891,83 +1523,84 @@
               .to(seg1Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.1)
               .to(baseTrack, { clipPath: 'inset(0 0 0 33.333%)', duration: 0.8, ease: 'none' }, 0.1)
               .to(travelerDot, { left: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(stepItems[1], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0.7)
               .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
 
               // Line draws from Step 2 to Step 3 in #FFE4E6
               .to(seg2Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.9)
               .to(baseTrack, { clipPath: 'inset(0 0 0 66.666%)', duration: 0.8, ease: 'none' }, 0.9)
               .to(travelerDot, { left: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(stepItems[2], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 1.5)
               .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
 
               // Line draws from Step 3 to Step 4 in #D1FAE5
               .to(seg3Fill, { width: '100%', duration: 0.8, ease: 'none' }, 1.7)
               .to(baseTrack, { clipPath: 'inset(0 0 0 100%)', duration: 0.8, ease: 'none' }, 1.7)
               .to(travelerDot, { left: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(stepItems[3], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 2.3)
               .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
 
             return () => {
                 tl.kill();
+                if (travelerDot) gsap.set(travelerDot, { clearProps: 'top,left,opacity,scale' });
+                if (seg1Fill) gsap.set(seg1Fill, { clearProps: 'height,width' });
+                if (seg2Fill) gsap.set(seg2Fill, { clearProps: 'height,width' });
+                if (seg3Fill) gsap.set(seg3Fill, { clearProps: 'height,width' });
+                if (baseTrack) gsap.set(baseTrack, { clearProps: 'clipPath' });
             };
         });
 
         // Mobile (< 768px): Vertical Timeline Progression
         mm.add('(max-width: 767.98px)', () => {
             // Set initial resting states for vertical layout
-            if (baseTrack) gsap.set(baseTrack, { clipPath: 'inset(0% 0 0 0)' });
             if (seg1Fill) gsap.set(seg1Fill, { height: '0%', width: '100%' });
             if (seg2Fill) gsap.set(seg2Fill, { height: '0%', width: '100%' });
             if (seg3Fill) gsap.set(seg3Fill, { height: '0%', width: '100%' });
-            gsap.set(stepItems, { opacity: 0.55 });
+            gsap.set(stepItems, { opacity: 1 });
             gsap.set(badges, { scale: 0.95 });
-            if (travelerDot) gsap.set(travelerDot, { opacity: 0, scale: 0.8, top: '0%' });
+            if (travelerDot) gsap.set(travelerDot, { opacity: 0, scale: 0.8, top: '0%', left: '50%' });
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: timelineEl,
                     start: 'top 75%',
-                    end: 'bottom 60%',
-                    scrub: 0.8,
+                    end: 'bottom 45%',
+                    scrub: 0.5,
                     onUpdate: (self) => syncTimelineMilestones(self.progress)
                 }
             });
 
             // Step 1: Immediate activation at the beginning of the timeline
-            tl.to(stepItems[0], { opacity: 1, duration: 0.2, ease: 'power2.out' }, 0)
-              .to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
+            tl.to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
               .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
 
-              // Line draws down from Step 1 to Step 2
+              // Line draws down from Step 1 to Step 2 (solid overlaying dashed base track)
               .to(seg1Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(baseTrack, { clipPath: 'inset(33.333% 0 0 0)', duration: 0.8, ease: 'none' }, 0.1)
               .to(travelerDot, { top: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(stepItems[1], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0.7)
               .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
 
               // Line draws down from Step 2 to Step 3
               .to(seg2Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(baseTrack, { clipPath: 'inset(66.666% 0 0 0)', duration: 0.8, ease: 'none' }, 0.9)
               .to(travelerDot, { top: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(stepItems[2], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 1.5)
               .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
 
               // Line draws down from Step 3 to Step 4
               .to(seg3Fill, { height: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(baseTrack, { clipPath: 'inset(100% 0 0 0)', duration: 0.8, ease: 'none' }, 1.7)
               .to(travelerDot, { top: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(stepItems[3], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 2.3)
               .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
 
             return () => {
                 tl.kill();
+                if (travelerDot) gsap.set(travelerDot, { clearProps: 'top,left,opacity,scale' });
+                if (seg1Fill) gsap.set(seg1Fill, { clearProps: 'height,width' });
+                if (seg2Fill) gsap.set(seg2Fill, { clearProps: 'height,width' });
+                if (seg3Fill) gsap.set(seg3Fill, { clearProps: 'height,width' });
             };
         });
     }
 
     // One-time initial layout setup
     function initLayout() {
+        initHeroGSAP();
+        initScrollRevealsGSAP();
+        initSolutionsGSAP();
         alignProcessTimelineLine();
         initProcessTimelineGSAP();
         initTestimonialGSAP();
