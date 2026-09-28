@@ -22,6 +22,23 @@
         });
         window.lenis = lenis;
 
+    }
+
+    // ------------------------------------------------------------------
+    // 1b. GSAP & ScrollTrigger Registration & Lenis Sync
+    // ------------------------------------------------------------------
+    if (typeof gsap !== 'undefined') {
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+        if (lenis) {
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+        }
+    } else if (lenis) {
         function raf(time) {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -285,73 +302,245 @@
     }
 
     // ------------------------------------------------------------------
-    // 7. Testimonials Swiper (Batch Layout Calculation - Zero Thrashing)
+    // 7. Testimonials Swiper Slider & Staggered Avatar Thumbnail Sync
     // ------------------------------------------------------------------
-    function equalizeClientSpeakHeights(swiperInstance) {
-        if (!swiperInstance?.slides?.length) return;
-        const inners = [];
+    let testimonialSwiper = null;
+    let thumbsSwiper = null;
+    let activeCircleEl = null;
+    const testimonialThumbs = Array.from(document.querySelectorAll('.testimonial-thumb-item'));
 
-        // Phase 1: Batch DOM writes (clear inline heights)
-        for (let i = 0; i < swiperInstance.slides.length; i++) {
-            const inner = swiperInstance.slides[i].querySelector('.client-testimonial-slide');
-            if (inner) {
-                inner.style.minHeight = '';
-                inners.push(inner);
-            }
-        }
-
-        if (inners.length === 0) return;
-
-        // Phase 2: Batch DOM reads (single layout reflow)
-        let maxHeight = 0;
-        for (let i = 0; i < inners.length; i++) {
-            const h = inners[i].offsetHeight;
-            if (h > maxHeight) maxHeight = h;
-        }
-
-        // Phase 3: Batch DOM writes (apply uniform height)
-        if (maxHeight > 0) {
-            const heightPx = maxHeight + 'px';
-            for (let i = 0; i < inners.length; i++) {
-                inners[i].style.minHeight = heightPx;
-            }
+    function onCircleAnimationComplete(e) {
+        if (e.animationName !== 'tp-border-loader') return;
+        if (testimonialSwiper) {
+            testimonialSwiper.slideNext(600);
         }
     }
 
-    let clientSpeakSwiper = null;
-    if (typeof Swiper !== 'undefined' && document.querySelector('.client-speak-swiper')) {
-        clientSpeakSwiper = new Swiper('.client-speak-swiper', {
+    function setTestimonialActiveThumb(realIndex) {
+        if (!testimonialThumbs.length) return;
+
+        // Detach listener from previously active circle
+        if (activeCircleEl) {
+            activeCircleEl.removeEventListener('animationend', onCircleAnimationComplete);
+            activeCircleEl = null;
+        }
+
+        testimonialThumbs.forEach((thumb, idx) => {
+            const isActive = idx === realIndex;
+            if (isActive) {
+                // Reset CSS animation cleanly by toggling class and triggering reflow
+                thumb.classList.remove('is-active');
+                void thumb.offsetWidth;
+                thumb.classList.add('is-active');
+                thumb.setAttribute('aria-selected', 'true');
+
+                // Attach listener to active circle: when circle animation completes (5s), advance to next slide
+                const circle = thumb.querySelector('.tp-border-loader svg circle:last-child');
+                if (circle) {
+                    activeCircleEl = circle;
+                    circle.addEventListener('animationend', onCircleAnimationComplete, { once: true });
+                }
+            } else {
+                thumb.classList.remove('is-active');
+                thumb.setAttribute('aria-selected', 'false');
+            }
+        });
+
+        // On mobile/smaller devices, slide thumbnail carousel so active image is first
+        if (thumbsSwiper && window.innerWidth < 992) {
+            thumbsSwiper.slideTo(realIndex, 400);
+        }
+    }
+
+    const thumbsSwiperEl = document.querySelector('.testimonial-thumbs-swiper');
+    if (typeof Swiper !== 'undefined' && thumbsSwiperEl) {
+        thumbsSwiper = new Swiper('.testimonial-thumbs-swiper', {
+            slidesPerView: 3,
+            spaceBetween: 14,
+            watchSlidesProgress: true,
+            grabCursor: true,
+            breakpoints: {
+                576: {
+                    slidesPerView: 4,
+                    spaceBetween: 18
+                },
+                768: {
+                    slidesPerView: 5,
+                    spaceBetween: 20
+                },
+                992: {
+                    slidesPerView: 7,
+                    spaceBetween: 24,
+                    allowTouchMove: false
+                }
+            }
+        });
+    }
+
+    const testimonialSwiperEl = document.querySelector('.testimonial-main-swiper');
+    if (typeof Swiper !== 'undefined' && testimonialSwiperEl) {
+        testimonialSwiper = new Swiper('.testimonial-main-swiper', {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
             speed: 600,
-            autoHeight: false,
+            autoHeight: true,
             grabCursor: true,
-            autoplay: {
-                delay: 4500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-            },
+            autoplay: false, // Driven directly by the circular loader animationend event
             keyboard: {
                 enabled: true,
                 onlyInViewport: true
             },
-            pagination: {
-                el: '.client-speak-pagination',
-                clickable: true,
-                renderBullet: function (index, className) {
-                    return '<button type="button" class="' + className + '" aria-label="Go to testimonial slide ' + (index + 1) + '"></button>';
-                }
-            },
             on: {
-                init: function () {
-                    equalizeClientSpeakHeights(this);
-                },
-                resize: function () {
-                    equalizeClientSpeakHeights(this);
+                slideChange: function () {
+                    setTestimonialActiveThumb(this.realIndex);
                 }
             }
         });
+
+        // Sync clicking avatar thumbnails to slideToLoop
+        testimonialThumbs.forEach(thumb => {
+            function activateThumb() {
+                const targetIdx = parseInt(thumb.getAttribute('data-index'), 10);
+                if (!isNaN(targetIdx) && testimonialSwiper) {
+                    testimonialSwiper.slideToLoop(targetIdx, 600);
+                    if (thumbsSwiper && window.innerWidth < 992) {
+                        thumbsSwiper.slideTo(targetIdx, 400);
+                    }
+                }
+            }
+
+            thumb.addEventListener('click', activateThumb);
+            thumb.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    activateThumb();
+                }
+            });
+        });
+
+        // Set initial active state (starts with avatar 0 / Rajesh Mehta)
+        setTestimonialActiveThumb(0);
+        if (thumbsSwiper) {
+            thumbsSwiper.slideTo(0, 0);
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // 7b. Testimonial Background Watermark & Wave GSAP On-Scroll Parallax
+    // ------------------------------------------------------------------
+    let testimonialGSAPInitialized = false;
+
+    function initTestimonialGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (testimonialGSAPInitialized) return;
+
+        const testimonialSection = document.getElementById('testimonials');
+        if (!testimonialSection) return;
+
+        testimonialGSAPInitialized = true;
+
+        const bgTextH2 = testimonialSection.querySelector('.td-testimonial-bg-text h2');
+        const waveParallax = testimonialSection.querySelector('.td-testimonial-wave-parallax');
+
+        // Cinematic Parallax for Huge "Testimonials" Watermark Text
+        if (bgTextH2) {
+            gsap.fromTo(bgTextH2,
+                { xPercent: -10, opacity: 1 },
+                {
+                    xPercent: 10,
+                    opacity: 1,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: testimonialSection,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.2
+                    }
+                }
+            );
+        }
+
+        // Elegant Parallax for Bottom Wave Element (Zero edge gaps)
+        if (waveParallax) {
+            gsap.fromTo(waveParallax,
+                { y: 12 },
+                {
+                    y: -12,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: testimonialSection,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.6
+                    }
+                }
+            );
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // 7c. Industries Background Wave GSAP On-Scroll Parallax
+    // ------------------------------------------------------------------
+    let industriesGSAPInitialized = false;
+
+    function initIndustriesGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (industriesGSAPInitialized) return;
+
+        const industriesSection = document.getElementById('industries');
+        const industriesWave = document.querySelector('.industries-bg-wave');
+
+        if (!industriesSection || !industriesWave) return;
+
+        industriesGSAPInitialized = true;
+
+        gsap.fromTo(industriesWave,
+            { yPercent: -6, xPercent: -3 },
+            {
+                yPercent: 6,
+                xPercent: 3,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: industriesSection,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.6
+                }
+            }
+        );
+    }
+
+    // ------------------------------------------------------------------
+    // 7d. Contact Us Background SVG Wave GSAP On-Scroll Parallax
+    // ------------------------------------------------------------------
+    let contactGSAPInitialized = false;
+
+    function initContactGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (contactGSAPInitialized) return;
+
+        const contactSection = document.getElementById('contact');
+        const contactWave = document.querySelector('.contact-bg-wave');
+
+        if (!contactSection || !contactWave) return;
+
+        contactGSAPInitialized = true;
+
+        gsap.fromTo(contactWave,
+            { y: -12, x: -10 },
+            {
+                y: 14,
+                x: 10,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: contactSection,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.8
+                }
+            }
+        );
     }
 
     // ------------------------------------------------------------------
@@ -379,8 +568,14 @@
                 bsOffcanvas?.hide();
             }
             alignProcessTimelineLine();
-            if (clientSpeakSwiper) {
-                equalizeClientSpeakHeights(clientSpeakSwiper);
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+            if (testimonialSwiper) {
+                testimonialSwiper.update();
+            }
+            if (thumbsSwiper) {
+                thumbsSwiper.update();
             }
             updateActiveNavLink();
         });
@@ -390,7 +585,8 @@
     // Handle custom web fonts load
     if (document.fonts?.ready) {
         document.fonts.ready.then(() => {
-            if (clientSpeakSwiper) equalizeClientSpeakHeights(clientSpeakSwiper);
+            if (testimonialSwiper) testimonialSwiper.update();
+            if (thumbsSwiper) thumbsSwiper.update();
             alignProcessTimelineLine();
             updateActiveNavLink();
         });
@@ -564,13 +760,225 @@
         });
     }
 
+    // ------------------------------------------------------------------
+    // 11. GSAP "How It Works" Timeline Scroll Animation
+    // ------------------------------------------------------------------
+    let processTimelineInitialized = false;
+
+    function initProcessTimelineGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        if (processTimelineInitialized) return;
+
+        const processSection = document.getElementById('process');
+        const timelineEl = document.querySelector('.process-timeline');
+        if (!processSection || !timelineEl) return;
+
+        processTimelineInitialized = true;
+
+        const headerEl = processSection.querySelector('.how-it-works-header');
+        const baseTrack = timelineEl.querySelector('.timeline-base-track');
+        const seg1Fill = timelineEl.querySelector('.segment-1 .timeline-segment-fill');
+        const seg2Fill = timelineEl.querySelector('.segment-2 .timeline-segment-fill');
+        const seg3Fill = timelineEl.querySelector('.segment-3 .timeline-segment-fill');
+        const travelerDot = timelineEl.querySelector('.timeline-traveler-dot');
+        const stepItems = Array.from(timelineEl.querySelectorAll('.process-step-item'));
+        const badges = stepItems.map(item => item.querySelector('.process-step-badge'));
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            if (baseTrack) baseTrack.style.display = 'none';
+            if (seg1Fill) seg1Fill.style.width = '100%';
+            if (seg2Fill) seg2Fill.style.width = '100%';
+            if (seg3Fill) seg3Fill.style.width = '100%';
+            stepItems.forEach(item => { item.style.opacity = '1'; });
+            badges.forEach(badge => {
+                if (badge) {
+                    badge.style.transform = 'none';
+                    badge.classList.add('is-step-active');
+                }
+            });
+            if (travelerDot) travelerDot.style.opacity = '1';
+            return;
+        }
+
+        // 1. Subtle, high-end reveal for the section header
+        if (headerEl) {
+            gsap.fromTo(
+                headerEl,
+                { opacity: 0, y: 35 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.85,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: headerEl,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        }
+
+        const dotColors = [
+            { border: '#113DBE', shadow: '0 0 10px rgba(17, 61, 190, 0.4)' },
+            { border: '#C20E0E', shadow: '0 0 10px rgba(194, 14, 14, 0.4)' },
+            { border: '#007404', shadow: '0 0 10px rgba(0, 116, 4, 0.4)' },
+            { border: '#DD8E10', shadow: '0 0 10px rgba(221, 142, 16, 0.4)' }
+        ];
+
+        function syncTimelineMilestones(progressVal) {
+            // Milestone activation thresholds (Steps 1, 2, 3, 4)
+            const thresholds = [0.01, 0.32, 0.63, 0.94];
+            let activeIdx = -1;
+
+            thresholds.forEach((th, idx) => {
+                if (progressVal >= th) {
+                    badges[idx]?.classList.add('is-step-active');
+                    stepItems[idx]?.classList.add('is-step-active');
+                    activeIdx = idx;
+                } else {
+                    badges[idx]?.classList.remove('is-step-active');
+                    stepItems[idx]?.classList.remove('is-step-active');
+                }
+            });
+
+            if (travelerDot) {
+                if (progressVal < 0.01) {
+                    travelerDot.style.opacity = '0';
+                } else {
+                    travelerDot.style.opacity = '1';
+                    const colorObj = dotColors[Math.max(0, activeIdx)];
+                    if (colorObj) {
+                        travelerDot.style.borderColor = colorObj.border;
+                        travelerDot.style.boxShadow = colorObj.shadow;
+                    }
+                }
+            }
+        }
+
+        // GSAP matchMedia handles desktop/tablet vs mobile seamlessly
+        const mm = gsap.matchMedia();
+
+        // Desktop and Tablet: Horizontal Timeline Progression
+        mm.add('(min-width: 768px)', () => {
+            // Set initial resting states
+            if (baseTrack) gsap.set(baseTrack, { clipPath: 'inset(0 0 0 0%)' });
+            if (seg1Fill) gsap.set(seg1Fill, { width: '0%', height: '100%' });
+            if (seg2Fill) gsap.set(seg2Fill, { width: '0%', height: '100%' });
+            if (seg3Fill) gsap.set(seg3Fill, { width: '0%', height: '100%' });
+            gsap.set(stepItems, { opacity: 0.55 });
+            gsap.set(badges, { scale: 0.95 });
+            if (travelerDot) gsap.set(travelerDot, { opacity: 0, scale: 0.8, left: '0%' });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: timelineEl,
+                    start: 'top 75%',
+                    end: 'bottom 50%',
+                    scrub: 0.8,
+                    onUpdate: (self) => syncTimelineMilestones(self.progress)
+                }
+            });
+
+            // Step 1: Immediate activation at the beginning of the timeline
+            tl.to(stepItems[0], { opacity: 1, duration: 0.2, ease: 'power2.out' }, 0)
+              .to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
+              .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
+
+              // Line draws from Step 1 to Step 2 in #DBEAFE
+              // Notice: baseTrack clipPath retreats simultaneously so the dashed line disappears under the solid line
+              .to(seg1Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.1)
+              .to(baseTrack, { clipPath: 'inset(0 0 0 33.333%)', duration: 0.8, ease: 'none' }, 0.1)
+              .to(travelerDot, { left: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
+              .to(stepItems[1], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0.7)
+              .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
+
+              // Line draws from Step 2 to Step 3 in #FFE4E6
+              .to(seg2Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.9)
+              .to(baseTrack, { clipPath: 'inset(0 0 0 66.666%)', duration: 0.8, ease: 'none' }, 0.9)
+              .to(travelerDot, { left: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
+              .to(stepItems[2], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 1.5)
+              .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
+
+              // Line draws from Step 3 to Step 4 in #D1FAE5
+              .to(seg3Fill, { width: '100%', duration: 0.8, ease: 'none' }, 1.7)
+              .to(baseTrack, { clipPath: 'inset(0 0 0 100%)', duration: 0.8, ease: 'none' }, 1.7)
+              .to(travelerDot, { left: '100%', duration: 0.8, ease: 'none' }, 1.7)
+              .to(stepItems[3], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 2.3)
+              .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
+
+            return () => {
+                tl.kill();
+            };
+        });
+
+        // Mobile (< 768px): Vertical Timeline Progression
+        mm.add('(max-width: 767.98px)', () => {
+            // Set initial resting states for vertical layout
+            if (baseTrack) gsap.set(baseTrack, { clipPath: 'inset(0% 0 0 0)' });
+            if (seg1Fill) gsap.set(seg1Fill, { height: '0%', width: '100%' });
+            if (seg2Fill) gsap.set(seg2Fill, { height: '0%', width: '100%' });
+            if (seg3Fill) gsap.set(seg3Fill, { height: '0%', width: '100%' });
+            gsap.set(stepItems, { opacity: 0.55 });
+            gsap.set(badges, { scale: 0.95 });
+            if (travelerDot) gsap.set(travelerDot, { opacity: 0, scale: 0.8, top: '0%' });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: timelineEl,
+                    start: 'top 75%',
+                    end: 'bottom 60%',
+                    scrub: 0.8,
+                    onUpdate: (self) => syncTimelineMilestones(self.progress)
+                }
+            });
+
+            // Step 1: Immediate activation at the beginning of the timeline
+            tl.to(stepItems[0], { opacity: 1, duration: 0.2, ease: 'power2.out' }, 0)
+              .to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
+              .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
+
+              // Line draws down from Step 1 to Step 2
+              .to(seg1Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.1)
+              .to(baseTrack, { clipPath: 'inset(33.333% 0 0 0)', duration: 0.8, ease: 'none' }, 0.1)
+              .to(travelerDot, { top: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
+              .to(stepItems[1], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0.7)
+              .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
+
+              // Line draws down from Step 2 to Step 3
+              .to(seg2Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.9)
+              .to(baseTrack, { clipPath: 'inset(66.666% 0 0 0)', duration: 0.8, ease: 'none' }, 0.9)
+              .to(travelerDot, { top: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
+              .to(stepItems[2], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 1.5)
+              .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
+
+              // Line draws down from Step 3 to Step 4
+              .to(seg3Fill, { height: '100%', duration: 0.8, ease: 'none' }, 1.7)
+              .to(baseTrack, { clipPath: 'inset(100% 0 0 0)', duration: 0.8, ease: 'none' }, 1.7)
+              .to(travelerDot, { top: '100%', duration: 0.8, ease: 'none' }, 1.7)
+              .to(stepItems[3], { opacity: 1, duration: 0.3, ease: 'power2.out' }, 2.3)
+              .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
+
+            return () => {
+                tl.kill();
+            };
+        });
+    }
+
     // One-time initial layout setup
     function initLayout() {
-        if (clientSpeakSwiper) equalizeClientSpeakHeights(clientSpeakSwiper);
         alignProcessTimelineLine();
+        initProcessTimelineGSAP();
+        initTestimonialGSAP();
+        initIndustriesGSAP();
+        initContactGSAP();
         updateActiveNavLink();
         handleScroll();
         initContactForm();
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
     }
 
     if (document.readyState === 'loading') {
