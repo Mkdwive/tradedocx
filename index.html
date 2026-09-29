@@ -319,7 +319,18 @@
 
                             <!-- Floating Active Deals Card -->
                             <div class="floating-deals-card">
-                                <img src="./assets/images/active-deal.jpg" alt="active-deal" class="img-fluid">
+                                <div class="active-deal-card">
+                                    <div class="active-deal-content">
+                                        <span class="active-deal-label">Documents Processed</span>
+                                        <h2 class="active-deal-counter">
+                                            <span class="counter" data-target="12500">12,500</span>+
+                                        </h2>
+                                    </div>
+                                    <div class="active-deal-icon">
+                                      <img class="img-fluid" src="./assets/images/counter-arrow.png" alt="counter-arrow.png">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1693,6 +1704,10 @@
     <!-- GSAP 3 Core & ScrollTrigger Plugin -->
     <script src="assets/js/gsap.min.js" defer></script>
     <script src="assets/js/ScrollTrigger.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./assets/js/jquery.waypoints.min.js" defer></script>
+    <script src="./assets/js/jquery.counterup.min.js" defer></script>
     <!-- Main Custom Application Script -->
     <script src="assets/js/main.js" defer></script>
 
@@ -1751,6 +1766,15 @@
             sec.addEventListener('mouseleave', function () { set(0); });
         })();
     </script>
+    <script>
+        $(document).ready(function () {
+          $('.counter').counterUp({
+    delay: 15,    // The time between each number change (in milliseconds)
+    time: 2000    // The TOTAL duration of the animation (2000ms = 2 seconds)
+});
+        })
+    </script>
+
 </body>
 
 </html>

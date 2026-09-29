@@ -3636,3 +3636,57 @@ body.offcanvas-open {
         opacity: 1 !important;
     }
 }
+/* css for counter */
+.active-deal-card {
+    position: relative;
+    padding: clamp(16px, 2.4vw, 24px);
+    background-color: var(--primary-color);
+    border-radius: 18px;
+    max-width: 271px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.active-deal-label {
+    display: block;
+    color: var(--bg-white);
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    font-size: 13px  !important;
+}
+
+.active-deal-counter {
+    color: #FFFFFF;
+    font-size: clamp(32px, 3.5vw, 44px);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.active-deal-icon {
+    align-self: flex-end;
+    width: 100%;
+    max-width: 132px;
+    position: absolute;
+    bottom:-4px;
+    height: 79px;
+    width: 132px;
+}
+.active-deal-counter{
+    min-width: 140px;
+}
+
+.trend-arrow-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
