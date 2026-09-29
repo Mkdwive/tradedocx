@@ -103,9 +103,9 @@
        transition: background var(--dur) var(--ease);
    }
 
-   .cats.has-active .cat:not(.is-active)::before {
-       background: linear-gradient(to top, rgba(6, 10, 18, .86), transparent 50%), rgba(10, 16, 28, .64);
-   }
+  .cats.has-active .cat:not(.is-active)::before {
+    background: linear-gradient(to top, rgb(6 10 18 / 0%), transparent 50%), rgb(10 16 28 / 15%);
+}
 
    .cat.is-active::before {
        /* background:rgba(0, 0, 0, 0.2) */

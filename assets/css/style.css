@@ -610,7 +610,7 @@ body.offcanvas-open {
 .hero-video-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180.18deg, rgba(0, 132, 215, 0) -2.32%, rgba(12, 124, 172, 0.296) 51.97%, rgba(14, 126, 196, 0.488) 79.46%);
+    background: linear-gradient(180.18deg, rgba(0, 132, 215, 0) -2.32%, rgb(12 124 172 / 66%) 51.97%, rgba(14, 126, 196, 0.488) 79.46%);
 
 }
 
@@ -2059,15 +2059,15 @@ body.offcanvas-open {
 .manage-check-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     font-size: 15px;
     font-weight: 400;
     color: var(--black);
-    padding-left: 26px;
 }
 
 .manage-checklist-custom {
     margin-top: clamp(16px, 3vw, 34px);
+    margin-bottom: 0;
 }
 
 .manage-checklist-custom li {
@@ -2703,7 +2703,7 @@ body.offcanvas-open {
    Section 11: Contact Us Section (screenshots/contact-us-section.png)
    ========================================================================== */
 .contact-section {
-    padding: clamp(60px, 7vw, 100px) 0 clamp(70px, 8vw, 110px);
+    padding: clamp(60px, 8vw, 128px) 0 clamp(70px, 8vw, 110px);
     background-color: var(--bg-white);
     position: relative;
     overflow: hidden;
@@ -2857,10 +2857,12 @@ body.offcanvas-open {
     user-select: none;
     opacity: 0.85;
 }
-.checklist-card{
+
+.checklist-card {
     padding-left: 0;
     margin-top: clamp(16px, 1.6vw, 20px);
 }
+
 .checklist-card li {
     position: relative;
     display: flex;
@@ -2870,7 +2872,7 @@ body.offcanvas-open {
 }
 
 .manage-checklist-custom li::before {
-     content: "";
+    content: "";
     background: url("../images/check.svg") no-repeat center;
     background-size: 13px;
     width: 14px;
@@ -2878,6 +2880,10 @@ body.offcanvas-open {
     flex-shrink: 0;
     margin-top: 4px;
 
+}
+
+.section-header {
+    margin-bottom: clamp(24px, 2.4vw, 45px);
 }
 
 @media (max-width: 767.98px) {
