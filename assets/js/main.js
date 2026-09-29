@@ -433,56 +433,10 @@
     }
 
     // ------------------------------------------------------------------
-    // 7b. Testimonial Background Watermark & Wave GSAP On-Scroll Parallax
+    // 7b. Testimonial Background GSAP On-Scroll Animations (Removed)
     // ------------------------------------------------------------------
-    let testimonialGSAPInitialized = false;
-
     function initTestimonialGSAP() {
-        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-        if (testimonialGSAPInitialized) return;
-
-        const testimonialSection = document.getElementById('testimonials');
-        if (!testimonialSection) return;
-
-        testimonialGSAPInitialized = true;
-
-        const bgTextH2 = testimonialSection.querySelector('.td-testimonial-bg-text h2');
-        const waveParallax = testimonialSection.querySelector('.td-testimonial-wave-parallax');
-
-        // Cinematic Parallax for Huge "Testimonials" Watermark Text
-        if (bgTextH2) {
-            gsap.fromTo(bgTextH2,
-                { xPercent: -10, opacity: 1 },
-                {
-                    xPercent: 10,
-                    opacity: 1,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: testimonialSection,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: 1.2
-                    }
-                }
-            );
-        }
-
-        // Elegant Parallax for Bottom Wave Element (Zero edge gaps)
-        if (waveParallax) {
-            gsap.fromTo(waveParallax,
-                { y: 12 },
-                {
-                    y: -12,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: testimonialSection,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: 1.6
-                    }
-                }
-            );
-        }
+        // Parallax scroll animations removed for background text and wave
     }
 
     // ------------------------------------------------------------------
