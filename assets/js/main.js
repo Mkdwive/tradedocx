@@ -906,38 +906,7 @@
                     stagger: 0
                 });
             }
-
-            // Floating Active Deals Card (Glide + organic float loop)
-            const dealsCard = aboutSec.querySelector('.floating-deals-card');
-            if (dealsCard) {
-                gsap.fromTo(dealsCard,
-                    { opacity: 0, y: 25, scale: 0.92 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 0.75,
-                        delay: 0.2,
-                        ease: 'back.out(1.4)',
-                        scrollTrigger: {
-                            trigger: visualImg || dealsCard,
-                            start: 'top 82%',
-                            toggleActions: 'play none none none'
-                        },
-                        onComplete: () => {
-                            if (!isMobile) {
-                                gsap.to(dealsCard, {
-                                    y: '-=6',
-                                    duration: 3.2,
-                                    repeat: -1,
-                                    yoyo: true,
-                                    ease: 'sine.inOut'
-                                });
-                            }
-                        }
-                    }
-                );
-            }
+         
         }
 
         // 3. What We Manage Section
