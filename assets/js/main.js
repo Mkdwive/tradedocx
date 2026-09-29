@@ -1581,3 +1581,6 @@ if (testSec) {
     }
     window.addEventListener('load', initLayout, { once: true });
 })();
+
+//js for manage cards
+

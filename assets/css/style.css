@@ -2063,6 +2063,15 @@ body.offcanvas-open {
     font-size: 15px;
     font-weight: 400;
     color: var(--black);
+    padding-left: 26px;
+}
+
+.manage-checklist-custom {
+    margin-top: clamp(16px, 3vw, 34px);
+}
+
+.manage-checklist-custom li {
+    line-height: 1.6;
 }
 
 .manage-check-item span {
@@ -2369,6 +2378,26 @@ body.offcanvas-open {
 .testimonial-thumbs-wrapper {
     display: flex;
     align-items: center;
+}
+
+.commitment-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 47%;
+    height: 100%;
+}
+
+.pt-70 {
+    padding-top: clamp(60px, 6vw, 70px);
+}
+
+.pb-70 {
+    padding-bottom: clamp(60px, 6vw, 70px);
+}
+
+.py-70 {
+    padding-block: clamp(60px, 6vw, 70px);
 }
 
 @media (min-width: 992px) {
@@ -2827,6 +2856,28 @@ body.offcanvas-open {
     pointer-events: none;
     user-select: none;
     opacity: 0.85;
+}
+.checklist-card{
+    padding-left: 0;
+    margin-top: clamp(16px, 1.6vw, 20px);
+}
+.checklist-card li {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding-left: 0;
+}
+
+.manage-checklist-custom li::before {
+     content: "";
+    background: url("../images/check.svg") no-repeat center;
+    background-size: 13px;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 4px;
+
 }
 
 @media (max-width: 767.98px) {
