@@ -1303,7 +1303,7 @@ body.offcanvas-open {
    Section 5: How It Works Section (screenshots/how-it-work-section.png)
    ========================================================================== */
 .how-it-works-section {
-    padding: clamp(65px, 8vw, 110px) 0;
+    padding: clamp(65px, 8vw, 150px) 0;
     background-color: var(--bg-white);
     position: relative;
     overflow: hidden;
@@ -2331,7 +2331,7 @@ body.offcanvas-open {
     position: relative;
     z-index: 2;
     padding-top: clamp(100px, 12vw, 120px);
-    padding-bottom: clamp(20px, 2.5vw,50px);
+    padding-bottom: clamp(20px, 2.5vw, 50px);
 }
 
 .td-testimonial-avatar-title {
@@ -2467,7 +2467,7 @@ body.offcanvas-open {
     stroke-width: 3.5px;
     stroke-dashoffset: -356px;
     stroke-dasharray: 356px, 366px;
-     stroke-dashoffset: 356px;
+    stroke-dashoffset: 356px;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -2791,22 +2791,22 @@ body.offcanvas-open {
     color: var(--text-color);
     line-height: 1.65;
     margin-bottom: clamp(24px, 2.4vw, 36px);
-    max-width: 480px;
 }
 
 .contact-support-img-box {
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
-    max-width: 480px;
+    max-width: 608px;
+    max-height: 382px;
+
 }
 
 .contact-support-img {
-    width: 100%;
     height: auto;
     object-fit: cover;
     display: block;
     border-radius: 16px;
+    width: 100%;
 }
 
 .contact-card-wrapper {
@@ -3112,10 +3112,11 @@ body.offcanvas-open {
    ========================================================================== */
 
 @media(min-width:2000px) {
-   .td-testimonial-wave-wrap {
-    width:160%;
-   }
+    .td-testimonial-wave-wrap {
+        width: 160%;
+    }
 }
+
 @media(min-width:1600px) {
     .container-solution {
         max-width: 1400px !important;

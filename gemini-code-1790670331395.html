@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Category Section</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dim: rgba(10,16,28,.58);
+  --dim-hover: rgba(10,16,28,.25);
+  --line: rgba(255,255,255,.16);
+  --ease: cubic-bezier(.22,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Manrope",system-ui,sans-serif;background:#0d131d}
+
+.cats{position:relative;display:flex;min-height:100vh;overflow:hidden;background:#0d131d}
+
+/* ---------- Section-wide background layers (crossfade) ---------- */
+.bgs{position:absolute;inset:0;z-index:0}
+.bg{
+  position:absolute;inset:0;background:var(--img,none),var(--fallback);
+  background-size:cover;background-position:center;
+  opacity:0;transform:scale(1.05);
+  transition:opacity .9s ease,transform 1.6s var(--ease);
+  will-change:opacity,transform;
+}
+.bg--default{opacity:1;transform:none}
+.bg.is-active{opacity:1;transform:scale(1)}
+
+/* Live Freepik images with fallback photo + gradient layers */
+.bg--default{
+  --img:url("https://img.freepik.com/free-photo/business-people-analyzing-financial-charts-documents_23-2148908922.jpg?w=1800");
+  --fallback:url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80"),linear-gradient(135deg,#2c3e50,#0d131d);
+}
+.bg[data-i="0"]{
+  --img:url("https://img.freepik.com/free-photo/business-people-analyzing-financial-charts-documents_23-2148908922.jpg?w=1800");
+  --fallback:url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80"),linear-gradient(135deg,#2c3e50,#0d131d);
+}
+.bg[data-i="1"]{
+  --img:url("https://img.freepik.com/free-photo/stock-market-forex-trading-graph_73426-194.jpg?w=1800");
+  --fallback:url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=80"),linear-gradient(135deg,#1e3c58,#0f1722);
+}
+.bg[data-i="2"]{
+  --img:url("https://img.freepik.com/free-photo/creative-people-working-office_23-2147656715.jpg?w=1800");
+  --fallback:url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80"),linear-gradient(135deg,#2a3b4c,#121924);
+}
+.bg[data-i="3"]{
+  --img:url("https://img.freepik.com/free-photo/modern-business-buildings-financial-district_1359-1122.jpg?w=1800");
+  --fallback:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80"),linear-gradient(135deg,#233549,#0e1621);
+}
+.bg[data-i="4"]{
+  --img:url("https://img.freepik.com/free-photo/young-entrepreneur-working-laptop-office_23-2148824182.jpg?w=1800");
+  --fallback:url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80"),linear-gradient(135deg,#1f364d,#0b131c);
+}
+
+/* ---------- Cards (Fixed Equal Width) ---------- */
+.cat{
+  position:relative;z-index:1;flex:1 1 0;display:flex;align-items:flex-end;
+  color:#fff;text-decoration:none;overflow:hidden;
+  border-left:1px solid var(--line);padding:0 32px 48px;
+}
+.cat:first-of-type{border-left:0}
+.cat::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(to top,rgba(6,10,18,.82),transparent 50%),var(--dim);
+  transition:background .6s ease;
+}
+.cats.has-active .cat:not(.is-active)::before{
+  background:linear-gradient(to top,rgba(6,10,18,.86),transparent 50%),rgba(10,16,28,.64);
+}
+.cat.is-active::before{
+  background:linear-gradient(to top,rgba(6,10,18,.84),transparent 60%),var(--dim-hover);
+}
+
+/* White line drawing down the right edge, from the top (disabled on last child) */
+.cat::after{
+  content:"";position:absolute;z-index:3;top:0;right:0;width:1px;height:100%;
+  background:#fff;transform:scaleY(0);transform-origin:top;
+  transition:transform .7s var(--ease);
+}
+.cat.is-active::after{transform:scaleY(1)}
+.cat:last-of-type::after{display:none}
+
+/* Outlined top-left number (01, 02, etc.) */
+.cat__num{
+  position:absolute;z-index:2;top:36px;left:32px;
+  font-size:clamp(3.8rem,6vw,5.6rem);font-weight:700;line-height:1;
+  letter-spacing:-.02em;color:transparent;
+  -webkit-text-stroke:1.5px rgba(255,255,255,.26);
+  opacity:0;transform:translateY(-10px);
+  transition:opacity .5s ease,transform .6s var(--ease);
+  user-select:none;pointer-events:none;
+}
+.cat.is-active .cat__num{
+  opacity:1;transform:translateY(0);
+}
+
+.cat__body{position:relative;z-index:2;width:100%}
+.cat__title{
+  font-size:clamp(1.1rem,1.35vw,1.4rem);
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.3;
+}
+
+/* Content reveal */
+.cat__reveal{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.cat__reveal>div{overflow:hidden;min-height:0}
+.cat__inner{opacity:0;transform:translateY(12px);padding-top:12px;transition:opacity .45s ease,transform .6s var(--ease)}
+.cat__inner p{font-size:.92rem;line-height:1.55;color:rgba(255,255,255,.88);max-width:30ch;white-space:normal}
+
+.cat.is-active .cat__reveal{grid-template-rows:1fr}
+.cat.is-active .cat__inner{opacity:1;transform:none;transition-delay:.08s}
+.cat:focus-visible{outline:2px solid rgba(255,255,255,.7);outline-offset:-4px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:991px){
+  .cats{flex-wrap:wrap}
+  .cat{flex:1 1 50%;min-height:36vh;padding:0 24px 32px;border-top:1px solid var(--line)}
+  .cat:nth-of-type(odd){border-left:0}
+  .cat:last-of-type{flex-basis:100%}
+  .cat__num{top:20px;left:24px;font-size:3.4rem}
+}
+@media (max-width:575px){
+  .cats{flex-direction:column;min-height:0}
+  .cat{flex:none;min-height:210px;border-left:0;padding:0 20px 24px}
+  .cat__num{top:16px;left:20px;font-size:2.8rem;opacity:1;transform:none}
+}
+@media (hover:none){
+  .cat__num{opacity:1;transform:none}
+  .cat__reveal{grid-template-rows:1fr}
+  .cat__inner{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<section class="cats" id="cats" aria-label="Categories">
+  <div class="bgs" aria-hidden="true">
+    <div class="bg bg--default"></div>
+    <div class="bg" data-i="0"></div>
+    <div class="bg" data-i="1"></div>
+    <div class="bg" data-i="2"></div>
+    <div class="bg" data-i="3"></div>
+    <div class="bg" data-i="4"></div>
+  </div>
+
+  <a class="cat is-active" href="#export-documentation">
+    <span class="cat__num">01</span>
+    <div class="cat__body">
+      <h3 class="cat__title">Export Documentation</h3>
+      <div class="cat__reveal"><div><div class="cat__inner">
+        <p>Complete and accurate export documents prepared, verified, and dispatched on time.</p>
+      </div></div></div>
+    </div>
+  </a>
+
+  <a class="cat" href="#regulatory-compliance">
+    <span class="cat__num">02</span>
+    <div class="cat__body">
+      <h3 class="cat__title">Regulatory Compliance</h3>
+      <div class="cat__reveal"><div><div class="cat__inner">
+        <p>Strict adherence to international trade laws, customs regulations, and export standards.</p>
+      </div></div></div>
+    </div>
+  </a>
+
+  <a class="cat" href="#stakeholder-coordination">
+    <span class="cat__num">03</span>
+    <div class="cat__body">
+      <h3 class="cat__title">Stakeholder Coordination</h3>
+      <div class="cat__reveal"><div><div class="cat__inner">
+        <p>Seamless communication between exporters, freight forwarders, banks, and chambers.</p>
+      </div></div></div>
+    </div>
+  </a>
+
+  <a class="cat" href="#legalization-dispatch">
+    <span class="cat__num">04</span>
+    <div class="cat__body">
+      <h3 class="cat__title">Legalization &amp; Dispatch</h3>
+      <div class="cat__reveal"><div><div class="cat__inner">
+        <p>End-to-end embassy legalization, chamber attestation, and secure global document dispatch.</p>
+      </div></div></div>
+    </div>
+  </a>
+
+  <a class="cat" href="#digital-flexible-support">
+    <span class="cat__num">05</span>
+    <div class="cat__body">
+      <h3 class="cat__title">Digital &amp; Flexible Support</h3>
+      <div class="cat__reveal"><div><div class="cat__inner">
+        <p>Real-time tracking, digital document workflows, and dedicated support tailored to your needs.</p>
+      </div></div></div>
+    </div>
+  </a>
+</section>
+
+<script>
+(function(){
+  var sec = document.getElementById('cats');
+  var cards = Array.prototype.slice.call(sec.querySelectorAll('.cat'));
+  var bgs = Array.prototype.slice.call(sec.querySelectorAll('.bg[data-i]'));
+
+  function set(i){
+    cards.forEach(function(c, k){ c.classList.toggle('is-active', k === i); });
+    bgs.forEach(function(b, k){ b.classList.toggle('is-active', k === i); });
+    sec.classList.toggle('has-active', i > -1);
+  }
+
+  // Initialize with the first item active to match the screenshot
+  set(0);
+
+  cards.forEach(function(c, i){
+    c.addEventListener('mouseenter', function(){ set(i); });
+    c.addEventListener('focus', function(){ set(i); });
+    c.addEventListener('blur', function(e){
+      if (!sec.contains(e.relatedTarget)) {
+        set(0);
+      }
+    });
+    c.addEventListener('touchstart', function(){ set(i); }, { passive: true });
+    c.addEventListener('click', function(e){
+      if (c.getAttribute('href').charAt(0) === '#') {
+        e.preventDefault();
+      }
+      set(i);
+    });
+  });
+
+  sec.addEventListener('mouseleave', function(){ set(0); });
+})();
+</script>
+</body>
+</html>
