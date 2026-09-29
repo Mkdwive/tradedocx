@@ -2395,7 +2395,7 @@ body.offcanvas-open {
 }
 
 .commitment-sec {
-    padding-block: clamp(60px, 12vw, 120px);
+    padding-block: clamp(60px, 6.5vw, 120px);
 }
 
 .commitment-left img {
@@ -2872,7 +2872,7 @@ body.offcanvas-open {
     z-index: 0;
     pointer-events: none;
     user-select: none;
-    opacity: 0.85;
+    opacity: 0.6;
 }
 
 .checklist-card {
@@ -2900,7 +2900,7 @@ body.offcanvas-open {
 }
 
 .section-header {
-    margin-bottom: clamp(24px, 2.4vw, 45px);
+    margin-bottom: clamp(36px, 2.4vw, 45px);
 }
 
 @media (max-width: 767.98px) {
@@ -3207,6 +3207,7 @@ body.offcanvas-open {
         right: 10%;
     }
 
+
 }
 
 @media (max-width: 767.98px) {
@@ -3215,7 +3216,7 @@ body.offcanvas-open {
         right: 24px;
         bottom: -35px;
         margin: 0;
-        max-width: clamp(120px, 35vw, 150px);
+        max-width: 55%;
     }
 
     .about-gradient-circle {
@@ -3304,6 +3305,7 @@ body.offcanvas-open {
     .solution-video-bg video {
         opacity: .3;
     }
+
 }
 
 /* ==========================================================================
@@ -3356,6 +3358,12 @@ body.offcanvas-open {
     }
 }
 
+@media(min-width:1200px) and (max-width:1600px) {
+    .contact-gradient-circle {
+        top: -17%;
+    }
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
 
     .about-description,
@@ -3380,6 +3388,7 @@ body.offcanvas-open {
     .hero-section {
         min-height: 50dvh;
     }
+
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -3403,7 +3412,7 @@ body.offcanvas-open {
         top: 25%;
         right: 4%;
         width: clamp(260px, 45vw, 380px);
-        opacity: 0.8;
+        opacity: 0.5;
     }
 
     .floating-deals-card {
@@ -3418,6 +3427,10 @@ body.offcanvas-open {
 
     .hero-actions .btn {
         min-height: 44px;
+    }
+
+    .offcanvas-title {
+        max-width: 160px !important;
     }
 }
 
@@ -3636,6 +3649,7 @@ body.offcanvas-open {
         opacity: 1 !important;
     }
 }
+
 /* css for counter */
 .active-deal-card {
     position: relative;
@@ -3643,7 +3657,7 @@ body.offcanvas-open {
     background-color: var(--primary-color);
     border-radius: 18px;
     max-width: 271px;
-    min-height: 160px;
+    min-height: clamp(130px, 15vw, 160px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -3660,12 +3674,12 @@ body.offcanvas-open {
     font-weight: 500;
     margin-bottom: 8px;
     letter-spacing: -0.01em;
-    font-size: 13px  !important;
+    font-size: 13px !important;
 }
 
 .active-deal-counter {
     color: #FFFFFF;
-    font-size: clamp(32px, 3.5vw, 44px);
+    font-size: clamp(32px, 3vw, 44px);
     font-weight: 700;
     line-height: 1;
     margin: 0;
@@ -3673,15 +3687,15 @@ body.offcanvas-open {
 }
 
 .active-deal-icon {
-    align-self: flex-end;
-    width: 100%;
-    max-width: 132px;
     position: absolute;
-    bottom:-4px;
-    height: 79px;
-    width: 132px;
+    bottom: -4px;
+    right: 16px;
+    width: clamp(96px, 7.5vw, 132px);
+    aspect-ratio: 132 / 79;
+    height: auto;
 }
-.active-deal-counter{
+
+.active-deal-counter {
     min-width: 140px;
 }
 
@@ -3689,4 +3703,82 @@ body.offcanvas-open {
     width: 100%;
     height: auto;
     display: block;
+}
+
+@media(max-width:767px) {
+    .active-deal-card {
+        min-height: 105px;
+        border-radius: 12px;
+    }
+
+    .active-deal-counter {
+        font-size: 24px;
+
+    }
+
+    .active-deal-icon {
+        width: 74px;
+    }
+
+    .commitment-left {
+        position: static;
+        max-width: none;
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .commitment-sec .g-5 {
+        --bs-gutter-y: 24px;
+    }
+
+    .faq-section {
+        padding-bottom: 0;
+    }
+
+    .commitment-sec {
+        padding-bottom: 0;
+    }
+
+    .contact-support-img-box {
+        display: none;
+    }
+
+    .contact-gradient-circle {
+        display: none;
+    }
+
+    .faq-section .text-center.mb-5 {
+        margin-bottom: 24px !important;
+    }
+
+    .faq-accordion .accordion-button .faq-icon-wrapper svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .faq-accordion .accordion-button {
+        padding: 10px 0;
+    }
+
+    .manage-checklist-custom li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .manage-checklist-custom li::before {
+        content: "";
+        display: inline-block;
+        /* Crucial structural layout engine anchor */
+        background: url("../images/check.svg") no-repeat center;
+        background-size: 13px;
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        margin-top: 8px;
+    }
+
+    .checklist-card li::before {
+        margin-top: 4px;
+    }
 }
