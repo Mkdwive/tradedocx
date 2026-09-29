@@ -2166,8 +2166,12 @@ body.offcanvas-open {
    ========================================================================== */
 .td-testimonial-area {
     position: relative;
-    background: #FFF6F5;
-    padding: clamp(75px, 8.5vw, 115px) 0 clamp(75px, 9vw, 115px);
+    background-color: #FFF6F5;
+    background-image: url("../images/testimonial-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: clamp(75px, 8.5vw, 115px) 0 clamp(75px, 7.5vw, 80px);
     overflow: visible;
     margin-top: clamp(60px, 6vw, 85px);
 }
@@ -2241,7 +2245,7 @@ body.offcanvas-open {
 /* Huge Background Watermark Text */
 .td-testimonial-bg-text {
     position: absolute;
-    top: clamp(35px, 5.5vw, 75px);
+    top: clamp(35px, 5vw, 50px);
     left: 0;
     right: 0;
     width: 100%;
@@ -2283,6 +2287,7 @@ body.offcanvas-open {
     left: -26%;
     width: 180%;
     opacity: .5;
+    display: none;
 }
 
 .td-testimonial-wave-parallax {
@@ -2325,7 +2330,7 @@ body.offcanvas-open {
 .td-testimonial-main {
     position: relative;
     z-index: 2;
-    padding-top: clamp(100px, 20vw, 165px);
+    padding-top: clamp(100px, 12vw, 120px);
     padding-bottom: clamp(20px, 2.5vw,50px);
 }
 

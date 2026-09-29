@@ -171,13 +171,14 @@
     }
 
     if (lenis) {
-        lenis.on('scroll', (e) => handleScroll(e.scroll));
-    }
+    lenis.on('scroll', (e) => {
+        handleScroll(e.scroll);
+    });
+} else {
     window.addEventListener('scroll', () => {
-        if (!lenis || lenis.isStopped) {
-            handleScroll();
-        }
+        handleScroll();
     }, { passive: true });
+}
 
     // Release programmatic navigation lock if user scrolls manually
     window.addEventListener('wheel', () => { isNavigating = false; }, { passive: true });
@@ -980,43 +981,44 @@
         }
 
         // 5. Testimonials Section Content Reveal
-        const testSec = document.getElementById('testimonials');
-        if (testSec) {
-            const quoteWrap = testSec.querySelector('.td-testimonial-quote-wrap');
-            if (quoteWrap) {
-                gsap.fromTo(quoteWrap,
-                    { opacity: 0, scale: 0.85 },
-                    {
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.75,
-                        ease: 'back.out(1.4)',
-                        scrollTrigger: {
-                            trigger: testSec,
-                            start: 'top 82%',
-                            toggleActions: 'play none none none'
-                        },
-                        onComplete: () => gsap.set(quoteWrap, { clearProps: 'transform' })
-                    }
-                );
+    // 5. Testimonials Section Content Reveal
+const testSec = document.getElementById('testimonials');
+if (testSec) {
+    const quoteWrap = testSec.querySelector('.td-testimonial-quote-wrap');
+    if (quoteWrap) {
+        gsap.fromTo(quoteWrap,
+            { opacity: 0, scale: 0.85 },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 0.75,
+                ease: 'back.out(1.4)',
+                scrollTrigger: {
+                    trigger: testSec,
+                    start: 'top 82%',
+                    toggleActions: 'play none none none'
+                },
+                onComplete: () => gsap.set(quoteWrap, { clearProps: 'transform' })
             }
+        );
+    }
 
-            const mainSlider = testSec.querySelector('.testimonial-main-swiper');
-            createFadeUpTrigger(mainSlider || testSec, mainSlider, {
-                y: defaultY,
-                duration: 0.8,
-                stagger: 0
-            });
+    const mainSlider = testSec.querySelector('.testimonial-main-swiper');
+    createFadeUpTrigger(mainSlider || testSec, mainSlider, {
+        y: defaultY,
+        duration: 0.8,
+        stagger: 0
+    });
 
-            const thumbSlides = testSec.querySelectorAll('.testimonial-thumb-slide');
-            const thumbsWrap = testSec.querySelector('.testimonial-thumbs-swiper');
-            createFadeUpTrigger(thumbsWrap || testSec, thumbSlides, {
-                y: 18,
-                duration: 0.6,
-                stagger: 0.05,
-                ease: 'power2.out'
-            });
-        }
+    const thumbSlides = testSec.querySelectorAll('.testimonial-thumb-slide');
+    const thumbsWrap = testSec.querySelector('.testimonial-thumbs-swiper');
+    createFadeUpTrigger(thumbsWrap || testSec, thumbSlides, {
+        y: 18,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: 'power2.out'
+    });
+}
 
         // 6. Quality Policy Section
         const qualitySec = document.getElementById('quality-policy');
