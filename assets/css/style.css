@@ -610,7 +610,8 @@ body.offcanvas-open {
 .hero-video-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180.18deg, rgba(0, 132, 215, 0) -2.32%, rgb(12 124 172 / 66%) 51.97%, rgba(14, 126, 196, 0.488) 79.46%);
+    background: linear-gradient(180.18deg, rgba(0, 132, 215, 0) -2.32%, rgba(12, 124, 172, 0.296) 51.97%, rgba(14, 126, 196, 0.488) 79.46%);
+
 
 }
 
