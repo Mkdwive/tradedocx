@@ -2825,10 +2825,9 @@ body.offcanvas-open {
 
 .contact-gradient-circle {
     position: absolute;
-    top: 50%;
-    left: 55%;
-    transform: translate(-45%, -50%);
-    width: clamp(480px, 48vw, 640px);
+    top: -20%;
+    left: 60%;
+    width: 74%;
     height: auto;
     aspect-ratio: 1 / 1;
     max-width: none;
@@ -3524,13 +3523,14 @@ body.offcanvas-open {
 @media (min-width: 992px) {
     .manage-card {
         transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 0.3s ease;
+            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.3s ease;
     }
 }
 
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
+
     .hero-title,
     .hero-subtitle,
     .hero-feature-item,
