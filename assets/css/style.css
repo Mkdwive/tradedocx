@@ -2462,6 +2462,7 @@ body.offcanvas-open {
     stroke-width: 3.5px;
     stroke-dashoffset: -356px;
     stroke-dasharray: 356px, 366px;
+     stroke-dashoffset: 356px;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -2472,7 +2473,7 @@ body.offcanvas-open {
 }
 
 .td-testimonial-area:hover .testimonial-thumb-item.is-active .tp-border-loader svg circle:last-child {
-    animation-play-state: paused;
+    /* animation-play-state: paused; */
 }
 
 @keyframes tp-border-loader {
@@ -3112,7 +3113,7 @@ body.offcanvas-open {
 }
 @media(min-width:1600px) {
     .container-solution {
-        max-width: 80% !important;
+        max-width: 1400px !important;
     }
 }
 

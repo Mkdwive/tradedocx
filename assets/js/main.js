@@ -364,6 +364,8 @@
             slidesPerView: 3,
             spaceBetween: 14,
             watchSlidesProgress: true,
+            pauseOnMouseEnter: false, // Keeps autoplay running on hover
+            disableOnInteraction: false,
             grabCursor: true,
             breakpoints: {
                 576: {
@@ -393,6 +395,8 @@
             autoHeight: true,
             grabCursor: true,
             autoplay: false, // Driven directly by the circular loader animationend event
+            pauseOnMouseEnter: false, // Keeps autoplay running on hover
+            disableOnInteraction: false,
             keyboard: {
                 enabled: true,
                 onlyInViewport: true
@@ -573,21 +577,21 @@
                 ease: 'power3.out',
                 stagger: 0.16
             }, 0)
-            .to(rightCards, {
-                x: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 0.85,
-                ease: 'power3.out',
-                stagger: 0.16
-            }, 0.08)
-            .to(badges, {
-                scale: 1,
-                opacity: 1,
-                duration: 0.6,
-                ease: 'back.out(1.8)',
-                stagger: 0.1
-            }, 0.25);
+                .to(rightCards, {
+                    x: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.85,
+                    ease: 'power3.out',
+                    stagger: 0.16
+                }, 0.08)
+                .to(badges, {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.6,
+                    ease: 'back.out(1.8)',
+                    stagger: 0.1
+                }, 0.25);
 
             return () => {
                 tl.kill();
@@ -616,13 +620,13 @@
                 ease: 'power2.out',
                 stagger: 0.14
             })
-            .to(badges, {
-                scale: 1,
-                opacity: 1,
-                duration: 0.5,
-                ease: 'back.out(1.5)',
-                stagger: 0.1
-            }, '-=0.5');
+                .to(badges, {
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: 'back.out(1.5)',
+                    stagger: 0.1
+                }, '-=0.5');
 
             return () => {
                 tl.kill();
@@ -1470,26 +1474,26 @@
 
             // Step 1: Immediate activation at the beginning of the timeline
             tl.to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
-              .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
+                .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
 
-              // Line draws from Step 1 to Step 2 in #DBEAFE
-              // Notice: baseTrack clipPath retreats simultaneously so the dashed line disappears under the solid line
-              .to(seg1Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(baseTrack, { clipPath: 'inset(0 0 0 33.333%)', duration: 0.8, ease: 'none' }, 0.1)
-              .to(travelerDot, { left: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
+                // Line draws from Step 1 to Step 2 in #DBEAFE
+                // Notice: baseTrack clipPath retreats simultaneously so the dashed line disappears under the solid line
+                .to(seg1Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.1)
+                .to(baseTrack, { clipPath: 'inset(0 0 0 33.333%)', duration: 0.8, ease: 'none' }, 0.1)
+                .to(travelerDot, { left: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
+                .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
 
-              // Line draws from Step 2 to Step 3 in #FFE4E6
-              .to(seg2Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(baseTrack, { clipPath: 'inset(0 0 0 66.666%)', duration: 0.8, ease: 'none' }, 0.9)
-              .to(travelerDot, { left: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
+                // Line draws from Step 2 to Step 3 in #FFE4E6
+                .to(seg2Fill, { width: '100%', duration: 0.8, ease: 'none' }, 0.9)
+                .to(baseTrack, { clipPath: 'inset(0 0 0 66.666%)', duration: 0.8, ease: 'none' }, 0.9)
+                .to(travelerDot, { left: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
+                .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
 
-              // Line draws from Step 3 to Step 4 in #D1FAE5
-              .to(seg3Fill, { width: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(baseTrack, { clipPath: 'inset(0 0 0 100%)', duration: 0.8, ease: 'none' }, 1.7)
-              .to(travelerDot, { left: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
+                // Line draws from Step 3 to Step 4 in #D1FAE5
+                .to(seg3Fill, { width: '100%', duration: 0.8, ease: 'none' }, 1.7)
+                .to(baseTrack, { clipPath: 'inset(0 0 0 100%)', duration: 0.8, ease: 'none' }, 1.7)
+                .to(travelerDot, { left: '100%', duration: 0.8, ease: 'none' }, 1.7)
+                .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
 
             return () => {
                 tl.kill();
@@ -1523,22 +1527,22 @@
 
             // Step 1: Immediate activation at the beginning of the timeline
             tl.to(badges[0], { scale: 1, duration: 0.2, ease: 'back.out(1.4)' }, 0)
-              .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
+                .to(travelerDot, { opacity: 1, scale: 1, duration: 0.15 }, 0)
 
-              // Line draws down from Step 1 to Step 2 (solid overlaying dashed base track)
-              .to(seg1Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(travelerDot, { top: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
-              .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
+                // Line draws down from Step 1 to Step 2 (solid overlaying dashed base track)
+                .to(seg1Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.1)
+                .to(travelerDot, { top: '33.333%', duration: 0.8, ease: 'none' }, 0.1)
+                .to(badges[1], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 0.7)
 
-              // Line draws down from Step 2 to Step 3
-              .to(seg2Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(travelerDot, { top: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
-              .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
+                // Line draws down from Step 2 to Step 3
+                .to(seg2Fill, { height: '100%', duration: 0.8, ease: 'none' }, 0.9)
+                .to(travelerDot, { top: '66.666%', duration: 0.8, ease: 'none' }, 0.9)
+                .to(badges[2], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 1.5)
 
-              // Line draws down from Step 3 to Step 4
-              .to(seg3Fill, { height: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(travelerDot, { top: '100%', duration: 0.8, ease: 'none' }, 1.7)
-              .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
+                // Line draws down from Step 3 to Step 4
+                .to(seg3Fill, { height: '100%', duration: 0.8, ease: 'none' }, 1.7)
+                .to(travelerDot, { top: '100%', duration: 0.8, ease: 'none' }, 1.7)
+                .to(badges[3], { scale: 1, duration: 0.3, ease: 'back.out(1.4)' }, 2.3);
 
             return () => {
                 tl.kill();
