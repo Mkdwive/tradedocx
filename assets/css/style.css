@@ -377,11 +377,8 @@ body.offcanvas-open {
 }
 
 .trade-navbar .trade-nav-container {
-    max-width: var(--container-fluid-max-width) !important;
-    padding: 0 clamp(1rem, 3.5vw, 66px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    /* max-width: var(--container-fluid-max-width) !important; */
+
 }
 
 .trade-navbar .navbar-brand {
@@ -396,6 +393,7 @@ body.offcanvas-open {
     width: auto;
     object-fit: contain;
     display: block;
+    max-width: 85%;
 }
 
 @media (min-width: 992px) {
@@ -610,8 +608,11 @@ body.offcanvas-open {
 .hero-video-overlay {
     position: absolute;
     inset: 0;
+    /* background: linear-gradient(180.18deg, rgba(0, 132, 215, 0) -2.32%, rgba(12, 124, 172, 0.296) 51.97%, rgba(14, 126, 196, 0.488) 79.46%); */
     background: linear-gradient(180.18deg, rgba(0, 132, 215, 0) -2.32%, rgba(12, 124, 172, 0.296) 51.97%, rgba(14, 126, 196, 0.488) 79.46%);
-
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
 }
 
@@ -1097,10 +1098,11 @@ body.offcanvas-open {
     overflow: hidden;
 }
 
+
 .solutions-bg-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(2, 26, 74, 0.45) 0%, rgba(2, 26, 74, 0.2) 50%, rgba(2, 26, 74, 0.6) 100%);
+    background: linear-gradient(to bottom, #073865 0%, rgb(7 56 101 / 75%) 15%, transparent 35%);
     z-index: 0;
 }
 
@@ -2387,6 +2389,20 @@ body.offcanvas-open {
     top: 0;
     width: 47%;
     height: 100%;
+    overflow: hidden;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.commitment-sec {
+    padding-block: clamp(60px, 12vw, 120px);
+}
+
+.commitment-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% top;
 }
 
 .pt-70 {
@@ -3143,7 +3159,7 @@ body.offcanvas-open {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 16px;
     font-size: var(--fs-14);
     color: var(--text-white);
