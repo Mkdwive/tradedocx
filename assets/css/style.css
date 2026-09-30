@@ -1093,7 +1093,7 @@ body.offcanvas-open {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    padding: clamp(70px, 8.5vw, 115px) 0;
+    padding: clamp(70px, 6.5vw, 115px) 0;
     color: var(--text-white);
     overflow: hidden;
 }
@@ -3270,8 +3270,9 @@ body.offcanvas-open {
         --bs-gutter-y: 16px !important;
     }
 
-    .container {
-        padding-inline: 12px !important;
+    .container,
+    .container-fluid {
+        padding-inline: 16px !important;
     }
 
     .contact-card-title {
@@ -3361,6 +3362,10 @@ body.offcanvas-open {
 @media(min-width:1200px) and (max-width:1600px) {
     .contact-gradient-circle {
         top: -17%;
+    }
+
+    .floating-deals-card {
+        max-width: clamp(200px, 18vw, 271px);
     }
 }
 
@@ -3540,6 +3545,7 @@ body.offcanvas-open {
 
     .contact-heading {
         font-size: clamp(26px, 6vw, 32px);
+        margin-bottom: 16px;
     }
 
     .contact-support-img-box {
@@ -3552,8 +3558,8 @@ body.offcanvas-open {
     }
 
     .testimonial-thumb-item {
-        width: 58px;
-        height: 58px;
+        width: 70px;
+        height: 70px;
     }
 
     .td-testimonial-quote-text {
@@ -3723,6 +3729,7 @@ body.offcanvas-open {
     .active-deal-card {
         min-height: 105px;
         border-radius: 12px;
+        aspect-ratio: 16 / 9;
     }
 
     .active-deal-counter {
@@ -3803,5 +3810,34 @@ body.offcanvas-open {
 
     .industries-section {
         padding-bottom: 60px;
+    }
+
+    .td-testimonial-area {
+        background-position: bottom center;
+        background-size: cover;
+    }
+
+    .hero-feature-item br {
+        display: none;
+    }
+
+    .feature-icon-badge {
+        width: 55px;
+        height: 55px;
+    }
+
+    .hero-video {
+        object-position: center;
+    }
+
+    .solution-card-left {
+        border: 1px solid;
+        border-color: transparent;
+        border-image-source: linear-gradient(90deg, #A3BDFF 0%, rgba(65, 132, 255, 0) 96.6%);
+    }
+
+    .solution-card-left::before {
+        background: linear-gradient(90deg, #A3BDFF 0%, rgba(65, 132, 255, 0) 96.6%);
+        background-size: 100% 100%;
     }
 }

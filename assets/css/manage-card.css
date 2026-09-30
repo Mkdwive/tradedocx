@@ -263,7 +263,7 @@
        .cat__num {
            top: 24px;
            left: 20px;
-           font-size: 2.8rem;
+           font-size: 68px;
            opacity: 1;
            transform: none
        }
@@ -279,6 +279,9 @@
 
        .cats.has-active .cat:not(.is-active)::before {
            background: linear-gradient(to top, rgb(6 10 18 / 0%), transparent 50%), rgb(10 16 28 / 61%);
+       }
+       .cat::before{
+        background: linear-gradient(to top, rgb(6 10 18 / 36%), transparent 50%), rgb(10 16 28 / 0%);
        }
    }
 
