@@ -244,7 +244,7 @@ body {
     letter-spacing: 1.2px;
     text-transform: uppercase;
     color: var(--primary-color);
-    margin-bottom: clamp(16px, 2vw, 26px);
+    margin-bottom: clamp(14px, 2vw, 26px);
 }
 
 .section-tag .tag-line {
@@ -665,7 +665,7 @@ body.offcanvas-open {
     .hero-section {
         background-position: 75% center;
         min-height: auto;
-        padding-top: clamp(95px, 12vw, 125px);
+        padding-top: clamp(45px, 7vw, 125px);
         padding-bottom: clamp(45px, 7vw, 68px);
     }
 
@@ -2111,7 +2111,7 @@ body.offcanvas-open {
 .industries-header {
     position: relative;
     z-index: 1;
-    margin-bottom: clamp(38px, 5vw, 56px);
+    margin-bottom: clamp(28px, 5vw, 56px);
 }
 
 .industries-title {
@@ -3216,7 +3216,7 @@ body.offcanvas-open {
         right: 24px;
         bottom: -35px;
         margin: 0;
-        max-width: 55%;
+        max-width: 50%;
     }
 
     .about-gradient-circle {
@@ -3364,6 +3364,20 @@ body.offcanvas-open {
     }
 }
 
+@media(min-width:1200px) and (max-width:1300px) {
+    .cats {
+        min-height: clamp(500px, 48vw, 782px) !important;
+    }
+
+    .floating-deals-card {
+        max-width: clamp(200px, 19vw, 271px);
+    }
+
+    .cat__num {
+        font-size: clamp(80px, 6vw, 150px) !important;
+    }
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
 
     .about-description,
@@ -3492,7 +3506,7 @@ body.offcanvas-open {
 
     .hero-content {
         max-width: none;
-        padding-top: 5%;
+        padding-top: 0%;
     }
 
     .about-section {
@@ -3780,5 +3794,14 @@ body.offcanvas-open {
 
     .checklist-card li::before {
         margin-top: 4px;
+    }
+
+    .clients-section {
+        padding-top: 20px;
+        padding-bottom: 8px;
+    }
+
+    .industries-section {
+        padding-bottom: 60px;
     }
 }

@@ -254,10 +254,10 @@
 
        .cat {
            flex: none;
-           min-height: 350px;
+           min-height: 390px;
            border-left: 0;
            padding-inline: 24px;
-           padding-block: 34px;
+           padding-block: 40px;
        }
 
        .cat__num {
